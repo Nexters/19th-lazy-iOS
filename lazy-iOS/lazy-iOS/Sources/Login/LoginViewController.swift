@@ -5,10 +5,18 @@
 //  Created by inae Lee on 2021/07/11.
 //
 
+import KakaoSDKAuth
+import KakaoSDKUser
 import UIKit
 
 class LoginViewController: UIViewController {
     // MARK: - UIComponenets
+    
+    private lazy var kakaoLoginButton = UIButton().then {
+        $0.setTitle("카카오 로그인", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.addTarget(self, action: #selector(kakaoLogin(_:)), for: .touchUpInside)
+    }
     
     // MARK: - Properties
     
@@ -18,11 +26,34 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setConstraints()
     }
     
     // MARK: - Actions
     
+    @objc
+    func kakaoLogin(_ sender: UIButton) {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            UserApi.shared.loginWithKakaoTalk { [weak self] _, error in
+                guard error != nil else { return }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { [weak self] _, error in
+                guard error != nil else { return }
+            }
+        }
+    }
+    
     // MARK: - Methods
+    
+    func setConstraints() {
+        view.addSubviews([kakaoLoginButton])
+        
+        kakaoLoginButton.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
     
     // MARK: - Protocols
 }
