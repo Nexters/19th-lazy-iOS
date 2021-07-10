@@ -15,13 +15,13 @@ class SignManager: NSObject {
     func requestLoginWithKakao(completion: @escaping () -> Void) {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { _, error in
-                guard error != nil else { return }
+                guard error == nil else { return }
             }
 
             completion()
         } else {
             UserApi.shared.loginWithKakaoAccount { _, error in
-                guard error != nil else { return }
+                guard error == nil else { return }
             }
 
             completion()
