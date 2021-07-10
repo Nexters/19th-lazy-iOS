@@ -35,11 +35,11 @@ class LoginViewController: UIViewController {
     @objc
     func kakaoLogin(_ sender: UIButton) {
         if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk { [weak self] _, error in
+            UserApi.shared.loginWithKakaoTalk { _, error in
                 guard error != nil else { return }
             }
         } else {
-            UserApi.shared.loginWithKakaoAccount { [weak self] _, error in
+            UserApi.shared.loginWithKakaoAccount { _, error in
                 guard error != nil else { return }
             }
         }
