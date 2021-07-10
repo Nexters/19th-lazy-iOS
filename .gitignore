@@ -123,4 +123,8 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+# keyConstants
+lazy-iOS/Sources/Common/Key
+lazy-iOS/lazy-iOS/Sources/Common/Key/**
+
 # End of https://www.toptal.com/developers/gitignore/api/swift,macos,cocoapods

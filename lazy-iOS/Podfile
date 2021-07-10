@@ -9,4 +9,6 @@ target 'lazy-iOS' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Then'
   pod 'Moya', '~> 14.0'
+  pod 'KakaoSDK'
+
 end
