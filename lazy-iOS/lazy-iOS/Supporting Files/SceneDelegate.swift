@@ -21,8 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: scene)
         self.window?.backgroundColor = .white
 
-        self.window?.rootViewController = LoginViewController()
-        self.window?.makeKeyAndVisible()
+        let navigationController = UINavigationController(rootViewController: LoginViewController())
+        navigationController.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -5,8 +5,6 @@
 //  Created by inae Lee on 2021/07/11.
 //
 
-import KakaoSDKAuth
-import KakaoSDKUser
 import UIKit
 
 class LoginViewController: UIViewController {
@@ -34,14 +32,8 @@ class LoginViewController: UIViewController {
     
     @objc
     func kakaoLogin(_ sender: UIButton) {
-        if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk { _, error in
-                guard error != nil else { return }
-            }
-        } else {
-            UserApi.shared.loginWithKakaoAccount { _, error in
-                guard error != nil else { return }
-            }
+        SignManager.shared.requestLoginWithKakao {
+            self.navigationController?.pushViewController(MainViewController(), animated: true)
         }
     }
     
