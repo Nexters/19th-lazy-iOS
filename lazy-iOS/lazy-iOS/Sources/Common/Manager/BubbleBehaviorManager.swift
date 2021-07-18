@@ -8,7 +8,7 @@
 import Then
 import UIKit
 
-class BubbleBehavior: UIDynamicBehavior {
+class BubbleBehaviorManager: UIDynamicBehavior {
     // MARK: - Properties
 
     lazy var gravityBehavior = UIGravityBehavior()

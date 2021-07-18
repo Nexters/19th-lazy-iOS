@@ -17,6 +17,12 @@ class DrawerView: UIView {
         $0.cornerRound(radius: 2.5)
     }
     
+    lazy var panGestureRecognizer = UIPanGestureRecognizer().then {
+        $0.maximumNumberOfTouches = 2
+        $0.minimumNumberOfTouches = 1
+        $0.addTarget(self, action: #selector(handlePanGesture(_:)))
+    }
+    
     // MARK: - Properties
     
     // MARK: - Initializer
@@ -38,11 +44,17 @@ class DrawerView: UIView {
     
     // MARK: - Actions
     
+    @objc func handlePanGesture(_ gestrue: UIPanGestureRecognizer) {
+        print("밍굴..맹굴..")
+    }
+    
     // MARK: - Methods
     
     func setView() {
         backgroundColor = .white
         cornerRound(radius: 20)
+        
+        addGestureRecognizer(panGestureRecognizer)
     }
     
     func setConstraints() {
@@ -51,7 +63,7 @@ class DrawerView: UIView {
         handleView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(5)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.1)
+            make.width.equalToSuperview().multipliedBy(0.15)
             make.height.equalTo(5)
         }
     }

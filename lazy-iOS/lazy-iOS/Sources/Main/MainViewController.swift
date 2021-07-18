@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     // MARK: - Properties
 
     private lazy var animator = UIDynamicAnimator(referenceView: self.bubbleView)
-    private let bubbleBehavior = BubbleBehavior()
+    private let bubbleBehavior = BubbleBehaviorManager()
 
     private let bubbleView = UIView().then {
         $0.backgroundColor = .clear
@@ -61,12 +61,14 @@ class MainViewController: UIViewController {
 
     func setView() {
         view.backgroundColor = .black
+        overrideUserInterfaceStyle = .dark
+
         animator.addBehavior(bubbleBehavior)
 
         for _ in 0 ... 10 {
             let size = CGFloat([50.0, 65.0, 80.0, 100.0].randomElement()!)
 
-            let bubbleView = UIView(frame: CGRect(x: 50, y: 100, width: size, height: size))
+            let bubbleView = UIView(frame: CGRect(x: CGFloat.random(in: 10.0 ..< UIScreen.main.bounds.width), y: -10, width: size, height: size))
             bubbleView.cornerRounds()
             bubbleView.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
 
@@ -84,7 +86,7 @@ class MainViewController: UIViewController {
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(drawerView.snp.top)
         }
-        
+
         drawerView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview()
             make.height.equalTo(300)

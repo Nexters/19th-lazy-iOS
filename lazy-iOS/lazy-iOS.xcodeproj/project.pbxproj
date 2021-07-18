@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB42C15526A458D800EB1B92 /* BubbleBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehavior.swift */; };
+		AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */; };
 		AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15726A46B9F00EB1B92 /* DrawerView.swift */; };
 		AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */; };
 		AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2D26997ABD00EF9C6E /* SceneDelegate.swift */; };
@@ -27,7 +27,7 @@
 		2F61B0477BCC48894749B34D /* Pods-lazy-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lazy-iOS.release.xcconfig"; path = "Target Support Files/Pods-lazy-iOS/Pods-lazy-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		44C6479D16B690640522E86F /* Pods-lazy-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lazy-iOS.debug.xcconfig"; path = "Target Support Files/Pods-lazy-iOS/Pods-lazy-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lazy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB42C15426A458D800EB1B92 /* BubbleBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehavior.swift; sourceTree = "<group>"; };
+		AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehaviorManager.swift; sourceTree = "<group>"; };
 		AB42C15726A46B9F00EB1B92 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		AB7F6E2826997ABD00EF9C6E /* lazy-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lazy-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				AB7F6E56269A2CAB00EF9C6E /* SIgnManager.swift */,
-				AB42C15426A458D800EB1B92 /* BubbleBehavior.swift */,
+				AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 				AB7F6E512699FF7B00EF9C6E /* LoginViewController.swift in Sources */,
 				AB7F6E3026997ABD00EF9C6E /* MainViewController.swift in Sources */,
 				AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */,
-				AB42C15526A458D800EB1B92 /* BubbleBehavior.swift in Sources */,
+				AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */,
 				AB7F6E54269A02E100EF9C6E /* KeyConstants.swift in Sources */,
 				AB7F6E57269A2CAB00EF9C6E /* SIgnManager.swift in Sources */,
 				AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */,
