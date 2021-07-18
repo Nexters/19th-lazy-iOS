@@ -30,7 +30,8 @@ class BubbleBehavior: UIDynamicBehavior {
         addChildBehavior(gravityBehavior)
         addChildBehavior(collisionBehavior)
         addChildBehavior(dynamicItemBehavior)
-        
+
+        updateBubblePosition()
     }
 
     // MARK: - Method
@@ -41,8 +42,6 @@ class BubbleBehavior: UIDynamicBehavior {
         gravityBehavior.addItem(bubble)
         collisionBehavior.addItem(bubble)
         dynamicItemBehavior.addItem(bubble)
-        
-        updateBubblePosition()
     }
 
     func updateBubblePosition() {
