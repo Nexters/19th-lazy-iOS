@@ -5,11 +5,14 @@
 //  Created by inae Lee on 2021/07/10.
 //
 
+import CoreMotion
 import KakaoSDKCommon
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    static let motionManager = CMMotionManager()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         KakaoSDKCommon.initSDK(appKey: KeyConstants.kakaoKey)
