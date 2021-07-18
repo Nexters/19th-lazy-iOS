@@ -13,7 +13,7 @@ class DrawerView: UIView {
     // MARK: - UIComponenets
 
     let handleView = UIView().then {
-        $0.backgroundColor = .systemGray4
+        $0.backgroundColor = .lightGray
         $0.cornerRound(radius: 2.5)
     }
     
@@ -39,13 +39,38 @@ class DrawerView: UIView {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
+        
         setConstraints()
     }
     
     // MARK: - Actions
     
     @objc func handlePanGesture(_ gestrue: UIPanGestureRecognizer) {
-        print("밍굴..맹굴..")
+        let translationY = gestrue.translation(in: self).y
+        let height = bounds.height
+        let velocity = gestrue.velocity(in: self)
+        
+        switch gestrue.state {
+        case .ended:
+            if velocity.y > 0 {
+                print("close")
+                hideDrawer()
+            } else {
+                print("show")
+                showDrawer()
+            }
+        case .changed:
+            if height - translationY > 100, height - translationY <= 300 {
+                snp.updateConstraints { make in
+                    print("update", height - translationY)
+                    make.height.equalTo(height - translationY)
+                }
+                
+                panGestureRecognizer.setTranslation(.zero, in: self)
+            }
+        default: break
+        }
     }
     
     // MARK: - Methods
@@ -65,6 +90,18 @@ class DrawerView: UIView {
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.15)
             make.height.equalTo(5)
+        }
+    }
+    
+    func showDrawer() {
+        snp.updateConstraints { make in
+            make.height.equalTo(300)
+        }
+    }
+    
+    func hideDrawer() {
+        snp.updateConstraints { make in
+            make.height.equalTo(100)
         }
     }
 }

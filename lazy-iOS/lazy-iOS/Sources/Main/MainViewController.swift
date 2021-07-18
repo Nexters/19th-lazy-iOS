@@ -35,10 +35,16 @@ class MainViewController: UIViewController {
         setView()
     }
 
+    override func viewWillLayoutSubviews() {
+        bubbleView.snp.updateConstraints { make in
+            make.bottom.equalTo(drawerView.snp.top).offset(-20)
+        }
+    }
+
     // MARK: - Actions
 
     @objc
-    func didTapView(_ gesture: UIPanGestureRecognizer) {
+    func handleBubbleView(_ gesture: UIPanGestureRecognizer) {
         guard let bubble = gesture.view else { return }
 
         switch gesture.state {
@@ -52,6 +58,7 @@ class MainViewController: UIViewController {
             itemBehavior.addLinearVelocity(velocity, for: bubble)
 
             animator.addBehavior(itemBehavior)
+            animator.updateItem(usingCurrentState: bubble)
         default:
             break
         }
@@ -68,11 +75,11 @@ class MainViewController: UIViewController {
         for _ in 0 ... 10 {
             let size = CGFloat([50.0, 65.0, 80.0, 100.0].randomElement()!)
 
-            let bubbleView = UIView(frame: CGRect(x: CGFloat.random(in: 10.0 ..< UIScreen.main.bounds.width), y: -10, width: size, height: size))
-            bubbleView.cornerRounds()
+            let bubbleView = UIView(frame: CGRect(x: CGFloat.random(in: 10.0 ..< UIScreen.main.bounds.width), y: 0, width: size, height: size))
+            bubbleView.cornerRound(radius: 20)
             bubbleView.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
 
-            bubbleView.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(didTapView(_:)))]
+            bubbleView.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(handleBubbleView(_:)))]
 
             view.addSubview(bubbleView)
             bubbleBehavior.addBubble(bubbleView)
@@ -84,12 +91,12 @@ class MainViewController: UIViewController {
 
         bubbleView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(drawerView.snp.top)
+            make.bottom.equalTo(drawerView.snp.top).offset(-20)
         }
 
         drawerView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview()
-            make.height.equalTo(300)
+            make.height.equalTo(100)
         }
     }
 

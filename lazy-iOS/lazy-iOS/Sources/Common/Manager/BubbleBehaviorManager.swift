@@ -20,7 +20,7 @@ class BubbleBehaviorManager: UIDynamicBehavior {
     lazy var dynamicItemBehavior = UIDynamicItemBehavior().then {
         $0.allowsRotation = true
         $0.elasticity = 0.5 /// 탄성
-        $0.friction = 0.0 /// 마찰
+        $0.friction = 0.2 /// 마찰
         $0.resistance = -0.3 /// 저항
     }
 
