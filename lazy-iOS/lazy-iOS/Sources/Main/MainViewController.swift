@@ -14,9 +14,12 @@ class MainViewController: UIViewController {
 
     private lazy var animator = UIDynamicAnimator(referenceView: self.bubbleView)
     private let bubbleBehavior = BubbleBehavior()
+
     private let bubbleView = UIView().then {
-        $0.backgroundColor = .black
+        $0.backgroundColor = .clear
     }
+
+    private let drawerView = DrawerView()
 
     // MARK: - Initializer
 
@@ -57,6 +60,7 @@ class MainViewController: UIViewController {
     // MARK: - Methods
 
     func setView() {
+        view.backgroundColor = .black
         animator.addBehavior(bubbleBehavior)
 
         for _ in 0 ... 10 {
@@ -74,11 +78,16 @@ class MainViewController: UIViewController {
     }
 
     func setConstraints() {
-        view.addSubviews([bubbleView])
+        view.addSubviews([bubbleView, drawerView])
 
         bubbleView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(500)
+            make.bottom.equalTo(drawerView.snp.top)
+        }
+        
+        drawerView.snp.makeConstraints { make in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.height.equalTo(300)
         }
     }
 
