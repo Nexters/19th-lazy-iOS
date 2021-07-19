@@ -28,11 +28,16 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setView()
         setConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        setView()
+        bubbleBehavior.collisionBehavior.collisionDelegate = bubbleBehavior
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        bubbleBehavior.collisionBehavior.collisionDelegate = nil
     }
 
     override func viewWillLayoutSubviews() {
