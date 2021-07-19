@@ -42,6 +42,7 @@ class DrawerView: UIView {
         super.layoutSubviews()
         
         setConstraints()
+        cornerRound(radius: 20, direct: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
     }
     
     // MARK: - Actions
@@ -54,16 +55,13 @@ class DrawerView: UIView {
         switch gestrue.state {
         case .ended:
             if velocity.y > 0 {
-                print("close")
-                hideDrawer()
+                closeDrawer()
             } else {
-                print("show")
-                showDrawer()
+                openDrawer()
             }
         case .changed:
-            if height - translationY > 100, height - translationY <= 300 {
+            if height - translationY > UIComponentsConstants.homeDrawerCloseHeight, height - translationY <= UIComponentsConstants.homeDrawerOpenHeight {
                 snp.updateConstraints { make in
-                    print("update", height - translationY)
                     make.height.equalTo(height - translationY)
                 }
                 
@@ -77,8 +75,6 @@ class DrawerView: UIView {
     
     func setView() {
         backgroundColor = .white
-        cornerRound(radius: 20)
-        
         addGestureRecognizer(panGestureRecognizer)
     }
     
@@ -93,15 +89,15 @@ class DrawerView: UIView {
         }
     }
     
-    func showDrawer() {
+    func openDrawer() {
         snp.updateConstraints { make in
-            make.height.equalTo(300)
+            make.height.equalTo(286)
         }
     }
     
-    func hideDrawer() {
+    func closeDrawer() {
         snp.updateConstraints { make in
-            make.height.equalTo(100)
+            make.height.equalTo(94)
         }
     }
 }

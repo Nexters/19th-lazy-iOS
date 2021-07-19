@@ -12,6 +12,8 @@
 		AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15A26A5657600EB1B92 /* TabBarController.swift */; };
 		AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15D26A568A400EB1B92 /* MyPageViewController.swift */; };
 		AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C16026A5691000EB1B92 /* AnalysisViewController.swift */; };
+		AB42C16426A5C52C00EB1B92 /* DiviceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C16326A5C52C00EB1B92 /* DiviceConstants.swift */; };
+		AB42C16626A5C61200EB1B92 /* UIComponentsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C16526A5C61200EB1B92 /* UIComponentsConstants.swift */; };
 		AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */; };
 		AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2D26997ABD00EF9C6E /* SceneDelegate.swift */; };
 		AB7F6E3026997ABD00EF9C6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2F26997ABD00EF9C6E /* MainViewController.swift */; };
@@ -35,6 +37,8 @@
 		AB42C15A26A5657600EB1B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AB42C15D26A568A400EB1B92 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		AB42C16026A5691000EB1B92 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		AB42C16326A5C52C00EB1B92 /* DiviceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiviceConstants.swift; sourceTree = "<group>"; };
+		AB42C16526A5C61200EB1B92 /* UIComponentsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentsConstants.swift; sourceTree = "<group>"; };
 		AB7F6E2826997ABD00EF9C6E /* lazy-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lazy-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB7F6E2D26997ABD00EF9C6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,15 @@
 			path = Analysis;
 			sourceTree = "<group>";
 		};
+		AB42C16226A5C49100EB1B92 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				AB42C16326A5C52C00EB1B92 /* DiviceConstants.swift */,
+				AB42C16526A5C61200EB1B92 /* UIComponentsConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		AB7F6E1F26997ABD00EF9C6E = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +188,7 @@
 		AB7F6E452699FD5300EF9C6E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AB42C16226A5C49100EB1B92 /* Constants */,
 				AB7F6E55269A2C9300EF9C6E /* Manager */,
 				AB7F6E52269A02C600EF9C6E /* Key */,
 				AB7F6E462699FD5B00EF9C6E /* Extensions */,
@@ -337,9 +351,11 @@
 				AB7F6E54269A02E100EF9C6E /* KeyConstants.swift in Sources */,
 				AB7F6E57269A2CAB00EF9C6E /* SIgnManager.swift in Sources */,
 				AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */,
+				AB42C16626A5C61200EB1B92 /* UIComponentsConstants.swift in Sources */,
 				AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */,
 				AB7F6E492699FD8900EF9C6E /* UIView+Extension.swift in Sources */,
 				AB7F6E4B2699FDB900EF9C6E /* UIDevice+Extension.swift in Sources */,
+				AB42C16426A5C52C00EB1B92 /* DiviceConstants.swift in Sources */,
 				AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */,
 				AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */,
 				AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */,
