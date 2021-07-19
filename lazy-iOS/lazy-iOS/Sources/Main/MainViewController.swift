@@ -77,17 +77,17 @@ class MainViewController: UIViewController {
 
         animator.addBehavior(bubbleBehavior)
 
-        for _ in 0 ... 10 {
-            let size = CGFloat([50.0, 65.0, 80.0, 100.0].randomElement()!)
+        for idx in 0 ... 6 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds((idx * 200))) {
+                let bubbleView = UIView(frame: CGRect(x: CGFloat.random(in: 100.0 ..< UIScreen.main.bounds.width - 100), y: 0, width: 100, height: 100))
+                bubbleView.cornerRounds()
+                bubbleView.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
 
-            let bubbleView = UIView(frame: CGRect(x: CGFloat.random(in: 30.0 ..< UIScreen.main.bounds.width - 30), y: 0, width: size, height: size))
-            bubbleView.cornerRound(radius: 25)
-            bubbleView.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
+                bubbleView.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(self.handleBubbleView(_:)))]
 
-            bubbleView.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(handleBubbleView(_:)))]
-
-            view.addSubview(bubbleView)
-            bubbleBehavior.addBubble(bubbleView)
+                self.view.addSubview(bubbleView)
+                self.bubbleBehavior.addBubble(bubbleView)
+            }
         }
     }
 
