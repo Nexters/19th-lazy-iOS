@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
         setConstraints()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         setView()
     }
 
@@ -75,8 +75,8 @@ class MainViewController: UIViewController {
         for _ in 0 ... 10 {
             let size = CGFloat([50.0, 65.0, 80.0, 100.0].randomElement()!)
 
-            let bubbleView = UIView(frame: CGRect(x: CGFloat.random(in: 10.0 ..< UIScreen.main.bounds.width), y: 0, width: size, height: size))
-            bubbleView.cornerRound(radius: 20)
+            let bubbleView = UIView(frame: CGRect(x: CGFloat.random(in: 30.0 ..< UIScreen.main.bounds.width - 30), y: 0, width: size, height: size))
+            bubbleView.cornerRound(radius: 25)
             bubbleView.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
 
             bubbleView.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(handleBubbleView(_:)))]
