@@ -34,6 +34,14 @@ class DrawerView: UIView {
         $0.tintColor = .black
     }
     
+    lazy var habitTableView = UITableView(frame: .zero, style: .plain).then {
+        $0.register(HomeHabitTableViewCell.self, forCellReuseIdentifier: HomeHabitTableViewCell.identifier)
+        $0.backgroundColor = .clear
+        $0.isScrollEnabled = false
+        $0.separatorStyle = .none
+        $0.allowsMultipleSelection = true
+    }
+    
     // MARK: - Properties
     
     var totalDelayedDate: Int = 0
@@ -92,23 +100,29 @@ class DrawerView: UIView {
     }
     
     func setConstraints() {
-        addSubviews([handleView, guideLabel, plusButton])
-        
+        addSubviews([handleView, guideLabel, plusButton, habitTableView])
+
         handleView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.15)
             make.height.equalTo(4)
         }
-        
+
         guideLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(37)
             make.leading.equalToSuperview().offset(20)
         }
-        
+
         plusButton.snp.makeConstraints { make in
             make.centerY.equalTo(guideLabel.snp.centerY)
             make.trailing.equalToSuperview().offset(-20)
+        }
+        
+        habitTableView.snp.makeConstraints { make in
+            make.top.equalTo(guideLabel.snp.bottom).offset(33).priority(.low)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
     

@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
 
         setView()
         setConstraints()
+        setDelegate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -105,6 +106,11 @@ class MainViewController: UIViewController {
             make.bottom.leading.trailing.equalToSuperview()
             make.height.equalTo(UIComponentsConstants.homeDrawerCloseHeight)
         }
+    }
+
+    func setDelegate() {
+        drawerView.habitTableView.delegate = self
+        drawerView.habitTableView.dataSource = self
     }
 
     // MARK: - Protocols
