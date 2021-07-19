@@ -24,17 +24,18 @@ class TabBarController: UITabBarController {
         tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
         tabBar.backgroundColor = .white
+        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.pretendard(type: .bold, size: 12)], for: .normal)
         
         let main = MainViewController()
-        let mainBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
+        let mainBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         main.tabBarItem = mainBarItem
         
         let analysis = AnalysisViewController()
-        let analysisBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "chart.bar"), selectedImage: UIImage(systemName: "chart.bar.fill"))
+        let analysisBarItem = UITabBarItem(title: "분석", image: UIImage(systemName: "chart.bar"), selectedImage: UIImage(systemName: "chart.bar.fill"))
         analysis.tabBarItem = analysisBarItem
         
         let myPage = MyPageViewController()
-        let myPageBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "tray.full"), selectedImage: UIImage(systemName: "tray.full.fill"))
+        let myPageBarItem = UITabBarItem(title: "마이", image: UIImage(systemName: "tray.full"), selectedImage: UIImage(systemName: "tray.full.fill"))
         myPage.tabBarItem = myPageBarItem
 
         viewControllers = [main, analysis, myPage]
