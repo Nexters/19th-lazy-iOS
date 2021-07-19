@@ -56,6 +56,10 @@ class BubbleBehaviorManager: UIDynamicBehavior {
             }
         }
     }
+    
+    func stopBubble() {
+        AppDelegate.motionManager.stopAccelerometerUpdates()
+    }
 }
 
 extension BubbleBehaviorManager: UICollisionBehaviorDelegate {

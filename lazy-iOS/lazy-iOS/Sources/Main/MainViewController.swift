@@ -34,10 +34,12 @@ class MainViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         bubbleBehavior.collisionBehavior.collisionDelegate = bubbleBehavior
+        bubbleBehavior.updateBubblePosition()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         bubbleBehavior.collisionBehavior.collisionDelegate = nil
+        bubbleBehavior.stopBubble()
     }
 
     override func viewWillLayoutSubviews() {
