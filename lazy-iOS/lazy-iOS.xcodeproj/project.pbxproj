@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */; };
 		AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15726A46B9F00EB1B92 /* DrawerView.swift */; };
+		AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15A26A5657600EB1B92 /* TabBarController.swift */; };
+		AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15D26A568A400EB1B92 /* MyPageViewController.swift */; };
+		AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C16026A5691000EB1B92 /* AnalysisViewController.swift */; };
 		AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */; };
 		AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2D26997ABD00EF9C6E /* SceneDelegate.swift */; };
 		AB7F6E3026997ABD00EF9C6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2F26997ABD00EF9C6E /* MainViewController.swift */; };
@@ -29,6 +32,9 @@
 		5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lazy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehaviorManager.swift; sourceTree = "<group>"; };
 		AB42C15726A46B9F00EB1B92 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
+		AB42C15A26A5657600EB1B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		AB42C15D26A568A400EB1B92 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		AB42C16026A5691000EB1B92 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		AB7F6E2826997ABD00EF9C6E /* lazy-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lazy-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB7F6E2D26997ABD00EF9C6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +87,30 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		AB42C15926A5655F00EB1B92 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AB42C15A26A5657600EB1B92 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		AB42C15C26A5688E00EB1B92 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				AB42C15D26A568A400EB1B92 /* MyPageViewController.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		AB42C15F26A568BB00EB1B92 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				AB42C16026A5691000EB1B92 /* AnalysisViewController.swift */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
 		AB7F6E1F26997ABD00EF9C6E = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +143,9 @@
 		AB7F6E3F2699F6A500EF9C6E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AB42C15F26A568BB00EB1B92 /* Analysis */,
+				AB42C15C26A5688E00EB1B92 /* MyPage */,
+				AB42C15926A5655F00EB1B92 /* TabBar */,
 				AB7F6E4F2699FF6800EF9C6E /* Login */,
 				AB7F6E452699FD5300EF9C6E /* Common */,
 				AB7F6E412699F72300EF9C6E /* Main */,
@@ -304,8 +337,11 @@
 				AB7F6E54269A02E100EF9C6E /* KeyConstants.swift in Sources */,
 				AB7F6E57269A2CAB00EF9C6E /* SIgnManager.swift in Sources */,
 				AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */,
+				AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */,
 				AB7F6E492699FD8900EF9C6E /* UIView+Extension.swift in Sources */,
 				AB7F6E4B2699FDB900EF9C6E /* UIDevice+Extension.swift in Sources */,
+				AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */,
+				AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */,
 				AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */,
 				AB7F6E4E2699FDEB00EF9C6E /* Date+Extension.swift in Sources */,
 			);

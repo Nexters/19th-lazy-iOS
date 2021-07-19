@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: scene)
         self.window?.backgroundColor = .white
 
-        let navigationController = UINavigationController(rootViewController: MainViewController())
+        let navigationController = UINavigationController(rootViewController: TabBarController())
         navigationController.isNavigationBarHidden = true
         
         self.window?.rootViewController = navigationController
