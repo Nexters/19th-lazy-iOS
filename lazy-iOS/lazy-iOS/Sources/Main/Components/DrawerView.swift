@@ -23,7 +23,20 @@ class DrawerView: UIView {
         $0.addTarget(self, action: #selector(handlePanGesture(_:)))
     }
     
+    lazy var guideLabel = UILabel().then {
+        $0.text = "총 \(self.totalDelayedDate)일 밀렸어요~!"
+        $0.font = .pretendard(type: .bold, size: 20)
+        $0.textColor = .black
+    }
+    
+    lazy var plusButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        $0.tintColor = .black
+    }
+    
     // MARK: - Properties
+    
+    var totalDelayedDate: Int = 0
     
     // MARK: - Initializer
     
@@ -79,13 +92,23 @@ class DrawerView: UIView {
     }
     
     func setConstraints() {
-        addSubviews([handleView])
+        addSubviews([handleView, guideLabel, plusButton])
         
         handleView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(5)
+            make.top.equalToSuperview().offset(8)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.15)
-            make.height.equalTo(5)
+            make.height.equalTo(4)
+        }
+        
+        guideLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(37)
+            make.leading.equalToSuperview().offset(20)
+        }
+        
+        plusButton.snp.makeConstraints { make in
+            make.centerY.equalTo(guideLabel.snp.centerY)
+            make.trailing.equalToSuperview().offset(-20)
         }
     }
     
