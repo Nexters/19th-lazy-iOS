@@ -12,8 +12,8 @@ class HomeHabitTableViewCell: UITableViewCell {
 
     // MARK: - UIComponents
 
-    let iconImage = UIImageView().then {
-        $0.image = UIImage(systemName: "house.fill")
+    let iconView = UIView().then {
+        $0.backgroundColor = .systemOrange
     }
     
     let titleLabel = UILabel().then {
@@ -29,9 +29,12 @@ class HomeHabitTableViewCell: UITableViewCell {
     }
     
     let checkButton = UIButton().then {
-        $0.setTitle("3일 째", for: .normal)
+        $0.setTitle("3일 차", for: .normal)
+        $0.titleLabel?.font = .pretendard(type: .bold, size: 12)
+        $0.tintColor = .black
+        $0.setTitleColor(.black, for: .normal)
         $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.lightGray.cgColor
+        $0.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     // MARK: - Initializer
@@ -39,6 +42,7 @@ class HomeHabitTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        setView()
         setConstraints()
     }
     
@@ -55,30 +59,46 @@ class HomeHabitTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        checkButton.cornerRound(radius: 17 * UIScreen.main.bounds.width / 375.0)
+        iconView.cornerRounds()
+        
+        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 22, right: 0)
+        contentView.frame = contentView.frame.inset(by: margins)
+    }
+    
     // MARK: - Methods
     
+    func setView() {
+        backgroundColor = .white
+    }
+    
     func setConstraints() {
-        contentView.addSubviews([iconImage, titleLabel, commentLabel, checkButton])
+        contentView.addSubviews([iconView, titleLabel, commentLabel, checkButton])
         
-        iconImage.snp.makeConstraints { make in
-            make.width.height.equalToSuperview().multipliedBy(40.0 / 375.0)
+        iconView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
-            make.top.bottom.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(34)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconImage.snp.top)
-            make.leading.equalTo(iconImage.snp.trailing).offset(15)
+            make.top.equalTo(iconView.snp.top).offset(-1)
+            make.leading.equalTo(iconView.snp.trailing).offset(12)
         }
         
         commentLabel.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.leading)
-            make.bottom.equalTo(iconImage.snp.bottom)
+            make.bottom.equalTo(iconView.snp.bottom).offset(2)
         }
         
         checkButton.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(72.0 / 375.0)
-            make.height.equalTo(32)
+            make.trailing.equalToSuperview().offset(-20)
+            make.width.equalTo(54)
+            make.height.equalTo(34)
+            make.centerY.equalToSuperview()
         }
     }
 }

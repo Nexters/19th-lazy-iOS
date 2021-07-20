@@ -36,10 +36,10 @@ class DrawerView: UIView {
     
     lazy var habitTableView = UITableView(frame: .zero, style: .plain).then {
         $0.register(HomeHabitTableViewCell.self, forCellReuseIdentifier: HomeHabitTableViewCell.identifier)
-        $0.backgroundColor = .clear
-        $0.isScrollEnabled = false
+        $0.backgroundColor = .white
+        $0.alwaysBounceVertical = false
         $0.separatorStyle = .none
-        $0.allowsMultipleSelection = true
+        $0.allowsSelection = false
     }
     
     // MARK: - Properties
@@ -120,9 +120,9 @@ class DrawerView: UIView {
         }
         
         habitTableView.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(33).priority(.low)
+            make.top.equalTo(guideLabel.snp.bottom).offset(28).priority(.low)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-11)
         }
     }
     

@@ -17,7 +17,7 @@ extension UIView {
         self.layer.masksToBounds = true
     }
 
-    func cornerRound(radius: CGFloat, direct: CACornerMask = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]) {
+    func cornerRound(radius: CGFloat, direct: CACornerMask = [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner]) {
         self.layer.cornerRadius = radius
         self.layer.maskedCorners = direct
         self.layer.masksToBounds = true
