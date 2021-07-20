@@ -60,13 +60,13 @@ class HomeHabitTableViewCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
+        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 22, right: 0)
+        contentView.frame = contentView.frame.inset(by: margins)
         
         checkButton.cornerRound(radius: 17 * UIScreen.main.bounds.width / 375.0)
         iconView.cornerRounds()
         
-        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 22, right: 0)
-        contentView.frame = contentView.frame.inset(by: margins)
+        super.layoutSubviews()
     }
     
     // MARK: - Methods
@@ -100,5 +100,7 @@ class HomeHabitTableViewCell: UITableViewCell {
             make.height.equalTo(34)
             make.centerY.equalToSuperview()
         }
+        
+        iconView.layoutIfNeeded()
     }
 }
