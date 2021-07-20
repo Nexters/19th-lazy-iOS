@@ -21,7 +21,6 @@ class TabBarController: UITabBarController {
     func setTabBar() {
         tabBar.isTranslucent = false
         tabBar.tintColor = .black
-        tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
         tabBar.backgroundColor = .white
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.pretendard(type: .bold, size: 12)], for: .normal)
