@@ -40,6 +40,7 @@ class DrawerView: UIView {
         $0.alwaysBounceVertical = false
         $0.separatorStyle = .none
         $0.allowsSelection = false
+        $0.automaticallyAdjustsScrollIndicatorInsets = false
     }
     
     // MARK: - Properties
@@ -72,6 +73,7 @@ class DrawerView: UIView {
         let translationY = gestrue.translation(in: self).y
         let height = bounds.height
         let velocity = gestrue.velocity(in: self)
+        let tableViewHeight = habitTableView.contentSize.height + UIComponentsConstants.homeDrawerCloseHeight + 12.0
         
         switch gestrue.state {
         case .ended:
@@ -81,7 +83,7 @@ class DrawerView: UIView {
                 openDrawer()
             }
         case .changed:
-            if height - translationY > UIComponentsConstants.homeDrawerCloseHeight, height - translationY <= UIComponentsConstants.homeDrawerOpenHeight {
+            if height - translationY > UIComponentsConstants.homeDrawerCloseHeight, height - translationY <= tableViewHeight {
                 snp.updateConstraints { make in
                     make.height.equalTo(height - translationY)
                 }
@@ -110,7 +112,7 @@ class DrawerView: UIView {
         }
 
         guideLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(37)
+            make.top.equalToSuperview().offset(38)
             make.leading.equalToSuperview().offset(20)
         }
 
@@ -122,19 +124,19 @@ class DrawerView: UIView {
         habitTableView.snp.makeConstraints { make in
             make.top.equalTo(guideLabel.snp.bottom).offset(28).priority(.low)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-11)
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
     
     func openDrawer() {
         snp.updateConstraints { make in
-            make.height.equalTo(286)
+            make.height.equalTo(self.habitTableView.contentSize.height + UIComponentsConstants.homeDrawerCloseHeight + 12.0)
         }
     }
     
     func closeDrawer() {
         snp.updateConstraints { make in
-            make.height.equalTo(94)
+            make.height.equalTo(UIComponentsConstants.homeDrawerCloseHeight)
         }
     }
 }

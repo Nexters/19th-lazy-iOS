@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
         $0.backgroundColor = .clear
     }
 
-    private let drawerView = DrawerView()
+    private let drawerView = DrawerView(frame: CGRect(origin: .init(x: 0, y: DiviceConstants.screenHeight), size: CGSize(width: DiviceConstants.screenWidth, height: 94)))
 
     // MARK: - Initializer
 

@@ -60,13 +60,13 @@ class HomeHabitTableViewCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
+        
         let margins = UIEdgeInsets(top: 0, left: 0, bottom: 22, right: 0)
         contentView.frame = contentView.frame.inset(by: margins)
         
         checkButton.cornerRound(radius: 17 * UIScreen.main.bounds.width / 375.0)
-        iconView.cornerRounds()
-        
-        super.layoutSubviews()
+        iconView.cornerRound(radius: 18)
     }
     
     // MARK: - Methods
@@ -79,19 +79,20 @@ class HomeHabitTableViewCell: UITableViewCell {
         contentView.addSubviews([iconView, titleLabel, commentLabel, checkButton])
         
         iconView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(1)
             make.leading.equalToSuperview().offset(20)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(34)
+            make.height.equalTo(iconView.snp.width)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconView.snp.top).offset(-1)
+            make.top.equalToSuperview()
             make.leading.equalTo(iconView.snp.trailing).offset(12)
         }
         
         commentLabel.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.leading)
-            make.bottom.equalTo(iconView.snp.bottom).offset(2)
+            make.bottom.equalToSuperview()
         }
         
         checkButton.snp.makeConstraints { make in
@@ -100,7 +101,5 @@ class HomeHabitTableViewCell: UITableViewCell {
             make.height.equalTo(34)
             make.centerY.equalToSuperview()
         }
-        
-        iconView.layoutIfNeeded()
     }
 }
