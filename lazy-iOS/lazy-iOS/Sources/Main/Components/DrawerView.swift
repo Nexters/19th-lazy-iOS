@@ -40,7 +40,6 @@ class DrawerView: UIView {
         $0.alwaysBounceVertical = false
         $0.separatorStyle = .none
         $0.allowsSelection = false
-        $0.automaticallyAdjustsScrollIndicatorInsets = false
     }
     
     // MARK: - Properties

@@ -13,13 +13,11 @@ class MainViewController: UIViewController {
     // MARK: - Properties
 
     private lazy var animator = UIDynamicAnimator(referenceView: self.bubbleView)
-    private let bubbleBehavior = BubbleBehaviorManager()
-
     private let bubbleView = UIView().then {
         $0.backgroundColor = .clear
     }
 
-    private let drawerView = DrawerView(frame: CGRect(origin: .init(x: 0, y: DiviceConstants.screenHeight), size: CGSize(width: DiviceConstants.screenWidth, height: 94)))
+    private let drawerView = DrawerView()
 
     // MARK: - Initializer
 
@@ -34,13 +32,13 @@ class MainViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        bubbleBehavior.collisionBehavior.collisionDelegate = bubbleBehavior
-        bubbleBehavior.updateBubblePosition()
+        BubbleBehaviorManager.bubbleBehavior.collisionBehavior.collisionDelegate = BubbleBehaviorManager.bubbleBehavior
+        BubbleBehaviorManager.bubbleBehavior.updateBubblePosition()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-        bubbleBehavior.collisionBehavior.collisionDelegate = nil
-        bubbleBehavior.stopBubble()
+        BubbleBehaviorManager.bubbleBehavior.collisionBehavior.collisionDelegate = nil
+        BubbleBehaviorManager.bubbleBehavior.stopBubble()
     }
 
     override func viewWillLayoutSubviews() {
@@ -78,7 +76,7 @@ class MainViewController: UIViewController {
         view.backgroundColor = .black
         overrideUserInterfaceStyle = .dark
 
-        animator.addBehavior(bubbleBehavior)
+        animator.addBehavior(BubbleBehaviorManager.bubbleBehavior)
 
         for idx in 0 ... 6 {
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(idx * 200)) {
@@ -89,7 +87,7 @@ class MainViewController: UIViewController {
                 bubbleView.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(self.handleBubbleView(_:)))]
 
                 self.view.addSubview(bubbleView)
-                self.bubbleBehavior.addBubble(bubbleView)
+                BubbleBehaviorManager.bubbleBehavior.addBubble(bubbleView)
             }
         }
     }
@@ -98,7 +96,8 @@ class MainViewController: UIViewController {
         view.addSubviews([bubbleView, drawerView])
 
         bubbleView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(-200)
+            make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(drawerView.snp.top).offset(1)
         }
 

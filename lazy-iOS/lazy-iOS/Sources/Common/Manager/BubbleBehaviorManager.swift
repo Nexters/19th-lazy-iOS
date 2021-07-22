@@ -9,6 +9,8 @@ import Then
 import UIKit
 
 class BubbleBehaviorManager: UIDynamicBehavior {
+    static let bubbleBehavior = BubbleBehaviorManager()
+
     // MARK: - Properties
 
     lazy var gravityBehavior = UIGravityBehavior().then {
@@ -56,9 +58,21 @@ class BubbleBehaviorManager: UIDynamicBehavior {
             }
         }
     }
-    
+
     func stopBubble() {
         AppDelegate.motionManager.stopAccelerometerUpdates()
+    }
+
+    func removeAllBehaviors() {
+        removeChildBehavior(gravityBehavior)
+        removeChildBehavior(dynamicItemBehavior)
+        removeChildBehavior(collisionBehavior)
+    }
+
+    func addAllBehaviora() {
+        addChildBehavior(gravityBehavior)
+        addChildBehavior(collisionBehavior)
+        addChildBehavior(dynamicItemBehavior)
     }
 }
 
