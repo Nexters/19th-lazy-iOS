@@ -110,6 +110,7 @@ class MainViewController: UIViewController {
     func setDelegate() {
         drawerView.habitTableView.delegate = self
         drawerView.habitTableView.dataSource = self
+        drawerView.drawerViewDelegate = self
     }
 
     // MARK: - Protocols

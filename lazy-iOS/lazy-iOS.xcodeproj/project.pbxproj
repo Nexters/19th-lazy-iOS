@@ -22,6 +22,8 @@
 		AB42C17626A5E1EF00EB1B92 /* HomeHabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C17526A5E1EF00EB1B92 /* HomeHabitTableViewCell.swift */; };
 		AB42C17826A5E7C500EB1B92 /* MainViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C17726A5E7C500EB1B92 /* MainViewController+Extension.swift */; };
 		AB42C17D26A839B200EB1B92 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C17C26A839B200EB1B92 /* PopUpViewController.swift */; };
+		AB42C18426A9B3B100EB1B92 /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C18326A9B3B100EB1B92 /* AddHabitViewController.swift */; };
+		AB42C18726A9BFA500EB1B92 /* LabeledRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C18626A9BFA500EB1B92 /* LabeledRoundedView.swift */; };
 		AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */; };
 		AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2D26997ABD00EF9C6E /* SceneDelegate.swift */; };
 		AB7F6E3026997ABD00EF9C6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2F26997ABD00EF9C6E /* MainViewController.swift */; };
@@ -55,6 +57,8 @@
 		AB42C17526A5E1EF00EB1B92 /* HomeHabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHabitTableViewCell.swift; sourceTree = "<group>"; };
 		AB42C17726A5E7C500EB1B92 /* MainViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB42C17C26A839B200EB1B92 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		AB42C18326A9B3B100EB1B92 /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
+		AB42C18626A9BFA500EB1B92 /* LabeledRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledRoundedView.swift; sourceTree = "<group>"; };
 		AB7F6E2826997ABD00EF9C6E /* lazy-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lazy-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB7F6E2D26997ABD00EF9C6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +171,23 @@
 			path = PopUp;
 			sourceTree = "<group>";
 		};
+		AB42C18226A9B37900EB1B92 /* AddHabit */ = {
+			isa = PBXGroup;
+			children = (
+				AB42C18526A9B72E00EB1B92 /* Components */,
+				AB42C18326A9B3B100EB1B92 /* AddHabitViewController.swift */,
+			);
+			path = AddHabit;
+			sourceTree = "<group>";
+		};
+		AB42C18526A9B72E00EB1B92 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AB42C18626A9BFA500EB1B92 /* LabeledRoundedView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		AB7F6E1F26997ABD00EF9C6E = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +220,7 @@
 		AB7F6E3F2699F6A500EF9C6E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AB42C18226A9B37900EB1B92 /* AddHabit */,
 				AB42C17B26A8394E00EB1B92 /* PopUp */,
 				AB42C15F26A568BB00EB1B92 /* Analysis */,
 				AB42C15C26A5688E00EB1B92 /* MyPage */,
@@ -406,9 +428,11 @@
 				AB42C17626A5E1EF00EB1B92 /* HomeHabitTableViewCell.swift in Sources */,
 				AB42C16626A5C61200EB1B92 /* UIComponentsConstants.swift in Sources */,
 				AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */,
+				AB42C18726A9BFA500EB1B92 /* LabeledRoundedView.swift in Sources */,
 				AB42C17826A5E7C500EB1B92 /* MainViewController+Extension.swift in Sources */,
 				AB7F6E492699FD8900EF9C6E /* UIView+Extension.swift in Sources */,
 				AB42C17126A5D2D200EB1B92 /* UIFont+Extension.swift in Sources */,
+				AB42C18426A9B3B100EB1B92 /* AddHabitViewController.swift in Sources */,
 				AB7F6E4B2699FDB900EF9C6E /* UIDevice+Extension.swift in Sources */,
 				AB42C16426A5C52C00EB1B92 /* DiviceConstants.swift in Sources */,
 				AB42C17D26A839B200EB1B92 /* PopUpViewController.swift in Sources */,

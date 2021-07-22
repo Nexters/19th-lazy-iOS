@@ -24,3 +24,13 @@ extension MainViewController: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - DrawerViewDelegate
+
+extension MainViewController: DrawerViewDelegate {
+    func presentAddHabitView() {
+        let addHabitViewController = AddHabitViewController()
+
+        self.present(addHabitViewController, animated: true, completion: nil)
+    }
+}

@@ -9,6 +9,10 @@ import UIKit
 
 // FIXME: - 레이아웃 상수 고치기 (아직 미정)
 
+protocol DrawerViewDelegate {
+    func presentAddHabitView()
+}
+
 class DrawerView: UIView {
     // MARK: - UIComponenets
 
@@ -32,6 +36,7 @@ class DrawerView: UIView {
     lazy var plusButton = UIButton().then {
         $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         $0.tintColor = .black
+        $0.addTarget(self, action: #selector(didTapPlusButton(_:)), for: .touchUpInside)
     }
     
     lazy var habitTableView = UITableView(frame: .zero, style: .plain).then {
@@ -45,6 +50,7 @@ class DrawerView: UIView {
     // MARK: - Properties
     
     var totalDelayedDate: Int = 0
+    var drawerViewDelegate: DrawerViewDelegate?
     
     // MARK: - Initializer
     
@@ -91,6 +97,11 @@ class DrawerView: UIView {
             }
         default: break
         }
+    }
+    
+    @objc
+    func didTapPlusButton(_ sender: UIButton) {
+        drawerViewDelegate?.presentAddHabitView()
     }
     
     // MARK: - Methods
