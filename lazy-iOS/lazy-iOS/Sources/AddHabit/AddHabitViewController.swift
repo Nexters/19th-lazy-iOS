@@ -25,14 +25,29 @@ class AddHabitViewController: UIViewController {
         $0.dataSource = self
         $0.delegate = self
         $0.automaticallyAdjustsScrollIndicatorInsets = false
+        $0.showsHorizontalScrollIndicator = false
         $0.backgroundColor = .clear
         
         $0.register(cell: DayOfWeekCollectionViewCell.self)
+    }
+    
+    let iconSettingView = RoundedView()
+    lazy var iconCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        $0.setCollectionViewLayout(layout, animated: true)
+        $0.dataSource = self
+        $0.delegate = self
+        $0.showsHorizontalScrollIndicator = false
+        $0.backgroundColor = .clear
+        
+        $0.register(cell: IconCollectionViewCell.self)
     }
 
     // MARK: - Properties
     
     var weeks = ["일", "월", "화", "수", "목", "금", "토"]
+    var colors = [UIColor.icon1, UIColor.icon2, UIColor.icon3, UIColor.icon4, UIColor.icon5, UIColor.icon6, UIColor.icon7, UIColor.icon8]
     
     // MARK: - Initializer
     
@@ -54,7 +69,8 @@ class AddHabitViewController: UIViewController {
     }
     
     func setConstraints() {
-        view.addSubviews([habitSettingView, dayOfWeekSettingView])
+        view.addSubviews([habitSettingView, dayOfWeekSettingView, iconSettingView])
+        iconSettingView.addSubview(iconCollectionView)
         
         habitSettingView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
@@ -64,9 +80,20 @@ class AddHabitViewController: UIViewController {
         
         dayOfWeekSettingView.snp.makeConstraints { make in
             make.top.equalTo(habitSettingView.snp.bottom).offset(44)
-            make.leading.equalTo(habitSettingView.snp.leading)
-            make.width.equalTo(habitSettingView)
+            make.leading.trailing.equalTo(habitSettingView)
             make.centerX.equalToSuperview()
+        }
+        
+        iconSettingView.snp.makeConstraints { make in
+            make.top.equalTo(dayOfWeekSettingView.snp.bottom).offset(44)
+            make.leading.trailing.equalTo(habitSettingView)
+            make.centerX.equalToSuperview()
+        }
+        
+        iconCollectionView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(14)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(42).priority(.low)
         }
     }
     
