@@ -12,12 +12,11 @@ enum AddHabitViewState {
     case dayOfTheWeek
 }
 
-class LabeledRoundedView: UIView {
+class LabeledRoundedView: RoundedView {
     // MARK: - UIComponenets
 
     private let titleLabel = UILabel().then {
         $0.font = .pretendard(type: .medium, size: 12)
-//        $0.text = "습관 설정"
     }
 
     // MARK: - Properties
@@ -40,7 +39,6 @@ class LabeledRoundedView: UIView {
 
         super.init(frame: .zero)
 
-        setView()
         setConstraints()
     }
 
@@ -52,11 +50,6 @@ class LabeledRoundedView: UIView {
     // MARK: - Actions
 
     // MARK: - Methods
-
-    func setView() {
-        backgroundColor = UIColor(red: 246.0 / 255.0, green: 246.0 / 255.0, blue: 246.0 / 255.0, alpha: 1)
-        cornerRound(radius: 18)
-    }
 
     func setConstraints() {
         addSubviews([titleLabel, accesoryView])

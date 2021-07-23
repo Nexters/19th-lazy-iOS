@@ -11,13 +11,12 @@ class AddHabitViewController: UIViewController {
     // MARK: - UIComponenets
     
     lazy var habitSettingView = LabeledRoundedView(state: .setHabit, habitNameTextField)
-    lazy var dayOfWeekSettingView = LabeledRoundedView(state: .dayOfTheWeek, dayOfWeekCollectionView)
-    
     lazy var habitNameTextField = UITextField().then {
         $0.placeholder = "습관을 써주세요"
         $0.font = .pretendard(type: .medium, size: 18)
     }
     
+    lazy var dayOfWeekSettingView = LabeledRoundedView(state: .dayOfTheWeek, dayOfWeekCollectionView)
     lazy var dayOfWeekCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
