@@ -17,7 +17,7 @@ class LabeledRoundedView: UIView {
 
     private let titleLabel = UILabel().then {
         $0.font = .pretendard(type: .medium, size: 12)
-        $0.text = "습관 설정"
+//        $0.text = "습관 설정"
     }
 
     // MARK: - Properties
@@ -55,7 +55,7 @@ class LabeledRoundedView: UIView {
 
     func setView() {
         backgroundColor = UIColor(red: 246.0 / 255.0, green: 246.0 / 255.0, blue: 246.0 / 255.0, alpha: 1)
-        cornerRound(radius: 20)
+        cornerRound(radius: 18)
     }
 
     func setConstraints() {
@@ -63,13 +63,14 @@ class LabeledRoundedView: UIView {
 
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
+            make.leading.trailing.equalToSuperview().inset(16)
         }
 
         accesoryView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(12).priority(.low)
             make.bottom.equalToSuperview().offset(-16)
-            make.leading.equalTo(titleLabel.snp.leading)
+            make.leading.trailing.equalTo(titleLabel)
+            make.height.equalTo(34).priority(.low)
         }
     }
 }
