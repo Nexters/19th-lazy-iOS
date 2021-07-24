@@ -44,6 +44,7 @@ class AddHabitViewController: UIViewController {
         $0.register(cell: IconCollectionViewCell.self)
     }
     
+    // FIXME: - alarm - time 이거 줄일 수 .. ?
     lazy var alarmSettingView = RoundedView().then {
         let label = UILabel()
         label.text = "알림"
@@ -63,6 +64,33 @@ class AddHabitViewController: UIViewController {
 
     let alarmSwitch = UISwitch().then {
         $0.onTintColor = .mainColor
+    }
+    
+    lazy var alarmTimeSettingView = RoundedView().then {
+        let label = UILabel()
+        label.text = "알림시간"
+        label.font = UIFont.pretendard(type: .medium, size: 18)
+        
+        $0.addSubviews([label, timeButton])
+        label.snp.makeConstraints { make in
+            make.leading.equalTo(16)
+            make.top.bottom.equalToSuperview().inset(19)
+        }
+        
+        timeButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.centerY.equalTo(label.snp.centerY)
+        }
+    }
+    
+    lazy var timeButton = UIButton().then {
+        $0.addTarget(self, action: #selector(didTapTimeButton(_:)), for: .touchUpInside)
+    }
+
+    let alarmTimePicker = UIDatePicker().then {
+        $0.datePickerMode = .time
+        $0.preferredDatePickerStyle = .wheels
+        $0.locale = Locale(identifier: "ko")
     }
 
     // MARK: - Properties
@@ -84,6 +112,43 @@ class AddHabitViewController: UIViewController {
     
     // MARK: - Actions
     
+    @objc
+    func didTapTimeButton(_ sender: UIButton) {
+        let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let viewDatePicker = UIView()
+        
+        viewDatePicker.addSubview(alarmTimePicker)
+        actionSheet.view.addSubview(viewDatePicker)
+        
+        viewDatePicker.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(61)
+            make.leading.trailing.equalToSuperview().inset(10)
+            make.height.equalTo(200)
+        }
+        
+        alarmTimePicker.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        actionSheet.view.snp.makeConstraints { make in
+            make.height.equalTo(400)
+        }
+        
+        let messageAttributes = [NSAttributedString.Key.font: UIFont.pretendard(type: .medium, size: 18)]
+        let messageString = NSAttributedString(string: "시간 선택", attributes: messageAttributes)
+        actionSheet.setValue(messageString, forKey: "attributedMessage")
+        
+        let selectAction = UIAlertAction(title: "확인", style: .default, handler: { _ in
+            print("Selected Date: \(Date().dateToString(format: "H시 mm분", date: self.alarmTimePicker.date))")
+        })
+        let cancelAction = UIAlertAction(title: "취소 ", style: .cancel, handler: nil)
+
+        actionSheet.addAction(selectAction)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true)
+    }
+    
     // MARK: - Methods
     
     func setView() {
@@ -91,7 +156,7 @@ class AddHabitViewController: UIViewController {
     }
     
     func setConstraints() {
-        view.addSubviews([habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView])
+        view.addSubviews([habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView])
         iconSettingView.addSubview(iconCollectionView)
         
         habitSettingView.snp.makeConstraints { make in
@@ -120,6 +185,12 @@ class AddHabitViewController: UIViewController {
         
         alarmSettingView.snp.makeConstraints { make in
             make.top.equalTo(dayOfWeekSettingView.snp.bottom).offset(10)
+            make.leading.trailing.equalTo(habitSettingView)
+            make.centerX.equalToSuperview()
+        }
+        
+        alarmTimeSettingView.snp.makeConstraints { make in
+            make.top.equalTo(alarmSettingView.snp.bottom).offset(10)
             make.leading.trailing.equalTo(habitSettingView)
             make.centerX.equalToSuperview()
         }
