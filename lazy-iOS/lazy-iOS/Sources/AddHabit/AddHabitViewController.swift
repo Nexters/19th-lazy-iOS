@@ -85,6 +85,9 @@ class AddHabitViewController: UIViewController {
     
     lazy var timeButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapTimeButton(_:)), for: .touchUpInside)
+        $0.setTitle("시간 선택", for: .normal)
+        $0.setTitleColor(.textCaption, for: .normal)
+        $0.setTitleColor(.textSecondary, for: .selected)
     }
 
     let alarmTimePicker = UIDatePicker().then {
@@ -139,7 +142,11 @@ class AddHabitViewController: UIViewController {
         actionSheet.setValue(messageString, forKey: "attributedMessage")
         
         let selectAction = UIAlertAction(title: "확인", style: .default, handler: { _ in
-            print("Selected Date: \(Date().dateToString(format: "H시 mm분", date: self.alarmTimePicker.date))")
+            let selectedDate = Date().dateToString(format: "a hh:mm", date: self.alarmTimePicker.date)
+            
+            print("Selected Date: \(selectedDate)")
+            self.timeButton.isSelected = true
+            self.timeButton.setTitle(selectedDate, for: .normal)
         })
         let cancelAction = UIAlertAction(title: "취소 ", style: .cancel, handler: nil)
 
