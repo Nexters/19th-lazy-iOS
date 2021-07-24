@@ -20,4 +20,9 @@ extension UIColor {
     @nonobjc static var icon6: UIColor { .init(58, 171, 255, 1) }
     @nonobjc static var icon7: UIColor { .init(27, 70, 134, 1) }
     @nonobjc static var icon8: UIColor { .init(255, 88, 88, 1) }
+
+    @nonobjc static var mainColor: UIColor { .init(80, 68, 255, 1) }
+    @nonobjc static var textPrimary: UIColor { .init(25, 31, 40, 1) }
+    @nonobjc static var textSecondary: UIColor { .init(121, 126, 134, 1) }
+    @nonobjc static var textCaption: UIColor { .init(161, 167, 175, 1) }
 }
