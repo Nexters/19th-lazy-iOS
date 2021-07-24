@@ -29,19 +29,14 @@ class IconCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Properties
 
-    // FIXME: - 정확히 반대로 동작함!
     override var isSelected: Bool {
-        willSet {
+        didSet {
             if isSelected {
                 contentView.backgroundColor = contentView.backgroundColor?.withAlphaComponent(1)
             } else {
-                contentView.backgroundColor = contentView.backgroundColor?.withAlphaComponent(0.3)
+                contentView.backgroundColor = contentView.backgroundColor?.withAlphaComponent(0.4)
             }
         }
-    }
-
-    override func prepareForReuse() {
-        isSelected = false
     }
 
     // MARK: - Methods

@@ -48,6 +48,7 @@ class AddHabitViewController: UIViewController {
     
     var weeks = ["일", "월", "화", "수", "목", "금", "토"]
     var colors = [UIColor.icon1, UIColor.icon2, UIColor.icon3, UIColor.icon4, UIColor.icon5, UIColor.icon6, UIColor.icon7, UIColor.icon8]
+    var isFirst: Bool = true
     
     // MARK: - Initializer
     

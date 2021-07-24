@@ -45,3 +45,16 @@ extension AddHabitViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 42, height: 42)
     }
 }
+
+extension AddHabitViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isFirst {
+            let range = collectionView.numberOfItems(inSection: 0)
+            for idx in 0 ..< range {
+                collectionView.cellForItem(at: IndexPath(row: idx, section: 0))?.isSelected = false
+            }
+        }
+
+        isFirst = false
+    }
+}
