@@ -43,6 +43,27 @@ class AddHabitViewController: UIViewController {
         
         $0.register(cell: IconCollectionViewCell.self)
     }
+    
+    lazy var alarmSettingView = RoundedView().then {
+        let label = UILabel()
+        label.text = "알림"
+        label.font = UIFont.pretendard(type: .medium, size: 18)
+        
+        $0.addSubviews([label, alarmSwitch])
+        label.snp.makeConstraints { make in
+            make.leading.equalTo(16)
+            make.top.bottom.equalToSuperview().inset(19)
+        }
+        
+        alarmSwitch.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.centerY.equalTo(label.snp.centerY)
+        }
+    }
+
+    let alarmSwitch = UISwitch().then {
+        $0.onTintColor = .mainColor
+    }
 
     // MARK: - Properties
     
@@ -70,7 +91,7 @@ class AddHabitViewController: UIViewController {
     }
     
     func setConstraints() {
-        view.addSubviews([habitSettingView, dayOfWeekSettingView, iconSettingView])
+        view.addSubviews([habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView])
         iconSettingView.addSubview(iconCollectionView)
         
         habitSettingView.snp.makeConstraints { make in
@@ -79,14 +100,8 @@ class AddHabitViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        dayOfWeekSettingView.snp.makeConstraints { make in
-            make.top.equalTo(habitSettingView.snp.bottom).offset(44)
-            make.leading.trailing.equalTo(habitSettingView)
-            make.centerX.equalToSuperview()
-        }
-        
         iconSettingView.snp.makeConstraints { make in
-            make.top.equalTo(dayOfWeekSettingView.snp.bottom).offset(44)
+            make.top.equalTo(habitSettingView.snp.bottom).offset(10)
             make.leading.trailing.equalTo(habitSettingView)
             make.centerX.equalToSuperview()
         }
@@ -95,6 +110,18 @@ class AddHabitViewController: UIViewController {
             make.top.bottom.equalToSuperview().inset(14)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(42).priority(.low)
+        }
+        
+        dayOfWeekSettingView.snp.makeConstraints { make in
+            make.top.equalTo(iconSettingView.snp.bottom).offset(44)
+            make.leading.trailing.equalTo(habitSettingView)
+            make.centerX.equalToSuperview()
+        }
+        
+        alarmSettingView.snp.makeConstraints { make in
+            make.top.equalTo(dayOfWeekSettingView.snp.bottom).offset(10)
+            make.leading.trailing.equalTo(habitSettingView)
+            make.centerX.equalToSuperview()
         }
     }
     
