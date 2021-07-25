@@ -60,10 +60,9 @@ class LabeledRoundedView: RoundedView {
         }
 
         accesoryView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(12).priority(.low)
-            make.bottom.equalToSuperview().offset(-16)
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.leading.trailing.equalTo(titleLabel)
-            make.height.equalTo(34).priority(.low)
+            make.bottom.equalToSuperview().offset(-16)
         }
     }
 }

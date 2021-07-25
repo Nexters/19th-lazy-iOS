@@ -199,18 +199,20 @@ class AddHabitViewController: UIViewController {
         iconSettingView.snp.makeConstraints { make in
             make.top.equalTo(habitSettingView.snp.bottom).offset(10)
             make.leading.trailing.equalTo(habitSettingView)
+            make.height.equalTo(iconSettingView.snp.width).multipliedBy(70.0 / 335.0)
             make.centerX.equalToSuperview()
         }
         
         iconCollectionView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(14)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(42).priority(.low)
+            make.bottom.equalToSuperview().offset(-14)
         }
         
         dayOfWeekSettingView.snp.makeConstraints { make in
             make.top.equalTo(iconSettingView.snp.bottom).offset(44)
             make.leading.trailing.equalTo(habitSettingView)
+            make.height.equalTo(iconSettingView.snp.width).multipliedBy(92.0 / 335.0)
             make.centerX.equalToSuperview()
         }
         
