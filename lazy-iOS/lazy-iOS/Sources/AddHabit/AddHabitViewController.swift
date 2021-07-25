@@ -31,7 +31,10 @@ class AddHabitViewController: UIViewController {
         $0.register(cell: DayOfWeekCollectionViewCell.self)
     }
     
-    let iconSettingView = RoundedView()
+    lazy var iconSettingView = RoundedView().then {
+        $0.addSubview(iconCollectionView)
+    }
+
     lazy var iconCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -95,6 +98,12 @@ class AddHabitViewController: UIViewController {
         $0.preferredDatePickerStyle = .wheels
         $0.locale = Locale(identifier: "ko")
     }
+    
+    lazy var confirmButton = UIButton().then {
+        $0.setTitle("추가하기 ", for: .normal)
+        $0.titleLabel?.font = .pretendard(type: .bold, size: 16)
+        $0.backgroundColor = .mainColor
+    }
 
     // MARK: - Properties
     
@@ -111,6 +120,10 @@ class AddHabitViewController: UIViewController {
         
         setView()
         setConstraints()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        confirmButton.cornerRounds()
     }
     
     // MARK: - Actions
@@ -163,9 +176,8 @@ class AddHabitViewController: UIViewController {
     }
     
     func setConstraints() {
-        view.addSubviews([habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView])
-        iconSettingView.addSubview(iconCollectionView)
-        
+        view.addSubviews([habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView, confirmButton])
+
         habitSettingView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.width.equalToSuperview().multipliedBy(335.0 / 375.0)
@@ -200,6 +212,12 @@ class AddHabitViewController: UIViewController {
             make.top.equalTo(alarmSettingView.snp.bottom).offset(10)
             make.leading.trailing.equalTo(habitSettingView)
             make.centerX.equalToSuperview()
+        }
+        
+        confirmButton.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(alarmSettingView)
+            make.bottom.equalToSuperview().offset(-30)
+            make.height.equalTo(confirmButton.snp.width).multipliedBy(56.0 / 335.0)
         }
     }
     
