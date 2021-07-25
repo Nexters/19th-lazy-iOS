@@ -65,32 +65,20 @@ class AddHabitViewController: UIViewController {
         }
     }
 
-    let alarmSwitch = UISwitch().then {
+    lazy var alarmSwitch = UISwitch().then {
         $0.onTintColor = .mainColor
+        $0.addTarget(self, action: #selector(didTapSwitch(_:)), for: .valueChanged)
     }
     
-    lazy var alarmTimeSettingView = RoundedView().then {
-        let label = UILabel()
-        label.text = "알림시간"
-        label.font = UIFont.pretendard(type: .medium, size: 18)
-        
-        $0.addSubviews([label, timeButton])
-        label.snp.makeConstraints { make in
-            make.leading.equalTo(16)
-            make.top.bottom.equalToSuperview().inset(19)
-        }
-        
-        timeButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16)
-            make.centerY.equalTo(label.snp.centerY)
-        }
+    lazy var alarmTimeSettingView = RoundedView()
+    let alarmTimeLabel = UILabel().then {
+        $0.text = "알림시간"
+        $0.font = UIFont.pretendard(type: .medium, size: 18)
     }
-    
-    lazy var timeButton = UIButton().then {
+
+    lazy var alarmTimeButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapTimeButton(_:)), for: .touchUpInside)
         $0.setTitle("시간 선택", for: .normal)
-        $0.setTitleColor(.textCaption, for: .normal)
-        $0.setTitleColor(.textSecondary, for: .selected)
     }
 
     let alarmTimePicker = UIDatePicker().then {
@@ -110,6 +98,20 @@ class AddHabitViewController: UIViewController {
     var weeks = ["일", "월", "화", "수", "목", "금", "토"]
     var colors = [UIColor.icon1, UIColor.icon2, UIColor.icon3, UIColor.icon4, UIColor.icon5, UIColor.icon6, UIColor.icon7, UIColor.icon8]
     var isFirst: Bool = true
+    
+    var isOnAlarmSwitch = false {
+        willSet(newValue) {
+            if newValue {
+                alarmTimeButton.isUserInteractionEnabled = true
+                alarmTimeButton.setTitleColor(.textSecondary, for: .normal)
+                alarmTimeLabel.textColor = .textPrimary
+            } else {
+                alarmTimeButton.isUserInteractionEnabled = false
+                alarmTimeButton.setTitleColor(.textCaption, for: .normal)
+                alarmTimeLabel.textColor = .textCaption
+            }
+        }
+    }
     
     // MARK: - Initializer
     
@@ -158,8 +160,8 @@ class AddHabitViewController: UIViewController {
             let selectedDate = Date().dateToString(format: "a hh:mm", date: self.alarmTimePicker.date)
             
             print("Selected Date: \(selectedDate)")
-            self.timeButton.isSelected = true
-            self.timeButton.setTitle(selectedDate, for: .normal)
+            self.alarmTimeButton.isSelected = true
+            self.alarmTimeButton.setTitle(selectedDate, for: .normal)
         })
         let cancelAction = UIAlertAction(title: "취소 ", style: .cancel, handler: nil)
 
@@ -169,10 +171,16 @@ class AddHabitViewController: UIViewController {
         present(actionSheet, animated: true)
     }
     
+    @objc
+    func didTapSwitch(_ sender: UISwitch) {
+        isOnAlarmSwitch.toggle()
+    }
+    
     // MARK: - Methods
     
     func setView() {
         view.backgroundColor = .white
+        isOnAlarmSwitch = false
     }
     
     func setConstraints() {
@@ -212,6 +220,17 @@ class AddHabitViewController: UIViewController {
             make.top.equalTo(alarmSettingView.snp.bottom).offset(10)
             make.leading.trailing.equalTo(habitSettingView)
             make.centerX.equalToSuperview()
+        }
+        
+        alarmTimeSettingView.addSubviews([alarmTimeLabel, alarmTimeButton])
+        alarmTimeLabel.snp.makeConstraints { make in
+            make.leading.equalTo(16)
+            make.top.bottom.equalToSuperview().inset(19)
+        }
+        
+        alarmTimeButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.centerY.equalTo(alarmTimeLabel.snp.centerY)
         }
         
         confirmButton.snp.makeConstraints { make in
