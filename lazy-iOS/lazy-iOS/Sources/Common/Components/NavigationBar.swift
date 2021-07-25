@@ -8,13 +8,10 @@
 import UIKit
 
 class NavigationBar: UIView {
+    // MARK: - UIComponents
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let title = UILabel().then {
+        $0.font = .pretendard(type: .bold, size: 18)
+        $0.textColor = UIColor(10, 10, 10, 10)
     }
-    */
-
 }

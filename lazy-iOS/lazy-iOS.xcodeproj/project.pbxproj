@@ -41,6 +41,7 @@
 		AB7F6E512699FF7B00EF9C6E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E502699FF7B00EF9C6E /* LoginViewController.swift */; };
 		AB7F6E54269A02E100EF9C6E /* KeyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E53269A02E000EF9C6E /* KeyConstants.swift */; };
 		AB7F6E57269A2CAB00EF9C6E /* SIgnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E56269A2CAB00EF9C6E /* SIgnManager.swift */; };
+		AB8604E626ADA4720029E67E /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8604E526ADA4720029E67E /* NavigationBar.swift */; };
 		B7D2DDC6465AE19DD610ECC1 /* Pods_lazy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		AB7F6E502699FF7B00EF9C6E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB7F6E53269A02E000EF9C6E /* KeyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyConstants.swift; sourceTree = "<group>"; };
 		AB7F6E56269A2CAB00EF9C6E /* SIgnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIgnManager.swift; sourceTree = "<group>"; };
+		AB8604E526ADA4720029E67E /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				AB42C18626A9BFA500EB1B92 /* LabeledRoundedView.swift */,
-				AB42C19126AB05AB00EB1B92 /* RoundedView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -281,6 +282,7 @@
 		AB7F6E452699FD5300EF9C6E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AB8604E426ADA4580029E67E /* Components */,
 				AB42C16226A5C49100EB1B92 /* Constants */,
 				AB7F6E55269A2C9300EF9C6E /* Manager */,
 				AB7F6E52269A02C600EF9C6E /* Key */,
@@ -325,6 +327,15 @@
 				AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		AB8604E426ADA4580029E67E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AB42C19126AB05AB00EB1B92 /* RoundedView.swift */,
+				AB8604E526ADA4720029E67E /* NavigationBar.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,6 +477,7 @@
 				AB42C18426A9B3B100EB1B92 /* AddHabitViewController.swift in Sources */,
 				AB7F6E4B2699FDB900EF9C6E /* UIDevice+Extension.swift in Sources */,
 				AB42C16426A5C52C00EB1B92 /* DiviceConstants.swift in Sources */,
+				AB8604E626ADA4720029E67E /* NavigationBar.swift in Sources */,
 				AB42C19226AB05AB00EB1B92 /* RoundedView.swift in Sources */,
 				AB42C17D26A839B200EB1B92 /* PopUpViewController.swift in Sources */,
 				AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */,

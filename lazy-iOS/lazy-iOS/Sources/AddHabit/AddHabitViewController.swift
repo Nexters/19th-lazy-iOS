@@ -91,6 +91,7 @@ class AddHabitViewController: UIViewController {
         $0.setTitle("추가하기 ", for: .normal)
         $0.titleLabel?.font = .pretendard(type: .bold, size: 16)
         $0.backgroundColor = .mainColor
+        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
 
     // MARK: - Properties
@@ -178,6 +179,11 @@ class AddHabitViewController: UIViewController {
     @objc
     func didTapSwitch(_ sender: UISwitch) {
         isOnAlarmSwitch.toggle()
+    }
+    
+    @objc
+    func didTapConfirmButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Methods
