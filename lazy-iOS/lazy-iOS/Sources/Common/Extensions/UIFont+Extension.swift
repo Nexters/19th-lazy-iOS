@@ -18,6 +18,7 @@ extension UIFont {
 enum PretendardType: String {
     case regular = "Regular"
     case medium = "Medium"
+    case semiBold = "SemiBold"
     case bold = "Bold"
     case extraBold = "ExtraBold"
 

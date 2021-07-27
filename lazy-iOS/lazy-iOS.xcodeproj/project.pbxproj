@@ -42,6 +42,7 @@
 		AB7F6E54269A02E100EF9C6E /* KeyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E53269A02E000EF9C6E /* KeyConstants.swift */; };
 		AB7F6E57269A2CAB00EF9C6E /* SIgnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E56269A2CAB00EF9C6E /* SIgnManager.swift */; };
 		AB8604E626ADA4720029E67E /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8604E526ADA4720029E67E /* NavigationBar.swift */; };
+		AB86052526B07A2E0029E67E /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB86052426B07A2E0029E67E /* Pretendard-SemiBold.otf */; };
 		B7D2DDC6465AE19DD610ECC1 /* Pods_lazy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		AB7F6E53269A02E000EF9C6E /* KeyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyConstants.swift; sourceTree = "<group>"; };
 		AB7F6E56269A2CAB00EF9C6E /* SIgnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIgnManager.swift; sourceTree = "<group>"; };
 		AB8604E526ADA4720029E67E /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		AB86052426B07A2E0029E67E /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				AB42C16E26A5D20600EB1B92 /* Pretendard-Regular.otf */,
 				AB42C16C26A5D1FD00EB1B92 /* Pretendard-Bold.otf */,
 				AB42C16A26A5D1EE00EB1B92 /* Pretendard-Medium.otf */,
+				AB86052426B07A2E0029E67E /* Pretendard-SemiBold.otf */,
 				AB42C16826A5D1E200EB1B92 /* Pretendard-ExtraBold.otf */,
 			);
 			path = Fonts;
@@ -399,6 +402,7 @@
 			files = (
 				AB7F6E3826997AC100EF9C6E /* LaunchScreen.storyboard in Resources */,
 				AB42C16F26A5D20600EB1B92 /* Pretendard-Regular.otf in Resources */,
+				AB86052526B07A2E0029E67E /* Pretendard-SemiBold.otf in Resources */,
 				AB42C16D26A5D1FD00EB1B92 /* Pretendard-Bold.otf in Resources */,
 				AB7F6E3526997AC100EF9C6E /* Assets.xcassets in Resources */,
 				AB42C16926A5D1E200EB1B92 /* Pretendard-ExtraBold.otf in Resources */,
