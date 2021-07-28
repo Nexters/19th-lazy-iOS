@@ -10,6 +10,8 @@ import UIKit
 class AddHabitViewController: UIViewController {
     // MARK: - UIComponenets
     
+    let navigationBar = CustomNavigationBar("새로운 습관", state: .modal)
+    
     lazy var habitSettingView = LabeledRoundedView(state: .setHabit, habitNameTextField)
     lazy var habitNameTextField = UITextField().then {
         $0.placeholder = "습관을 써주세요"
@@ -194,10 +196,15 @@ class AddHabitViewController: UIViewController {
     }
     
     func setConstraints() {
-        view.addSubviews([habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView, confirmButton])
+        view.addSubviews([navigationBar, habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView, confirmButton])
+        
+        navigationBar.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(18)
+            make.leading.trailing.equalToSuperview()
+        }
 
         habitSettingView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalTo(navigationBar.snp.bottom).offset(58)
             make.width.equalToSuperview().multipliedBy(335.0 / 375.0)
             make.centerX.equalToSuperview()
         }
