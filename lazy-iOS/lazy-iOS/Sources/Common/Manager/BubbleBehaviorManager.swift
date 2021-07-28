@@ -69,7 +69,7 @@ class BubbleBehaviorManager: UIDynamicBehavior {
         removeChildBehavior(collisionBehavior)
     }
 
-    func addAllBehaviora() {
+    func addAllBehaviors() {
         addChildBehavior(gravityBehavior)
         addChildBehavior(collisionBehavior)
         addChildBehavior(dynamicItemBehavior)
