@@ -95,6 +95,15 @@ class AddHabitViewController: UIViewController {
         $0.backgroundColor = .mainColor
         $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
+    
+    lazy var saveButton = UIButton().then {
+        $0.setTitle("저장", for: .normal)
+        $0.titleLabel?.font = .pretendard(type: .medium, size: 18)
+        $0.setTitleColor(.lightGray, for: .disabled)
+        $0.setTitleColor(.mainColor, for: .normal)
+//        $0.isEnabled = false
+        $0.addTarget(self, action: #selector(didTapSaveButton(_:)), for: .touchUpInside)
+    }
 
     // MARK: - Properties
     
@@ -134,7 +143,6 @@ class AddHabitViewController: UIViewController {
         
         confirmButton.cornerRounds()
         
-        hasChanges = true
         isModalInPresentation = hasChanges
     }
     
@@ -193,6 +201,21 @@ class AddHabitViewController: UIViewController {
     @objc
     func didTapConfirmButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    func didTapSaveButton(_ sender: UIButton) {
+        if let title = habitNameTextField.text,
+           let icon = iconCollectionView.indexPathsForSelectedItems,
+           let dayOfWeeks = dayOfWeekCollectionView.indexPathsForSelectedItems,
+           let alarmTime = alarmTimeButton.titleLabel?.text
+        {
+            print("title: ", title)
+            print("icon: ", icon)
+            print("dayOfWeeks: ", dayOfWeeks)
+            print("isAlarm: ", isOnAlarmSwitch)
+            print("alarmTime: ", alarmTimePicker.date, "\(alarmTime)")
+        }
     }
     
     // MARK: - Methods

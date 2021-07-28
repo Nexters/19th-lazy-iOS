@@ -10,10 +10,16 @@ import Foundation
 extension AddHabitViewController {
     func setConstraints() {
         view.addSubviews([navigationBar, habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView, confirmButton])
+        navigationBar.addSubview(saveButton)
         
         navigationBar.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.trailing.equalToSuperview()
+        }
+        
+        saveButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-20)
+            make.centerY.equalToSuperview()
         }
 
         habitSettingView.snp.makeConstraints { make in
