@@ -101,6 +101,7 @@ class AddHabitViewController: UIViewController {
     var weeks = ["일", "월", "화", "수", "목", "금", "토"]
     var colors = [UIColor.icon1, UIColor.icon2, UIColor.icon3, UIColor.icon4, UIColor.icon5, UIColor.icon6, UIColor.icon7, UIColor.icon8]
     var isFirst: Bool = true
+    var hasChanges: Bool = false
     
     var isOnAlarmSwitch = false {
         willSet(newValue) {
@@ -124,11 +125,17 @@ class AddHabitViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
+        setDelegate()
         setConstraints()
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
         confirmButton.cornerRounds()
+        
+        hasChanges = true
+        isModalInPresentation = hasChanges
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -194,6 +201,43 @@ class AddHabitViewController: UIViewController {
         view.backgroundColor = .white
         isOnAlarmSwitch = false
     }
+    
+    func setDelegate() {
+        presentationController?.delegate = self
+        navigationBar.modalDelegate = self
+    }
+    
+    func confirmCancel() {
+        let alert = UIAlertController(title: "수정을 완료하지 않고 나가시겠어요?", message: "포기하면 다시 되돌릴 수 없어요.", preferredStyle: .alert)
+        
+        let continueAction = UIAlertAction(title: "계속하기", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "그만하기", style: .cancel) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(continueAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
-// MARK: - Protocols
+// MARK: - ModalDelegate
+
+extension AddHabitViewController: ModalDelegate {
+    func dismiss() {
+        if hasChanges {
+            confirmCancel()
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+
+extension AddHabitViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        confirmCancel()
+    }
+}
