@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum NavigationState {
+    case navigation
+    case modal
+    case none
+}
+
 class CustomNavigationBar: UIView {
     // MARK: - UIComponents
 
@@ -16,16 +22,15 @@ class CustomNavigationBar: UIView {
     }
 
     lazy var backButton = UIButton().then {
-        $0.setImage(UIImage(named: "chevron.backward"), for: .normal)
+        $0.setImage(UIImage(named: "iconClose"), for: .normal)
         $0.addTarget(self, action: #selector(didTapBackButton(_:)), for: .touchUpInside)
     }
 
     lazy var cancelButton = UIButton().then {
         $0.setTitle("취소", for: .normal)
         $0.titleLabel?.font = .pretendard(type: .regular, size: 18)
-        $0.addTarget(self, action: #selector(didTapDismiss(_:)), for: .touchUpInside)
         $0.setTitleColor(.mainColor, for: .normal)
-        $0.isHidden = true
+        $0.addTarget(self, action: #selector(didTapDismiss(_:)), for: .touchUpInside)
     }
 
     // MARK: - Properties
@@ -33,13 +38,13 @@ class CustomNavigationBar: UIView {
     var navigationDelegate: NavigationDelegate?
     var modalDelegate: ModalDelegate?
 
-    init(_ title: String, isHiddenRightButton: Bool = false) {
+    init(_ title: String, state: NavigationState) {
         super.init(frame: .zero)
 
         self.titleLabel.text = title
-        self.backButton.isHidden = isHiddenRightButton
 
-        self.setView()
+        self.setView(state)
+        self.setConstraints()
     }
 
     @available(*, unavailable)
@@ -60,7 +65,8 @@ class CustomNavigationBar: UIView {
         self.backButton.snp.makeConstraints { make in
             make.leading.equalTo(20)
             make.centerY.equalToSuperview()
-            make.width.height.equalToSuperview().multipliedBy(48.0 / 375.0)
+            make.width.equalToSuperview().multipliedBy(30.0 / 375.0)
+            make.height.equalTo(backButton.snp.width)
         }
     }
 
@@ -74,11 +80,23 @@ class CustomNavigationBar: UIView {
         self.modalDelegate?.dismiss()
     }
 
-    func setView() {
+    func setView(_ state: NavigationState) {
+        switch state {
+        case .navigation:
+            self.cancelButton.isHidden = true
+        case .modal:
+            self.backButton.isHidden = true
+        case .none:
+            self.backButton.isHidden = true
+            self.cancelButton.isHidden = true
+        }
+    }
+
+    func setConstraints() {
         addSubviews([self.titleLabel, self.backButton, self.cancelButton])
 
         self.snp.makeConstraints { make in
-            make.width.equalToSuperview()
+            make.width.equalTo(UIScreen.main.bounds.width)
             make.height.equalTo(self.snp.width).multipliedBy(46.0 / 375.0)
         }
     }

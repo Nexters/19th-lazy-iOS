@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol ModalDelegate {
+    func dismiss()
+}

@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol NavigationDelegate {
+    func pop()
+}
