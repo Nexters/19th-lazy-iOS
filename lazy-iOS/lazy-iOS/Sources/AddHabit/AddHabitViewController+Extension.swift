@@ -63,6 +63,7 @@ extension AddHabitViewController: UICollectionViewDelegate {
             }
         }
 
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         isFirst = false
     }
 }
