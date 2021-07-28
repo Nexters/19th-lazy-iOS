@@ -45,6 +45,7 @@
 		AB86052526B07A2E0029E67E /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB86052426B07A2E0029E67E /* Pretendard-SemiBold.otf */; };
 		AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052926B120B90029E67E /* NavigationDelegate.swift */; };
 		AB86052C26B122330029E67E /* ModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052B26B122330029E67E /* ModalDelegate.swift */; };
+		AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */; };
 		B7D2DDC6465AE19DD610ECC1 /* Pods_lazy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		AB86052426B07A2E0029E67E /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		AB86052926B120B90029E67E /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		AB86052B26B122330029E67E /* ModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDelegate.swift; sourceTree = "<group>"; };
+		AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddHabitViewController+Layout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				AB42C18526A9B72E00EB1B92 /* Components */,
 				AB42C18326A9B3B100EB1B92 /* AddHabitViewController.swift */,
 				AB42C18D26AA7D0A00EB1B92 /* AddHabitViewController+Extension.swift */,
+				AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */,
 			);
 			path = AddHabit;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				AB42C17626A5E1EF00EB1B92 /* HomeHabitTableViewCell.swift in Sources */,
 				AB42C16626A5C61200EB1B92 /* UIComponentsConstants.swift in Sources */,
 				AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */,
+				AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */,
 				AB42C18726A9BFA500EB1B92 /* LabeledRoundedView.swift in Sources */,
 				AB42C17826A5E7C500EB1B92 /* MainViewController+Extension.swift in Sources */,
 				AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */,
