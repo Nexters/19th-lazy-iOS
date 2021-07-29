@@ -84,7 +84,7 @@ class MainViewController: UIViewController {
                 let randomX = CGFloat.random(in: x - 70 ..< x + 70)
                 let size = UIScreen.main.bounds.width * (150.0 / 375.0)
                 
-                let bubbleView = UIView(frame: CGRect(x: randomX, y: 75, width: size, height: size))
+                let bubbleView = UIView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
                 bubbleView.cornerRounds()
                 bubbleView.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
 
@@ -100,10 +100,9 @@ class MainViewController: UIViewController {
         view.addSubviews([bubbleView, drawerView])
 
         bubbleView.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(-200)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(drawerView.snp.top).offset(1)
-            make.height.equalTo(1000)
+            make.height.equalTo(view.snp.height).offset(500)
         }
 
         drawerView.snp.makeConstraints { make in
