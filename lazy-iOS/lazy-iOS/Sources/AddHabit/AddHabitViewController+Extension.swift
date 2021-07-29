@@ -44,6 +44,14 @@ extension AddHabitViewController: UICollectionViewDelegateFlowLayout {
         }
         return CGSize(width: 42, height: 42)
     }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if collectionView == iconCollectionView {
+            return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        }
+
+        return .zero
+    }
 }
 
 extension AddHabitViewController: UICollectionViewDelegate {
@@ -55,6 +63,7 @@ extension AddHabitViewController: UICollectionViewDelegate {
             }
         }
 
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         isFirst = false
     }
 }

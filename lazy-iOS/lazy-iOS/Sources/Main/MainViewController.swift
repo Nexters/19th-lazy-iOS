@@ -79,8 +79,12 @@ class MainViewController: UIViewController {
         animator.addBehavior(BubbleBehaviorManager.bubbleBehavior)
 
         for idx in 0 ... 6 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(idx * 200)) {
-                let bubbleView = UIView(frame: CGRect(x: CGFloat.random(in: 100.0 ..< UIScreen.main.bounds.width - 100), y: 0, width: 120, height: 120))
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(idx * 400)) {
+                let x = self.view.bounds.width / 4.0
+                let randomX = CGFloat.random(in: x - 70 ..< x + 70)
+                let size = UIScreen.main.bounds.width * (150.0 / 375.0)
+                
+                let bubbleView = UIView(frame: CGRect(x: randomX, y: 75, width: size, height: size))
                 bubbleView.cornerRounds()
                 bubbleView.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
 
@@ -96,13 +100,14 @@ class MainViewController: UIViewController {
         view.addSubviews([bubbleView, drawerView])
 
         bubbleView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(-200)
+//            make.top.equalToSuperview().offset(-200)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(drawerView.snp.top).offset(1)
+            make.height.equalTo(1000)
         }
 
         drawerView.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(UIComponentsConstants.homeDrawerCloseHeight)
         }
     }

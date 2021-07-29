@@ -51,6 +51,7 @@ class DrawerView: UIView {
     
     var totalDelayedDate: Int = 0
     var drawerViewDelegate: DrawerViewDelegate?
+    var isOpen: Bool = false
     
     // MARK: - Initializer
     
@@ -82,6 +83,8 @@ class DrawerView: UIView {
         
         switch gestrue.state {
         case .ended:
+            /// velocity.y > 0 : 아래로 내릴 때
+            /// velocity.y < 0: 위로 올릴 때
             if velocity.y > 0 {
                 closeDrawer()
             } else {

@@ -10,6 +10,8 @@ import UIKit
 class AddHabitViewController: UIViewController {
     // MARK: - UIComponenets
     
+    let navigationBar = CustomNavigationBar("새로운 습관", state: .modal)
+    
     lazy var habitSettingView = LabeledRoundedView(state: .setHabit, habitNameTextField)
     lazy var habitNameTextField = UITextField().then {
         $0.placeholder = "습관을 써주세요"
@@ -93,12 +95,22 @@ class AddHabitViewController: UIViewController {
         $0.backgroundColor = .mainColor
         $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
+    
+    lazy var saveButton = UIButton().then {
+        $0.setTitle("저장", for: .normal)
+        $0.titleLabel?.font = .pretendard(type: .medium, size: 18)
+        $0.setTitleColor(.lightGray, for: .disabled)
+        $0.setTitleColor(.mainColor, for: .normal)
+//        $0.isEnabled = false
+        $0.addTarget(self, action: #selector(didTapSaveButton(_:)), for: .touchUpInside)
+    }
 
     // MARK: - Properties
     
     var weeks = ["일", "월", "화", "수", "목", "금", "토"]
     var colors = [UIColor.icon1, UIColor.icon2, UIColor.icon3, UIColor.icon4, UIColor.icon5, UIColor.icon6, UIColor.icon7, UIColor.icon8]
     var isFirst: Bool = true
+    var hasChanges: Bool = false
     
     var isOnAlarmSwitch = false {
         willSet(newValue) {
@@ -122,11 +134,16 @@ class AddHabitViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
+        setDelegate()
         setConstraints()
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
         confirmButton.cornerRounds()
+        
+        isModalInPresentation = hasChanges
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -186,6 +203,21 @@ class AddHabitViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc
+    func didTapSaveButton(_ sender: UIButton) {
+        if let title = habitNameTextField.text,
+           let icon = iconCollectionView.indexPathsForSelectedItems,
+           let dayOfWeeks = dayOfWeekCollectionView.indexPathsForSelectedItems,
+           let alarmTime = alarmTimeButton.titleLabel?.text
+        {
+            print("title: ", title)
+            print("icon: ", icon)
+            print("dayOfWeeks: ", dayOfWeeks)
+            print("isAlarm: ", isOnAlarmSwitch)
+            print("alarmTime: ", alarmTimePicker.date, "\(alarmTime)")
+        }
+    }
+    
     // MARK: - Methods
     
     func setView() {
@@ -193,64 +225,42 @@ class AddHabitViewController: UIViewController {
         isOnAlarmSwitch = false
     }
     
-    func setConstraints() {
-        view.addSubviews([habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView, confirmButton])
-
-        habitSettingView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
-            make.width.equalToSuperview().multipliedBy(335.0 / 375.0)
-            make.centerX.equalToSuperview()
-        }
-        
-        iconSettingView.snp.makeConstraints { make in
-            make.top.equalTo(habitSettingView.snp.bottom).offset(10)
-            make.leading.trailing.equalTo(habitSettingView)
-            make.height.equalTo(iconSettingView.snp.width).multipliedBy(70.0 / 335.0)
-            make.centerX.equalToSuperview()
-        }
-        
-        iconCollectionView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(14)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().offset(-14)
-        }
-        
-        dayOfWeekSettingView.snp.makeConstraints { make in
-            make.top.equalTo(iconSettingView.snp.bottom).offset(44)
-            make.leading.trailing.equalTo(habitSettingView)
-            make.height.equalTo(iconSettingView.snp.width).multipliedBy(92.0 / 335.0)
-            make.centerX.equalToSuperview()
-        }
-        
-        alarmSettingView.snp.makeConstraints { make in
-            make.top.equalTo(dayOfWeekSettingView.snp.bottom).offset(10)
-            make.leading.trailing.equalTo(habitSettingView)
-            make.centerX.equalToSuperview()
-        }
-        
-        alarmTimeSettingView.snp.makeConstraints { make in
-            make.top.equalTo(alarmSettingView.snp.bottom).offset(10)
-            make.leading.trailing.equalTo(habitSettingView)
-            make.centerX.equalToSuperview()
-        }
-        
-        alarmTimeSettingView.addSubviews([alarmTimeLabel, alarmTimeButton])
-        alarmTimeLabel.snp.makeConstraints { make in
-            make.leading.equalTo(16)
-            make.top.bottom.equalToSuperview().inset(19)
-        }
-        
-        alarmTimeButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16)
-            make.centerY.equalTo(alarmTimeLabel.snp.centerY)
-        }
-        
-        confirmButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(alarmSettingView)
-            make.bottom.equalToSuperview().offset(-30)
-            make.height.equalTo(confirmButton.snp.width).multipliedBy(56.0 / 335.0)
-        }
+    func setDelegate() {
+        presentationController?.delegate = self
+        navigationBar.modalDelegate = self
     }
     
-    // MARK: - Protocols
+    func confirmCancel() {
+        let alert = UIAlertController(title: "수정을 완료하지 않고 나가시겠어요?", message: "포기하면 다시 되돌릴 수 없어요.", preferredStyle: .alert)
+        
+        let continueAction = UIAlertAction(title: "계속하기", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "그만하기", style: .cancel) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(continueAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: - ModalDelegate
+
+extension AddHabitViewController: ModalDelegate {
+    func dismiss() {
+        if hasChanges {
+            confirmCancel()
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+
+extension AddHabitViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        confirmCancel()
+    }
 }
