@@ -34,7 +34,7 @@ class DrawerView: UIView {
     }
     
     lazy var plusButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        $0.setImage(UIImage(named: "iconAdd"), for: .normal)
         $0.tintColor = .black
         $0.addTarget(self, action: #selector(didTapPlusButton(_:)), for: .touchUpInside)
     }
@@ -133,6 +133,7 @@ class DrawerView: UIView {
 
         plusButton.snp.makeConstraints { make in
             make.centerY.equalTo(guideLabel.snp.centerY)
+            make.width.height.equalTo(DiviceConstants.screenRatio * 24.0)
             make.trailing.equalToSuperview().offset(-20)
         }
         
