@@ -8,6 +8,6 @@
 import UIKit
 
 struct UIComponentsConstants {
-    static let homeDrawerCloseHeight: CGFloat = 92.0
-    static let homeDrawerOpenHeight: CGFloat = 284.0
+    static let homeDrawerCloseHeight: CGFloat = 142.0
+    static let homeDrawerOpenHeight: CGFloat = 334.0
 }

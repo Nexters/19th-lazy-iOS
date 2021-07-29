@@ -90,6 +90,8 @@ class DrawerView: UIView {
             } else {
                 openDrawer()
             }
+            
+            springAnimation()
         case .changed:
             if height - translationY > UIComponentsConstants.homeDrawerCloseHeight, height - translationY <= tableViewHeight {
                 snp.updateConstraints { make in
@@ -118,7 +120,7 @@ class DrawerView: UIView {
         addSubviews([handleView, guideLabel, plusButton, habitTableView])
 
         handleView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(10)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.15)
             make.height.equalTo(4)
@@ -135,9 +137,8 @@ class DrawerView: UIView {
         }
         
         habitTableView.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(28).priority(.low)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-10)
+            make.top.equalTo(guideLabel.snp.bottom).offset(32)
+            make.leading.bottom.trailing.equalToSuperview()
         }
     }
     
@@ -151,5 +152,9 @@ class DrawerView: UIView {
         snp.updateConstraints { make in
             make.height.equalTo(UIComponentsConstants.homeDrawerCloseHeight)
         }
+    }
+
+    func springAnimation() {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: { self.layoutIfNeeded() }, completion: nil)
     }
 }

@@ -101,13 +101,14 @@ class MainViewController: UIViewController {
 
         bubbleView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(drawerView.snp.top).offset(1)
+            make.bottom.equalTo(drawerView.snp.top).offset(3)
             make.height.equalTo(view.snp.height).offset(500)
         }
 
         drawerView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(UIComponentsConstants.homeDrawerCloseHeight)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(50)
+            make.height.equalTo(UIComponentsConstants.homeDrawerOpenHeight)
         }
     }
 
