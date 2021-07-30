@@ -5,6 +5,7 @@
 //  Created by inae Lee on 2021/07/11.
 //
 
+import AuthenticationServices
 import UIKit
 
 class LoginViewController: UIViewController {
@@ -16,9 +17,8 @@ class LoginViewController: UIViewController {
         $0.addTarget(self, action: #selector(kakaoLogin(_:)), for: .touchUpInside)
     }
     
-    private lazy var appleLoginButton = UIButton().then {
-        $0.setTitle("애플 로그인", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
+    private lazy var appleLoginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black).then {
+        $0.addTarget(self, action: #selector(handleAppleLoginButton(_:)), for: .touchUpInside)
     }
     
     let backgroundImageView = UIImageView().then {
@@ -42,7 +42,14 @@ class LoginViewController: UIViewController {
     @objc
     func kakaoLogin(_ sender: UIButton) {
         SignManager.shared.requestLoginWithKakao {
-            self.navigationController?.pushViewController(MainViewController(), animated: true)
+            self.navigationController?.pushViewController(TabBarController(), animated: true)
+        }
+    }
+    
+    @objc
+    func handleAppleLoginButton(_ sender: UIButton) {
+        SignManager.shared.requestLoginWithApple {
+            self.navigationController?.pushViewController(TabBarController(), animated: true)
         }
     }
     
@@ -64,7 +71,8 @@ class LoginViewController: UIViewController {
         appleLoginButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30)
-            make.height.equalTo(60)
+            make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
+            make.height.equalTo(appleLoginButton.snp.width).multipliedBy(60.0 / 320.0)
         }
     }
     
