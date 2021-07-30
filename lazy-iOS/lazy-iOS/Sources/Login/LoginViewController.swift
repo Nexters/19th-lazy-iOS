@@ -37,6 +37,20 @@ class LoginViewController: UIViewController {
         $0.image = UIImage(named: "bg")
     }
     
+    let mainLabel = UILabel().then {
+        $0.text = "더 이상의 게으름은\n용납할 수 없다."
+        $0.numberOfLines = 0
+        $0.font = .pretendard(type: .medium, size: 28)
+        $0.textColor = .white
+    }
+    
+    let subLabel = UILabel().then {
+        $0.text = "어제보다 발전할 오늘을 위해,\n오늘도 밍굴맹굴이 움직이게 유도할게요!"
+        $0.numberOfLines = 0
+        $0.font = .pretendard(type: .regular, size: 14)
+        $0.textColor = .white
+    }
+    
     // MARK: - Properties
     
     // MARK: - Initializer
@@ -73,7 +87,7 @@ class LoginViewController: UIViewController {
     // MARK: - Methods
     
     func setConstraints() {
-        view.addSubviews([backgroundImageView, kakaoLoginButton, appleLoginButton])
+        view.addSubviews([backgroundImageView, kakaoLoginButton, appleLoginButton, mainLabel, subLabel])
         
         backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -91,6 +105,16 @@ class LoginViewController: UIViewController {
             make.bottom.equalToSuperview().offset(-30)
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(appleLoginButton.snp.width).multipliedBy(60.0 / 320.0)
+        }
+        
+        mainLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(subLabel.snp.top).offset(-20)
+            make.leading.equalTo(subLabel.snp.leading)
+        }
+        
+        subLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(kakaoLoginButton.snp.top).offset(-60)
+            make.leading.equalTo(kakaoLoginButton.snp.leading)
         }
     }
     
