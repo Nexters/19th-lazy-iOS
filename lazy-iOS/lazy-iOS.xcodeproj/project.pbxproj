@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB00BE7B26B31C8900A37235 /* HabitCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */; };
+		AB00BE7E26B4257700A37235 /* HabitCheckButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */; };
 		AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */; };
 		AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15726A46B9F00EB1B92 /* DrawerView.swift */; };
 		AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15A26A5657600EB1B92 /* TabBarController.swift */; };
@@ -55,6 +56,7 @@
 		44C6479D16B690640522E86F /* Pods-lazy-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lazy-iOS.debug.xcconfig"; path = "Target Support Files/Pods-lazy-iOS/Pods-lazy-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lazy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButton.swift; sourceTree = "<group>"; };
+		AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButtonDelegate.swift; sourceTree = "<group>"; };
 		AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehaviorManager.swift; sourceTree = "<group>"; };
 		AB42C15726A46B9F00EB1B92 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		AB42C15A26A5657600EB1B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 				2F61B0477BCC48894749B34D /* Pods-lazy-iOS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AB00BE7C26B4256800A37235 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		AB42C15626A46B8500EB1B92 /* Components */ = {
@@ -273,6 +283,7 @@
 		AB7F6E412699F72300EF9C6E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AB00BE7C26B4256800A37235 /* Protocols */,
 				AB42C17226A5E17D00EB1B92 /* Cell */,
 				AB42C15626A46B8500EB1B92 /* Components */,
 				AB7F6E2F26997ABD00EF9C6E /* MainViewController.swift */,
@@ -510,6 +521,7 @@
 				AB42C17D26A839B200EB1B92 /* PopUpViewController.swift in Sources */,
 				AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */,
 				AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */,
+				AB00BE7E26B4257700A37235 /* HabitCheckButtonDelegate.swift in Sources */,
 				AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */,
 				AB7F6E4E2699FDEB00EF9C6E /* Date+Extension.swift in Sources */,
 			);

@@ -31,6 +31,10 @@ class HomeHabitTableViewCell: UITableViewCell {
     lazy var checkButton = HabitCheckButton().then {
         $0.addTarget(self, action: #selector(didTapCheckButton(_:)), for: .touchUpInside)
     }
+    
+    // MARK: - Properties
+
+    var checkButtonDelegate: HabitCheckButtonDelegate?
 
     // MARK: - Initializer
     
@@ -68,7 +72,7 @@ class HomeHabitTableViewCell: UITableViewCell {
     
     @objc
     func didTapCheckButton(_ sender: UIButton) {
-        sender.isSelected.toggle()
+        checkButtonDelegate?.didTapHabitCheckButton(sender)
     }
     
     // MARK: - Methods
