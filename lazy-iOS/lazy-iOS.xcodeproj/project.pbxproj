@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB00BE7B26B31C8900A37235 /* HabitCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */; };
 		AB00BE7E26B4257700A37235 /* HabitCheckButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */; };
+		AB00BE8126B46FCD00A37235 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8026B46FCD00A37235 /* UILabel+Extension.swift */; };
 		AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */; };
 		AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15726A46B9F00EB1B92 /* DrawerView.swift */; };
 		AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15A26A5657600EB1B92 /* TabBarController.swift */; };
@@ -58,6 +59,7 @@
 		AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButton.swift; sourceTree = "<group>"; };
 		AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButtonDelegate.swift; sourceTree = "<group>"; };
 		AB00BE7F26B43AA500A37235 /* lazy-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "lazy-iOS.entitlements"; sourceTree = "<group>"; };
+		AB00BE8026B46FCD00A37235 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehaviorManager.swift; sourceTree = "<group>"; };
 		AB42C15726A46B9F00EB1B92 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		AB42C15A26A5657600EB1B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				AB42C17026A5D2D200EB1B92 /* UIFont+Extension.swift */,
 				AB42C18F26AA7DD700EB1B92 /* UICollectionView+Extension.swift */,
 				AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */,
+				AB00BE8026B46FCD00A37235 /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				AB42C16626A5C61200EB1B92 /* UIComponentsConstants.swift in Sources */,
 				AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */,
 				AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */,
+				AB00BE8126B46FCD00A37235 /* UILabel+Extension.swift in Sources */,
 				AB42C18726A9BFA500EB1B92 /* LabeledRoundedView.swift in Sources */,
 				AB42C17826A5E7C500EB1B92 /* MainViewController+Extension.swift in Sources */,
 				AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */,

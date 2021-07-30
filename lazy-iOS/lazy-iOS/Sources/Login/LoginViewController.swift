@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
         $0.numberOfLines = 0
         $0.font = .pretendard(type: .medium, size: 28)
         $0.textColor = .white
+        $0.lineSpacing(spacing: 10)
     }
     
     let subLabel = UILabel().then {
@@ -49,6 +50,7 @@ class LoginViewController: UIViewController {
         $0.numberOfLines = 0
         $0.font = .pretendard(type: .regular, size: 14)
         $0.textColor = .white
+        $0.lineSpacing(spacing: 10)
     }
     
     // MARK: - Properties
