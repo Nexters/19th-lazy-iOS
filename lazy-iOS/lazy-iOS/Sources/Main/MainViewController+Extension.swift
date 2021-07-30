@@ -20,6 +20,11 @@ extension MainViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeHabitTableViewCell.identifier, for: indexPath) as? HomeHabitTableViewCell else { return UITableViewCell() }
+        cell.checkButtonDelegate = self
+        
+        if indexPath.row == 1 {
+            cell.changeInActive()
+        }
 
         return cell
     }
@@ -32,5 +37,13 @@ extension MainViewController: DrawerViewDelegate {
         let addHabitViewController = AddHabitViewController()
 
         self.present(addHabitViewController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - HabitCheckButtonDelegate
+
+extension MainViewController: HabitCheckButtonDelegate {
+    func didTapHabitCheckButton(_ sender: UIButton) {
+        sender.isSelected.toggle()
     }
 }

@@ -10,5 +10,6 @@ import UIKit
 struct DiviceConstants {
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
+    static let screenRatio = screenWidth / 375.0
     static let safeAreaInset = UIApplication.shared.windows.first?.safeAreaInsets
 }

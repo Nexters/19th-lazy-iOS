@@ -28,21 +28,20 @@ class HomeHabitTableViewCell: UITableViewCell {
         $0.textColor = .darkGray
     }
     
-    let checkButton = UIButton().then {
-        $0.setTitle("3일 차", for: .normal)
-        $0.titleLabel?.font = .pretendard(type: .bold, size: 12)
-        $0.tintColor = .black
-        $0.setTitleColor(.black, for: .normal)
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.darkGray.cgColor
+    lazy var checkButton = HabitCheckButton().then {
+        $0.addTarget(self, action: #selector(didTapCheckButton(_:)), for: .touchUpInside)
     }
     
+    // MARK: - Properties
+
+    var checkButtonDelegate: HabitCheckButtonDelegate?
+
     // MARK: - Initializer
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setView()
+        setCell()
         setConstraints()
     }
     
@@ -69,10 +68,18 @@ class HomeHabitTableViewCell: UITableViewCell {
         iconView.cornerRound(radius: 18)
     }
     
+    // MARK: - Actions
+    
+    @objc
+    func didTapCheckButton(_ sender: UIButton) {
+        checkButtonDelegate?.didTapHabitCheckButton(sender)
+    }
+    
     // MARK: - Methods
     
-    func setView() {
+    func setCell() {
         backgroundColor = .white
+        contentView.isUserInteractionEnabled = true
     }
     
     func setConstraints() {
@@ -97,9 +104,17 @@ class HomeHabitTableViewCell: UITableViewCell {
         
         checkButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20)
-            make.width.equalTo(54)
-            make.height.equalTo(34)
+            make.width.equalToSuperview().multipliedBy(54.0 / 375.0)
+            make.height.equalTo(checkButton.snp.width).multipliedBy(34.0 / 54.0)
             make.centerY.equalToSuperview()
         }
+    }
+    
+    func changeInActive() {
+        iconView.alpha = 0.5
+        titleLabel.alpha = 0.5
+        commentLabel.alpha = 0.5
+        
+        checkButton.isEnabled = false
     }
 }
