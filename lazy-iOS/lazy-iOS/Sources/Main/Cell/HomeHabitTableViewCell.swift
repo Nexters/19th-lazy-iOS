@@ -109,4 +109,12 @@ class HomeHabitTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview()
         }
     }
+    
+    func changeInActive() {
+        iconView.alpha = 0.5
+        titleLabel.alpha = 0.5
+        commentLabel.alpha = 0.5
+        
+        checkButton.isEnabled = false
+    }
 }

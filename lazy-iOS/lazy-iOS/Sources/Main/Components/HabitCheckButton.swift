@@ -53,7 +53,7 @@ class HabitCheckButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func changeActive() {
+    private func changeActive() {
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.textPrimary.cgColor
 
@@ -61,7 +61,7 @@ class HabitCheckButton: UIButton {
         setTitleColor(.textPrimary, for: .normal)
     }
 
-    func changeInActive() {
+    private func changeInActive() {
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.textCaption.cgColor
 
@@ -69,7 +69,7 @@ class HabitCheckButton: UIButton {
         setTitleColor(.textCaption, for: .normal)
     }
 
-    func changeDone() {
+    private func changeDone() {
         layer.borderWidth = 0.0
         layer.borderColor = UIColor.clear.cgColor
 
