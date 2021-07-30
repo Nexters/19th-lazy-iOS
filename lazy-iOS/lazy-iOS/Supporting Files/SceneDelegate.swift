@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: scene)
         self.window?.overrideUserInterfaceStyle = .light
 
-        let navigationController = UINavigationController(rootViewController: TabBarController())
+        let navigationController = UINavigationController(rootViewController: LoginViewController())
         navigationController.isNavigationBarHidden = true
         
         self.window?.rootViewController = navigationController

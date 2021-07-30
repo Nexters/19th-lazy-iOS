@@ -16,6 +16,15 @@ class LoginViewController: UIViewController {
         $0.addTarget(self, action: #selector(kakaoLogin(_:)), for: .touchUpInside)
     }
     
+    private lazy var appleLoginButton = UIButton().then {
+        $0.setTitle("애플 로그인", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+    }
+    
+    let backgroundImageView = UIImageView().then {
+        $0.image = UIImage(named: "bg")
+    }
+    
     // MARK: - Properties
     
     // MARK: - Initializer
@@ -40,10 +49,22 @@ class LoginViewController: UIViewController {
     // MARK: - Methods
     
     func setConstraints() {
-        view.addSubviews([kakaoLoginButton])
+        view.addSubviews([backgroundImageView, kakaoLoginButton, appleLoginButton])
+        
+        backgroundImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         kakaoLoginButton.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(appleLoginButton.snp.top).offset(-12)
+            make.height.equalTo(60)
+        }
+        
+        appleLoginButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30)
+            make.height.equalTo(60)
         }
     }
     
