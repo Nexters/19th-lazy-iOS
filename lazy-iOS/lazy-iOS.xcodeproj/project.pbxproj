@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB00BE7B26B31C8900A37235 /* HabitCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */; };
 		AB00BE7E26B4257700A37235 /* HabitCheckButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */; };
+		AB00BE8426B4739100A37235 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8326B4739100A37235 /* NicknameViewController.swift */; };
 		AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */; };
 		AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15726A46B9F00EB1B92 /* DrawerView.swift */; };
 		AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15A26A5657600EB1B92 /* TabBarController.swift */; };
@@ -57,6 +58,7 @@
 		5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lazy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButton.swift; sourceTree = "<group>"; };
 		AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButtonDelegate.swift; sourceTree = "<group>"; };
+		AB00BE8326B4739100A37235 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehaviorManager.swift; sourceTree = "<group>"; };
 		AB42C15726A46B9F00EB1B92 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		AB42C15A26A5657600EB1B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 				AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AB00BE8226B4731000A37235 /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				AB00BE8326B4739100A37235 /* NicknameViewController.swift */,
+			);
+			path = Nickname;
 			sourceTree = "<group>";
 		};
 		AB42C15626A46B8500EB1B92 /* Components */ = {
@@ -268,6 +278,7 @@
 		AB7F6E3F2699F6A500EF9C6E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AB00BE8226B4731000A37235 /* Nickname */,
 				AB42C18226A9B37900EB1B92 /* AddHabit */,
 				AB42C17B26A8394E00EB1B92 /* PopUp */,
 				AB42C15F26A568BB00EB1B92 /* Analysis */,
@@ -516,6 +527,7 @@
 				AB42C18426A9B3B100EB1B92 /* AddHabitViewController.swift in Sources */,
 				AB7F6E4B2699FDB900EF9C6E /* UIDevice+Extension.swift in Sources */,
 				AB42C16426A5C52C00EB1B92 /* DiviceConstants.swift in Sources */,
+				AB00BE8426B4739100A37235 /* NicknameViewController.swift in Sources */,
 				AB8604E626ADA4720029E67E /* CustomNavigationBar.swift in Sources */,
 				AB42C19226AB05AB00EB1B92 /* RoundedView.swift in Sources */,
 				AB42C17D26A839B200EB1B92 /* PopUpViewController.swift in Sources */,
