@@ -24,6 +24,8 @@ class SignManager: NSObject {
         super.init()
     }
 
+    // MARK: - Kakao
+
     func requestLoginWithKakao(completion: @escaping Completion) {
         self.completion = completion
 
@@ -41,6 +43,8 @@ class SignManager: NSObject {
             self.completion?()
         }
     }
+
+    // MARK: - Apple
 
     func requestLoginWithApple(completion: @escaping Completion) {
         self.completion = completion
