@@ -317,11 +317,11 @@
 		AB7F6E452699FD5300EF9C6E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AB7F6E55269A2C9300EF9C6E /* Manager */,
+				AB7F6E52269A02C600EF9C6E /* Key */,
 				AB86052626B120890029E67E /* Protocols */,
 				AB8604E426ADA4580029E67E /* Components */,
 				AB42C16226A5C49100EB1B92 /* Constants */,
-				AB7F6E55269A2C9300EF9C6E /* Manager */,
-				AB7F6E52269A02C600EF9C6E /* Key */,
 				AB7F6E462699FD5B00EF9C6E /* Extensions */,
 			);
 			path = Common;

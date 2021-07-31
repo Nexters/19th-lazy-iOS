@@ -36,6 +36,13 @@ class NicknameViewController: UIViewController {
         $0.backgroundColor = .mainColor
     }
     
+    let textFieldIcon = UIImageView().then {
+//        $0.isHidden = true
+        $0.contentMode = .scaleAspectFit
+//        $0.image = UIImage(named: "iconValid")
+        $0.image = UIImage(named: "iconInvalid")
+    }
+    
     // MARK: - Properties
     
     let maximumNumberOfChar = 10
@@ -82,7 +89,7 @@ class NicknameViewController: UIViewController {
     
     func setConstraints() {
         view.addSubviews([navigationBar, guideLabel, roundedView, confirmButton])
-        roundedView.addSubviews([nicknameTextField])
+        roundedView.addSubviews([nicknameTextField, textFieldIcon])
         
         navigationBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -91,7 +98,7 @@ class NicknameViewController: UIViewController {
         
         guideLabel.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom).offset(40)
-            make.leading.equalTo(nicknameTextField.snp.leading)
+            make.leading.equalTo(roundedView.snp.leading)
         }
         
         roundedView.snp.makeConstraints { make in
@@ -103,6 +110,12 @@ class NicknameViewController: UIViewController {
         
         nicknameTextField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
+            make.centerY.equalToSuperview()
+        }
+        
+        textFieldIcon.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.width.height.equalTo(nicknameTextField.snp.height)
             make.centerY.equalToSuperview()
         }
         
@@ -123,5 +136,4 @@ extension NicknameViewController: UITextFieldDelegate {
 
         return true
     }
-    
 }
