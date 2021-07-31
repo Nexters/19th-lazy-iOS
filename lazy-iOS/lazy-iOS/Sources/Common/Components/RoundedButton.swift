@@ -82,7 +82,7 @@ class RoundedButton: UIButton {
     }
 
     func changeActive() {
-        setTitleColor(UIColor.white, for: .normal)
+        setTitleColor(.white, for: .normal)
         backgroundColor = bgColor
     }
 

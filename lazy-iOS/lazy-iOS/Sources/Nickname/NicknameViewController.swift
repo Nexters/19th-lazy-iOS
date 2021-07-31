@@ -36,7 +36,7 @@ class NicknameViewController: UIViewController {
     }
     
     let textFieldIcon = UIImageView().then {
-//        $0.isHidden = true
+        $0.isHidden = false
         $0.contentMode = .scaleAspectFit
 //        $0.image = UIImage(named: "iconValid")
         $0.image = UIImage(named: "iconInvalid")
@@ -57,8 +57,15 @@ class NicknameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         nicknameTextField.becomeFirstResponder()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -68,11 +75,33 @@ class NicknameViewController: UIViewController {
     @objc
     func editTextField(_ sender: UITextField) {
         if let text = sender.text {
+            if text.count == 0 {
+                confirmButton.isEnabled = false
+            } else {
+                confirmButton.isEnabled = true
+            }
+            
             if text.count >= maximumNumberOfChar {
                 let index = text.index(text.startIndex, offsetBy: maximumNumberOfChar)
                 let newString = text[text.startIndex ..< index]
                 nicknameTextField.text = String(newString)
             }
+        }
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height + 30
+            
+            confirmButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().offset(-keyboardHeight)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        confirmButton.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-30)
         }
     }
     
