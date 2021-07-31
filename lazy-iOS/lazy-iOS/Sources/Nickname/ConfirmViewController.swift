@@ -7,8 +7,6 @@
 
 import UIKit
 
-// FIXME: - lineSpacing!!
-
 class ConfirmViewController: UIViewController {
     // MARK: - UIComponents
 
@@ -26,9 +24,10 @@ class ConfirmViewController: UIViewController {
 
     private let mainLabel = UILabel().then {
         $0.font = .pretendard(type: .semiBold, size: 24)
-        $0.text = "습관을 세우고 한번도\n실행하지 않았다구요?"
+        $0.text = "습관을 세우고 한 번도\n실행하지 않았다구요?"
         $0.numberOfLines = 0
         $0.textColor = .gray1
+        $0.lineSpacing(spacing: 10)
     }
 
     private let subLabel = UILabel().then {
@@ -36,6 +35,7 @@ class ConfirmViewController: UIViewController {
         $0.text = "습관이 누적되지 않아 휑한 일정표를\n많이 경험하진 않았나요?"
         $0.numberOfLines = 0
         $0.textColor = .gray3
+        $0.lineSpacing(spacing: 10)
     }
 
     private let skipButton = UIButton().then {
@@ -50,6 +50,7 @@ class ConfirmViewController: UIViewController {
 
     private let nextButton = RoundedButton(style: .purple).then {
         $0.setTitle("이거 완전 제 얘기에요", for: .normal)
+        $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
     }
 
     // MARK: - Lifecyle
@@ -62,6 +63,12 @@ class ConfirmViewController: UIViewController {
     }
 
     // MARK: - Actions
+
+    @objc func didTapNextButton(_ sender: UIButton) {
+        navigationController?.pushViewController(OnboardingViewController(), animated: true)
+    }
+
+    // MARK: - Methods
 
     func setView() {
         view.backgroundColor = .white
