@@ -30,10 +30,9 @@ class NicknameViewController: UIViewController {
         $0.delegate = self
     }
     
-    lazy var confirmButton = UIButton().then {
+    lazy var confirmButton = RoundedButton(style: .purple).then {
         $0.setTitle("회원가입 끝!", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.backgroundColor = .mainPurple
+        $0.isEnabled = false
     }
     
     let textFieldIcon = UIImageView().then {
@@ -58,10 +57,6 @@ class NicknameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         nicknameTextField.becomeFirstResponder()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        confirmButton.cornerRounds()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

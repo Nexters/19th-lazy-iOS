@@ -7,37 +7,87 @@
 
 import UIKit
 
-enum ButtonColor {
+enum RoundedButtonStyle {
     case purple
     case white
 }
 
 class RoundedButton: UIButton {
-    override var isSelected: Bool {
+    // MARK: - Properties
+
+    override var isEnabled: Bool {
         didSet {
-            if isSelected {
-                backgroundColor = .mainPurple
+            if isEnabled {
+                changeActive()
+            } else {
+                changeInactive()
             }
-//            else {
-//                backgroundColor = .
-//            }
         }
     }
 
-    // MARK: - Properties
+    var bgColor: UIColor?
+    var labelColor: UIColor?
 
-    let mainColor: ButtonColor
+    /// 외부에서 스타일 변화 시 사용
+    var style: RoundedButtonStyle = .purple {
+        didSet {
+            switch style {
+            case .purple:
+                backgroundColor = .mainPurple
+                setTitleColor(.white, for: .normal)
+            case .white:
+                backgroundColor = .white
+                setTitleColor(.gray1, for: .normal)
+            }
+        }
+    }
 
     // MARK: - Initializer
 
-    init(color: ButtonColor = .purple) {
-        mainColor = color
-        
+    init() {
         super.init(frame: .zero)
+    }
+
+    convenience init(style: RoundedButtonStyle = .purple) {
+        self.init()
+
+        self.style = style
+
+        switch style {
+        case .purple:
+            bgColor = .mainPurple
+            labelColor = .white
+        case .white:
+            bgColor = .white
+            labelColor = .gray1
+        }
+
+        setButton()
+        changeActive()
     }
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        cornerRounds()
+    }
+
+    func setButton() {
+        titleLabel?.font = .pretendard(type: .bold, size: 16)
+    }
+
+    func changeActive() {
+        setTitleColor(UIColor.white, for: .normal)
+        backgroundColor = bgColor
+    }
+
+    func changeInactive() {
+        setTitleColor(.gray3, for: .disabled)
+        backgroundColor = .gray5
     }
 }
