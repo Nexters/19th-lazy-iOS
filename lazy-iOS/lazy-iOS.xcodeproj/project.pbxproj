@@ -10,6 +10,7 @@
 		AB00BE7B26B31C8900A37235 /* HabitCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */; };
 		AB00BE7E26B4257700A37235 /* HabitCheckButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */; };
 		AB00BE8426B4739100A37235 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8326B4739100A37235 /* NicknameViewController.swift */; };
+		AB00BE8626B57C5600A37235 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8526B57C5600A37235 /* RoundedButton.swift */; };
 		AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */; };
 		AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15726A46B9F00EB1B92 /* DrawerView.swift */; };
 		AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15A26A5657600EB1B92 /* TabBarController.swift */; };
@@ -59,6 +60,7 @@
 		AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButton.swift; sourceTree = "<group>"; };
 		AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButtonDelegate.swift; sourceTree = "<group>"; };
 		AB00BE8326B4739100A37235 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		AB00BE8526B57C5600A37235 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehaviorManager.swift; sourceTree = "<group>"; };
 		AB42C15726A46B9F00EB1B92 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		AB42C15A26A5657600EB1B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 			children = (
 				AB42C19126AB05AB00EB1B92 /* RoundedView.swift */,
 				AB8604E526ADA4720029E67E /* CustomNavigationBar.swift */,
+				AB00BE8526B57C5600A37235 /* RoundedButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				AB42C19226AB05AB00EB1B92 /* RoundedView.swift in Sources */,
 				AB42C17D26A839B200EB1B92 /* PopUpViewController.swift in Sources */,
 				AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */,
+				AB00BE8626B57C5600A37235 /* RoundedButton.swift in Sources */,
 				AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */,
 				AB00BE7E26B4257700A37235 /* HabitCheckButtonDelegate.swift in Sources */,
 				AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */,

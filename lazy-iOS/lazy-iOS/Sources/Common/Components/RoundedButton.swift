@@ -7,14 +7,37 @@
 
 import UIKit
 
+enum ButtonColor {
+    case purple
+    case white
+}
+
 class RoundedButton: UIButton {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                backgroundColor = .mainPurple
+            }
+//            else {
+//                backgroundColor = .
+//            }
+        }
     }
-    */
 
+    // MARK: - Properties
+
+    let mainColor: ButtonColor
+
+    // MARK: - Initializer
+
+    init(color: ButtonColor = .purple) {
+        mainColor = color
+        
+        super.init(frame: .zero)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
