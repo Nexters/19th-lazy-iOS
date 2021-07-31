@@ -21,10 +21,13 @@ class NicknameViewController: UIViewController {
     
     let roundedView = RoundedView()
     
-    let nicknameTextField = UITextField().then {
+    lazy var nicknameTextField = UITextField().then {
         $0.font = .pretendard(type: .medium, size: 18)
         $0.placeholder = "닉네임을 입력하세요"
         $0.textColor = .textPrimary
+        $0.autocorrectionType = .no
+        $0.addTarget(self, action: #selector(editTextField(_:)), for: .editingChanged)
+        $0.delegate = self
     }
     
     lazy var confirmButton = UIButton().then {
@@ -35,6 +38,8 @@ class NicknameViewController: UIViewController {
     
     // MARK: - Properties
     
+    let maximumNumberOfChar = 10
+    
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
@@ -44,11 +49,30 @@ class NicknameViewController: UIViewController {
         setConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        nicknameTextField.becomeFirstResponder()
+    }
+    
     override func viewDidLayoutSubviews() {
         confirmButton.cornerRounds()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     // MARK: - Actions
+    
+    @objc
+    func editTextField(_ sender: UITextField) {
+        if let text = sender.text {
+            if text.count >= maximumNumberOfChar {
+                let index = text.index(text.startIndex, offsetBy: maximumNumberOfChar)
+                let newString = text[text.startIndex ..< index]
+                nicknameTextField.text = String(newString)
+            }
+        }
+    }
     
     // MARK: - Methods
     
@@ -89,6 +113,15 @@ class NicknameViewController: UIViewController {
             make.height.equalTo(confirmButton.snp.width).multipliedBy(60.0 / 320.0)
         }
     }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension NicknameViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+
+        return true
+    }
     
-    // MARK: - Protocols
 }
