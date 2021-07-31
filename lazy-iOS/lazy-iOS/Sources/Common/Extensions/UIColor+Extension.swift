@@ -21,8 +21,11 @@ extension UIColor {
     @nonobjc static var icon7: UIColor { .init(27, 70, 134, 1) }
     @nonobjc static var icon8: UIColor { .init(255, 88, 88, 1) }
 
-    @nonobjc static var mainColor: UIColor { .init(80, 68, 255, 1) }
-    @nonobjc static var textPrimary: UIColor { .init(25, 31, 40, 1) }
-    @nonobjc static var textSecondary: UIColor { .init(121, 126, 134, 1) }
-    @nonobjc static var textCaption: UIColor { .init(161, 167, 175, 1) }
+    @nonobjc static var mainPurple: UIColor { .init(88, 72, 255, 1) }
+    @nonobjc static var gray1: UIColor { .init(25, 31, 40, 1) }
+    @nonobjc static var gray2: UIColor { .init(121, 126, 134, 1) }
+    @nonobjc static var gray3: UIColor { .init(161, 167, 175, 1) }
+    @nonobjc static var gray5: UIColor { .init(232, 232, 232, 1) }
+    @nonobjc static var gray7: UIColor { .init(246, 246, 246, 1) }
+    @nonobjc static var mainRed: UIColor { .init(255, 0, 0, 1) }
 }
