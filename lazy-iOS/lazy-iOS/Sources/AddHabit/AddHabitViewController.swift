@@ -85,7 +85,9 @@ class AddHabitViewController: UIViewController {
 
     let alarmTimePicker = UIDatePicker().then {
         $0.datePickerMode = .time
-        $0.preferredDatePickerStyle = .wheels
+        if #available(iOS 13.4, *) {
+            $0.preferredDatePickerStyle = .wheels
+        }
         $0.locale = Locale(identifier: "ko")
     }
     

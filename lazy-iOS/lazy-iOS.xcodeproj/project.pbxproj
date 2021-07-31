@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB00BE7B26B31C8900A37235 /* HabitCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */; };
 		AB00BE7E26B4257700A37235 /* HabitCheckButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */; };
+		AB00BE8126B46FCD00A37235 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8026B46FCD00A37235 /* UILabel+Extension.swift */; };
 		AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */; };
 		AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15726A46B9F00EB1B92 /* DrawerView.swift */; };
 		AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15A26A5657600EB1B92 /* TabBarController.swift */; };
@@ -42,7 +43,7 @@
 		AB7F6E4E2699FDEB00EF9C6E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E4D2699FDEB00EF9C6E /* Date+Extension.swift */; };
 		AB7F6E512699FF7B00EF9C6E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E502699FF7B00EF9C6E /* LoginViewController.swift */; };
 		AB7F6E54269A02E100EF9C6E /* KeyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E53269A02E000EF9C6E /* KeyConstants.swift */; };
-		AB7F6E57269A2CAB00EF9C6E /* SIgnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E56269A2CAB00EF9C6E /* SIgnManager.swift */; };
+		AB7F6E57269A2CAB00EF9C6E /* SignManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E56269A2CAB00EF9C6E /* SignManager.swift */; };
 		AB8604E626ADA4720029E67E /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8604E526ADA4720029E67E /* CustomNavigationBar.swift */; };
 		AB86052526B07A2E0029E67E /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB86052426B07A2E0029E67E /* Pretendard-SemiBold.otf */; };
 		AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052926B120B90029E67E /* NavigationDelegate.swift */; };
@@ -57,6 +58,8 @@
 		5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lazy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB00BE7A26B31C8900A37235 /* HabitCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButton.swift; sourceTree = "<group>"; };
 		AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButtonDelegate.swift; sourceTree = "<group>"; };
+		AB00BE7F26B43AA500A37235 /* lazy-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "lazy-iOS.entitlements"; sourceTree = "<group>"; };
+		AB00BE8026B46FCD00A37235 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehaviorManager.swift; sourceTree = "<group>"; };
 		AB42C15726A46B9F00EB1B92 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		AB42C15A26A5657600EB1B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -92,7 +95,7 @@
 		AB7F6E4D2699FDEB00EF9C6E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		AB7F6E502699FF7B00EF9C6E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB7F6E53269A02E000EF9C6E /* KeyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyConstants.swift; sourceTree = "<group>"; };
-		AB7F6E56269A2CAB00EF9C6E /* SIgnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIgnManager.swift; sourceTree = "<group>"; };
+		AB7F6E56269A2CAB00EF9C6E /* SignManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignManager.swift; sourceTree = "<group>"; };
 		AB8604E526ADA4720029E67E /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		AB86052426B07A2E0029E67E /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		AB86052926B120B90029E67E /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
@@ -257,6 +260,7 @@
 		AB7F6E2A26997ABD00EF9C6E /* lazy-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				AB00BE7F26B43AA500A37235 /* lazy-iOS.entitlements */,
 				AB7F6E422699F81B00EF9C6E /* Supporting Files */,
 				AB7F6E3F2699F6A500EF9C6E /* Sources */,
 				AB7F6E3626997AC100EF9C6E /* LaunchScreen.storyboard */,
@@ -325,6 +329,7 @@
 				AB42C17026A5D2D200EB1B92 /* UIFont+Extension.swift */,
 				AB42C18F26AA7DD700EB1B92 /* UICollectionView+Extension.swift */,
 				AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */,
+				AB00BE8026B46FCD00A37235 /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -348,7 +353,7 @@
 		AB7F6E55269A2C9300EF9C6E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				AB7F6E56269A2CAB00EF9C6E /* SIgnManager.swift */,
+				AB7F6E56269A2CAB00EF9C6E /* SignManager.swift */,
 				AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */,
 			);
 			path = Manager;
@@ -500,13 +505,14 @@
 				AB42C18E26AA7D0A00EB1B92 /* AddHabitViewController+Extension.swift in Sources */,
 				AB42C19026AA7DD700EB1B92 /* UICollectionView+Extension.swift in Sources */,
 				AB42C19626AB167000EB1B92 /* UIColor+Extension.swift in Sources */,
-				AB7F6E57269A2CAB00EF9C6E /* SIgnManager.swift in Sources */,
+				AB7F6E57269A2CAB00EF9C6E /* SignManager.swift in Sources */,
 				AB42C18C26AA767F00EB1B92 /* DayOfWeekCollectionViewCell.swift in Sources */,
 				AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */,
 				AB42C17626A5E1EF00EB1B92 /* HomeHabitTableViewCell.swift in Sources */,
 				AB42C16626A5C61200EB1B92 /* UIComponentsConstants.swift in Sources */,
 				AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */,
 				AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */,
+				AB00BE8126B46FCD00A37235 /* UILabel+Extension.swift in Sources */,
 				AB42C18726A9BFA500EB1B92 /* LabeledRoundedView.swift in Sources */,
 				AB42C17826A5E7C500EB1B92 /* MainViewController+Extension.swift in Sources */,
 				AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */,
@@ -592,7 +598,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -647,7 +653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -663,8 +669,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "lazy-iOS/lazy-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G7SD8523Y3;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				INFOPLIST_FILE = "lazy-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -683,8 +690,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "lazy-iOS/lazy-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G7SD8523Y3;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				INFOPLIST_FILE = "lazy-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
