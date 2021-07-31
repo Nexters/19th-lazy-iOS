@@ -11,6 +11,8 @@
 		AB00BE7E26B4257700A37235 /* HabitCheckButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */; };
 		AB00BE8426B4739100A37235 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8326B4739100A37235 /* NicknameViewController.swift */; };
 		AB00BE8626B57C5600A37235 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8526B57C5600A37235 /* RoundedButton.swift */; };
+		AB00BE8E26B59F9E00A37235 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8D26B59F9E00A37235 /* OnboardingViewController.swift */; };
+		AB00BE9026B5A17C00A37235 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8F26B5A17C00A37235 /* ConfirmViewController.swift */; };
 		AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */; };
 		AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15726A46B9F00EB1B92 /* DrawerView.swift */; };
 		AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15A26A5657600EB1B92 /* TabBarController.swift */; };
@@ -61,6 +63,8 @@
 		AB00BE7D26B4257700A37235 /* HabitCheckButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCheckButtonDelegate.swift; sourceTree = "<group>"; };
 		AB00BE8326B4739100A37235 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		AB00BE8526B57C5600A37235 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		AB00BE8D26B59F9E00A37235 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		AB00BE8F26B5A17C00A37235 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehaviorManager.swift; sourceTree = "<group>"; };
 		AB42C15726A46B9F00EB1B92 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		AB42C15A26A5657600EB1B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -145,8 +149,17 @@
 			isa = PBXGroup;
 			children = (
 				AB00BE8326B4739100A37235 /* NicknameViewController.swift */,
+				AB00BE8F26B5A17C00A37235 /* ConfirmViewController.swift */,
 			);
 			path = Nickname;
+			sourceTree = "<group>";
+		};
+		AB00BE8C26B59F8400A37235 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				AB00BE8D26B59F9E00A37235 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		AB42C15626A46B8500EB1B92 /* Components */ = {
@@ -280,6 +293,7 @@
 		AB7F6E3F2699F6A500EF9C6E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AB00BE8C26B59F8400A37235 /* Onboarding */,
 				AB00BE8226B4731000A37235 /* Nickname */,
 				AB42C18226A9B37900EB1B92 /* AddHabit */,
 				AB42C17B26A8394E00EB1B92 /* PopUp */,
@@ -535,9 +549,11 @@
 				AB42C19226AB05AB00EB1B92 /* RoundedView.swift in Sources */,
 				AB42C17D26A839B200EB1B92 /* PopUpViewController.swift in Sources */,
 				AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */,
+				AB00BE8E26B59F9E00A37235 /* OnboardingViewController.swift in Sources */,
 				AB00BE8626B57C5600A37235 /* RoundedButton.swift in Sources */,
 				AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */,
 				AB00BE7E26B4257700A37235 /* HabitCheckButtonDelegate.swift in Sources */,
+				AB00BE9026B5A17C00A37235 /* ConfirmViewController.swift in Sources */,
 				AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */,
 				AB7F6E4E2699FDEB00EF9C6E /* Date+Extension.swift in Sources */,
 			);

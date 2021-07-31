@@ -33,6 +33,7 @@ class NicknameViewController: UIViewController {
     lazy var confirmButton = RoundedButton(style: .purple).then {
         $0.setTitle("회원가입 끝!", for: .normal)
         $0.isEnabled = false
+        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
     
     let textFieldIcon = UIImageView().then {
@@ -103,6 +104,14 @@ class NicknameViewController: UIViewController {
         confirmButton.snp.updateConstraints { make in
             make.bottom.equalToSuperview().offset(-30)
         }
+    }
+    
+    @objc
+    func didTapConfirmButton(_ sender: UIButton) {
+        /// 닉네임 분기 처리 후 이동
+        let confirmVC = ConfirmViewController()
+        
+        navigationController?.pushViewController(confirmVC, animated: true)
     }
     
     // MARK: - Methods
