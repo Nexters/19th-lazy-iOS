@@ -97,12 +97,20 @@ class NicknameViewController: UIViewController {
             confirmButton.snp.updateConstraints { make in
                 make.bottom.equalToSuperview().offset(-keyboardHeight)
             }
+            
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
         confirmButton.snp.updateConstraints { make in
             make.bottom.equalToSuperview().offset(-30)
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
         }
     }
     
