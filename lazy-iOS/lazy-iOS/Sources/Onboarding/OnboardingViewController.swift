@@ -24,20 +24,20 @@ class OnboardingViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
     }
     
-    private let mainLabel = UILabel().then {
+    private lazy var mainLabel = UILabel().then {
         $0.font = .pretendard(type: .bold, size: 24)
-        $0.text = "오늘 해야 할 습관이\n젤리로 쌓여요"
+        $0.text = self.mainLabelTextArr.first
         $0.numberOfLines = 0
         $0.textColor = .white
-        $0.lineSpacing(spacing: 10)
+        $0.lineSpacing(spacing: 5)
     }
 
-    private let subLabel = UILabel().then {
+    private lazy var subLabel = UILabel().then {
         $0.font = .pretendard(type: .medium, size: 16)
-        $0.text = "어제 밀린 일을 없애고\n오늘 당장의 할 일에 집중해요"
+        $0.text = self.subLabelTextArr.first
         $0.numberOfLines = 0
         $0.textColor = .white
-        $0.lineSpacing(spacing: 10)
+        $0.lineSpacing(spacing: 5)
     }
     
     private let imageView = UIImageView().then {
@@ -54,6 +54,8 @@ class OnboardingViewController: UIViewController {
     // MARK: - Properties
     
     private var currPage: Int = 0
+    private var mainLabelTextArr = ["오늘 해야 할 습관이\n젤리로 쌓여요", "젤리가 얼마나 쌓였는지\n확인하고 없애보세요!", "얼마나 많이 미뤘든\n당장 행동하세요"]
+    private var subLabelTextArr = ["어제 밀린 일을 없애고\n오늘 당장의 할 일에 집중해요", "이만큼 쌓였는데\n안 없애고는 못 배기겠죠?", "밍굴맹굴과 함께라면\n나태했던 어제와는 달리\n한 걸음 더 나아갈 수 있어요"]
     
     // MARK: - Initializer
     
@@ -88,6 +90,10 @@ class OnboardingViewController: UIViewController {
         
         pageControl.currentPage = currPage
         imageView.image = UIImage(named: "onboarding\(currPage + 1)")
+        mainLabel.text = mainLabelTextArr[currPage]
+        subLabel.text = subLabelTextArr[currPage]
+        
+        makeLabelTransition()
     }
     
     // MARK: - Methods
@@ -136,6 +142,16 @@ class OnboardingViewController: UIViewController {
             make.bottom.equalToSuperview().offset(-78)
             make.centerX.equalToSuperview()
         }
+    }
+    
+    func makeLabelTransition() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = .init(name: .easeInEaseOut)
+        transition.type = .fade
+        
+        mainLabel.layer.add(transition, forKey: CATransitionType.push.rawValue)
+        subLabel.layer.add(transition, forKey: CATransitionType.push.rawValue)
     }
     
     // MARK: - Protocols
