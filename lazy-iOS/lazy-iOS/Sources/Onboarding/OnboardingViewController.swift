@@ -50,10 +50,26 @@ class OnboardingViewController: UIViewController {
         $0.currentPageIndicatorTintColor = .white
         $0.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
     }
+    
+    private lazy var nextButton = RoundedButton(style: .white).then {
+        $0.setTitle("더 이상 게으르지 않겠어요", for: .normal)
+        $0.isHidden = true
+    }
 
     // MARK: - Properties
     
-    private var currPage: Int = 0
+    private var currPage: Int = 0 {
+        didSet {
+            if currPage == pageControl.numberOfPages - 1 {
+                nextButton.isHidden = false
+                pageControl.isHidden = true
+            } else {
+                nextButton.isHidden = true
+                pageControl.isHidden = false
+            }
+        }
+    }
+
     private var mainLabelTextArr = ["오늘 해야 할 습관이\n젤리로 쌓여요", "젤리가 얼마나 쌓였는지\n확인하고 없애보세요!", "얼마나 많이 미뤘든\n당장 행동하세요"]
     private var subLabelTextArr = ["어제 밀린 일을 없애고\n오늘 당장의 할 일에 집중해요", "이만큼 쌓였는데\n안 없애고는 못 배기겠죠?", "밍굴맹굴과 함께라면\n나태했던 어제와는 달리\n한 걸음 더 나아갈 수 있어요"]
     
@@ -109,38 +125,46 @@ class OnboardingViewController: UIViewController {
         view.addGestureRecognizer(leftGesture)
     }
     
+    // FIXME: - heightConstant로 변수 분리하자 ...
     func setConstraints() {
-        view.addSubviews([backgroundImageView, skipButton, mainLabel, subLabel, imageView, pageControl])
+        view.addSubviews([backgroundImageView, skipButton, mainLabel, subLabel, imageView, pageControl, nextButton])
         
         backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
         skipButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(65)
+            make.top.equalToSuperview().offset(65 * DiviceConstants.screenHeight / 812.0)
             make.trailing.equalToSuperview().offset(-35)
         }
         
         mainLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(126)
+            make.top.equalToSuperview().offset(126 * DiviceConstants.screenHeight / 812.0)
             make.leading.equalToSuperview().offset(33)
         }
         
         subLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainLabel.snp.bottom).offset(26)
+            make.top.equalTo(mainLabel.snp.bottom).offset(26 * DiviceConstants.screenHeight / 812.0)
             make.leading.equalTo(mainLabel.snp.leading)
         }
         
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(subLabel.snp.bottom).offset(108)
+            make.top.equalTo(subLabel.snp.bottom).offset(108 * DiviceConstants.screenHeight / 812.0).multipliedBy(DiviceConstants.screenHeight / 812.0)
             make.width.equalToSuperview().multipliedBy(299.0 / 375.0)
             make.height.equalTo(imageView.snp.width).multipliedBy(234.0 / 299.0)
             make.centerX.equalToSuperview()
         }
         
         pageControl.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-78)
+            make.bottom.equalToSuperview().offset(-78 * DiviceConstants.screenHeight / 812.0)
             make.centerX.equalToSuperview()
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
+            make.height.equalTo(nextButton.snp.width).multipliedBy(60.0 / 320.0)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-30 * DiviceConstants.screenHeight / 812.0)
         }
     }
     
