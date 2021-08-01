@@ -48,7 +48,7 @@ class RoundedButton: UIButton {
         super.init(frame: .zero)
     }
 
-    convenience init(style: RoundedButtonStyle = .purple) {
+    convenience init(style: RoundedButtonStyle) {
         self.init()
 
         self.style = style
@@ -82,7 +82,7 @@ class RoundedButton: UIButton {
     }
 
     func changeActive() {
-        setTitleColor(.white, for: .normal)
+        setTitleColor(labelColor, for: .normal)
         backgroundColor = bgColor
     }
 
