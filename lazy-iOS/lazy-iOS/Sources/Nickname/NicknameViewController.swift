@@ -11,8 +11,6 @@ import UIKit
 class NicknameViewController: UIViewController {
     // MARK: - UIComponenets
     
-    let navigationBar = CustomNavigationBar("", state: .navigation)
-    
     let guideLabel = UILabel().then {
         $0.text = "뭐라고 부르면 될까요?"
         $0.textColor = .gray1
@@ -129,16 +127,11 @@ class NicknameViewController: UIViewController {
     }
     
     func setConstraints() {
-        view.addSubviews([navigationBar, guideLabel, roundedView, confirmButton])
+        view.addSubviews([guideLabel, roundedView, confirmButton])
         roundedView.addSubviews([nicknameTextField, textFieldIcon])
         
-        navigationBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
-        }
-        
         guideLabel.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom).offset(40)
+            make.top.equalToSuperview().offset(132)
             make.leading.equalTo(roundedView.snp.leading)
         }
         

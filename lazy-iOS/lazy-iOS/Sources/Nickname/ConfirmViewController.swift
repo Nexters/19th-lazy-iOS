@@ -46,6 +46,7 @@ class ConfirmViewController: UIViewController {
         $0.titleLabel?.attributedText = title
         $0.setTitle(text, for: .normal)
         $0.setTitleColor(.gray3, for: .normal)
+        $0.addTarget(self, action: #selector(didTapSkipButton(_:)), for: .touchUpInside)
     }
 
     private let nextButton = RoundedButton(style: .purple).then {
@@ -66,6 +67,10 @@ class ConfirmViewController: UIViewController {
 
     @objc func didTapNextButton(_ sender: UIButton) {
         navigationController?.pushViewController(OnboardingViewController(), animated: true)
+    }
+
+    @objc func didTapSkipButton(_ sender: UIButton) {
+        navigationController?.pushViewController(TabBarController(), animated: true)
     }
 
     // MARK: - Methods

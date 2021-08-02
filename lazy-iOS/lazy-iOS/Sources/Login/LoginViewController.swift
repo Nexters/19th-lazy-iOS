@@ -75,7 +75,7 @@ class LoginViewController: UIViewController {
     @objc
     func handleKakaoLoginButton(_ sender: UIButton) {
         SignManager.shared.requestLoginWithKakao {
-            self.navigationController?.pushViewController(TabBarController(), animated: true)
+            self.navigationController?.pushViewController(NicknameViewController(), animated: true)
         }
     }
     

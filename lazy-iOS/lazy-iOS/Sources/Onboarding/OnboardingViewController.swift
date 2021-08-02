@@ -22,6 +22,7 @@ class OnboardingViewController: UIViewController {
         $0.titleLabel?.attributedText = title
         $0.setTitle(text, for: .normal)
         $0.setTitleColor(.white, for: .normal)
+        $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
     }
     
     private lazy var mainLabel = UILabel().then {
@@ -54,6 +55,7 @@ class OnboardingViewController: UIViewController {
     private lazy var nextButton = RoundedButton(style: .white).then {
         $0.setTitle("더 이상 게으르지 않겠어요", for: .normal)
         $0.isHidden = true
+        $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
     }
 
     // MARK: - Properties
@@ -110,6 +112,11 @@ class OnboardingViewController: UIViewController {
         subLabel.text = subLabelTextArr[currPage]
         
         makeLabelTransition()
+    }
+    
+    @objc
+    func didTapNextButton(_ sender: UIButton) {
+        navigationController?.pushViewController(TabBarController(), animated: true)
     }
     
     // MARK: - Methods
