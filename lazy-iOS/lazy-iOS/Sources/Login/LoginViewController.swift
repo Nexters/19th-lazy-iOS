@@ -16,6 +16,13 @@ class LoginViewController: UIViewController {
         $0.setTitleColor(.black.withAlphaComponent(0.85), for: .normal)
         $0.titleLabel?.font = .pretendard(type: .medium, size: 16)
         $0.addTarget(self, action: #selector(handleKakaoLoginButton(_:)), for: .touchUpInside)
+        
+        let logo = UIImageView(image: UIImage(named: "iconKakao")?.withTintColor(.black, renderingMode: .alwaysTemplate))
+        $0.addSubview(logo)
+        logo.snp.makeConstraints { make in
+            make.leading.equalTo(18)
+            make.centerY.equalToSuperview()
+        }
     }
     
     private lazy var appleLoginButton = UIButton().then {
@@ -25,7 +32,7 @@ class LoginViewController: UIViewController {
         $0.titleLabel?.font = .pretendard(type: .medium, size: 16)
         $0.addTarget(self, action: #selector(handleAppleLoginButton(_:)), for: .touchUpInside)
         
-        let logo = UIImageView(image: UIImage(named: "Left White Logo Large"))
+        let logo = UIImageView(image: UIImage(named: "iconApple"))
         $0.addSubview(logo)
         logo.snp.makeConstraints { make in
             make.leading.equalTo(15)
