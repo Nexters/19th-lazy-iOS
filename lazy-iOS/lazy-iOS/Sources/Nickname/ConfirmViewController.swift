@@ -11,7 +11,7 @@ class ConfirmViewController: UIViewController {
     // MARK: - UIComponents
 
     private let nicknameLabel = UILabel().then {
-        $0.font = .pretendard(type: .semiBold, size: 28)
+        $0.font = .pretendard(type: .medium, size: 28)
         $0.text = "밍굴맹굴님"
         $0.textColor = .mainPurple
 
@@ -23,11 +23,11 @@ class ConfirmViewController: UIViewController {
     }
 
     private let mainLabel = UILabel().then {
-        $0.font = .pretendard(type: .semiBold, size: 24)
+        $0.font = .pretendard(type: .bold, size: 24)
         $0.text = "습관을 세우고 한 번도\n실행하지 않았다구요?"
         $0.numberOfLines = 0
         $0.textColor = .gray1
-        $0.lineSpacing(spacing: 10)
+        $0.lineSpacing(spacing: 5)
     }
 
     private let subLabel = UILabel().then {
@@ -35,7 +35,7 @@ class ConfirmViewController: UIViewController {
         $0.text = "습관이 누적되지 않아 휑한 일정표를\n많이 경험하진 않았나요?"
         $0.numberOfLines = 0
         $0.textColor = .gray3
-        $0.lineSpacing(spacing: 10)
+        $0.lineSpacing(spacing: 5)
     }
 
     private let skipButton = UIButton().then {
@@ -83,27 +83,27 @@ class ConfirmViewController: UIViewController {
         view.addSubviews([nicknameLabel, mainLabel, subLabel, skipButton, nextButton])
 
         nicknameLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(132 * DiviceConstants.heightRatio)
             make.leading.equalToSuperview().offset(20)
-            make.top.equalToSuperview().offset(132)
         }
 
         mainLabel.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(21)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(21 * DiviceConstants.heightRatio)
             make.leading.equalTo(nicknameLabel.snp.leading)
         }
 
         subLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainLabel.snp.bottom).offset(36)
+            make.top.equalTo(mainLabel.snp.bottom).offset(36 * DiviceConstants.heightRatio)
             make.leading.equalTo(mainLabel.snp.leading)
         }
 
         skipButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(65)
+            make.top.equalToSuperview().offset(65 * DiviceConstants.heightRatio)
             make.trailing.equalToSuperview().offset(-35)
         }
 
         nextButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-30)
+            make.bottom.equalToSuperview().offset(-30 * DiviceConstants.heightRatio)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(nextButton.snp.width).multipliedBy(60.0 / 320.0)

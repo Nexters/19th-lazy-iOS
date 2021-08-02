@@ -132,7 +132,6 @@ class OnboardingViewController: UIViewController {
         view.addGestureRecognizer(leftGesture)
     }
     
-    // FIXME: - heightConstant로 변수 분리하자 ...
     func setConstraints() {
         view.addSubviews([backgroundImageView, skipButton, mainLabel, subLabel, imageView, pageControl, nextButton])
         
@@ -141,29 +140,29 @@ class OnboardingViewController: UIViewController {
         }
         
         skipButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(65 * DiviceConstants.screenHeight / 812.0)
+            make.top.equalToSuperview().offset(65 * DiviceConstants.heightRatio)
             make.trailing.equalToSuperview().offset(-35)
         }
         
         mainLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(126 * DiviceConstants.screenHeight / 812.0)
+            make.top.equalToSuperview().offset(126 * DiviceConstants.heightRatio)
             make.leading.equalToSuperview().offset(33)
         }
         
         subLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainLabel.snp.bottom).offset(26 * DiviceConstants.screenHeight / 812.0)
+            make.top.equalTo(mainLabel.snp.bottom).offset(26 * DiviceConstants.heightRatio)
             make.leading.equalTo(mainLabel.snp.leading)
         }
         
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(subLabel.snp.bottom).offset(108 * DiviceConstants.screenHeight / 812.0).multipliedBy(DiviceConstants.screenHeight / 812.0)
+            make.top.equalTo(subLabel.snp.bottom).offset(108 * DiviceConstants.heightRatio)
             make.width.equalToSuperview().multipliedBy(299.0 / 375.0)
             make.height.equalTo(imageView.snp.width).multipliedBy(234.0 / 299.0)
             make.centerX.equalToSuperview()
         }
         
         pageControl.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-78 * DiviceConstants.screenHeight / 812.0)
+            make.bottom.equalToSuperview().offset(-78 * DiviceConstants.heightRatio)
             make.centerX.equalToSuperview()
         }
         
@@ -171,7 +170,7 @@ class OnboardingViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(nextButton.snp.width).multipliedBy(60.0 / 320.0)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-30 * DiviceConstants.screenHeight / 812.0)
+            make.bottom.equalToSuperview().offset(-30 * DiviceConstants.heightRatio)
         }
     }
     
