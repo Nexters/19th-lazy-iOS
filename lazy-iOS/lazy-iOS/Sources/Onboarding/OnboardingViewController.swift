@@ -86,6 +86,10 @@ class OnboardingViewController: UIViewController {
         setConstraints()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+
     // MARK: - Actions
     
     @objc

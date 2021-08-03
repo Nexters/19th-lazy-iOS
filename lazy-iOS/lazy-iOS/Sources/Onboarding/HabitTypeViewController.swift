@@ -78,6 +78,10 @@ class HabitTypeViewController: UIViewController {
         setConstraints()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+
     // MARK: - Actions
 
     @objc func didTapSkipButton(_ sender: UIButton) {

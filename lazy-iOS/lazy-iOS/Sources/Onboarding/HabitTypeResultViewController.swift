@@ -73,9 +73,6 @@ class HabitTypeResultViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
