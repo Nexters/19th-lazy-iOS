@@ -14,16 +14,12 @@ class HomeViewController: UIViewController {
         $0.image = UIImage(named: "bg")
     }
 
-    let backgroundShadowImageView = UIImageView().then {
-        $0.image = UIImage(named: "txtBg")
-        $0.contentMode = .scaleAspectFit
-        $0.backgroundColor = .clear
-    }
+    let backgroundShadowView = UIView()
 
     let notificationLabel = UILabel().then {
         $0.textColor = .white
         $0.font = .pretendard(type: .bold, size: 14)
-        $0.text = Date().dateToString(format: "yy.d.M EEEE", date: Date())
+        $0.text = Date().dateToString(format: "yy.M.d EEEE", date: Date())
     }
 
     // MARK: - Properties
@@ -63,6 +59,8 @@ class HomeViewController: UIViewController {
         bubbleView.snp.updateConstraints { make in
             make.bottom.equalTo(drawerView.snp.top).offset(1)
         }
+
+        backgroundShadowView.setGradient(color1: UIColor(80, 68, 222, 1.0), color2: UIColor.mainPurple.withAlphaComponent(0.0))
     }
 
     // MARK: - Actions
@@ -120,13 +118,13 @@ class HomeViewController: UIViewController {
     }
 
     func setConstraints() {
-        view.addSubviews([backgroundImageView, bubbleView, drawerView, backgroundShadowImageView, notificationLabel])
+        view.addSubviews([backgroundImageView, bubbleView, drawerView, backgroundShadowView, notificationLabel])
 
         backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
 
-        backgroundShadowImageView.snp.makeConstraints { make in
+        backgroundShadowView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(110 * DeviceConstants.heightRatio)
         }
