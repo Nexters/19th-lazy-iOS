@@ -17,7 +17,7 @@ class DrawerView: UIView {
     // MARK: - UIComponenets
 
     let handleView = UIView().then {
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = UIColor(228, 228, 228, 1)
         $0.cornerRound(radius: 2.5)
     }
     
