@@ -101,17 +101,18 @@ class HomeViewController: UIViewController {
                 let randomX = CGFloat.random(in: x - 70 ..< x + 70)
                 let size = UIScreen.main.bounds.width * (150.0 / 375.0)
 
-                let randomImage = Int.random(in: 1 ... 2)
                 let bubble = UIView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
-
-                let bubbleIcon = UIImageView(image: UIImage(named: "habbit\(randomImage)"))
-                bubbleIcon.contentMode = .scaleAspectFit
                 bubble.cornerRounds()
-                bubble.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
-
                 bubble.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(self.handleBubbleView(_:)))]
 
+                let randomImage = Int.random(in: 1 ... 2)
+                let bubbleIcon = UIImageView(image: UIImage(named: "habbit\(randomImage)"))
+
                 bubble.addSubview(bubbleIcon)
+                bubbleIcon.snp.makeConstraints { make in
+                    make.edges.equalToSuperview()
+                }
+
                 self.view.addSubview(bubble)
                 BubbleBehaviorManager.bubbleBehavior.addBubble(bubble)
             }
