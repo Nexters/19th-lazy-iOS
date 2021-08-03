@@ -68,6 +68,7 @@ class HabitTypeResultViewController: UIViewController {
         super.viewDidLoad()
 
         setView()
+        setDelegate()
         setConstraints()
     }
 
@@ -91,6 +92,10 @@ class HabitTypeResultViewController: UIViewController {
 
     func setView() {
         view.backgroundColor = .white
+    }
+
+    func setDelegate() {
+        navigationBar.navigationDelegate = self
     }
 
     func setConstraints() {
@@ -123,5 +128,11 @@ class HabitTypeResultViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-30 * DiviceConstants.heightRatio)
         }
+    }
+}
+
+extension HabitTypeResultViewController: NavigationDelegate {
+    func pop() {
+        navigationController?.popViewController(animated: true)
     }
 }
