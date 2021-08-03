@@ -7,6 +7,8 @@
 
 import UIKit
 
+// FIXME: - 안 쓸 것 같 아 요
+
 class ConfirmViewController: UIViewController {
     // MARK: - UIComponents
 

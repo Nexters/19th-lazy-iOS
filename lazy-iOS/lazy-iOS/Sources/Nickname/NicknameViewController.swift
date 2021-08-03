@@ -115,9 +115,9 @@ class NicknameViewController: UIViewController {
     @objc
     func didTapConfirmButton(_ sender: UIButton) {
         /// 닉네임 분기 처리 후 이동
-        let confirmVC = ConfirmViewController()
+        let typeVC = HabitTypeViewController()
         
-        navigationController?.pushViewController(confirmVC, animated: true)
+        navigationController?.pushViewController(typeVC, animated: true)
     }
     
     // MARK: - Methods

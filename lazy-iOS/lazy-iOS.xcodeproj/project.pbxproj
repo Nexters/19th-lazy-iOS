@@ -53,6 +53,8 @@
 		AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052926B120B90029E67E /* NavigationDelegate.swift */; };
 		AB86052C26B122330029E67E /* ModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052B26B122330029E67E /* ModalDelegate.swift */; };
 		AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */; };
+		ABFA4C3B26B855BE004731F6 /* HabitTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */; };
+		ABFA4C3D26B93089004731F6 /* HabitTypeResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */; };
 		B7D2DDC6465AE19DD610ECC1 /* Pods_lazy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +111,8 @@
 		AB86052926B120B90029E67E /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		AB86052B26B122330029E67E /* ModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDelegate.swift; sourceTree = "<group>"; };
 		AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddHabitViewController+Layout.swift"; sourceTree = "<group>"; };
+		ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTypeViewController.swift; sourceTree = "<group>"; };
+		ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTypeResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				AB00BE8D26B59F9E00A37235 /* OnboardingViewController.swift */,
+				ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */,
+				ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -540,6 +546,7 @@
 				AB42C16626A5C61200EB1B92 /* UIComponentsConstants.swift in Sources */,
 				AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */,
 				AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */,
+				ABFA4C3B26B855BE004731F6 /* HabitTypeViewController.swift in Sources */,
 				AB00BE8126B46FCD00A37235 /* UILabel+Extension.swift in Sources */,
 				AB42C18726A9BFA500EB1B92 /* LabeledRoundedView.swift in Sources */,
 				AB42C17826A5E7C500EB1B92 /* MainViewController+Extension.swift in Sources */,
@@ -547,6 +554,7 @@
 				AB7F6E492699FD8900EF9C6E /* UIView+Extension.swift in Sources */,
 				AB42C17126A5D2D200EB1B92 /* UIFont+Extension.swift in Sources */,
 				AB42C19426AB079D00EB1B92 /* IconCollectionViewCell.swift in Sources */,
+				ABFA4C3D26B93089004731F6 /* HabitTypeResultViewController.swift in Sources */,
 				AB42C18426A9B3B100EB1B92 /* AddHabitViewController.swift in Sources */,
 				AB7F6E4B2699FDB900EF9C6E /* UIDevice+Extension.swift in Sources */,
 				AB42C16426A5C52C00EB1B92 /* DiviceConstants.swift in Sources */,

@@ -44,12 +44,12 @@ class RoundedButton: UIButton {
 
     // MARK: - Initializer
 
-    init() {
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
 
     convenience init(style: RoundedButtonStyle) {
-        self.init()
+        self.init(frame: .zero)
 
         self.style = style
 
