@@ -85,27 +85,27 @@ class ConfirmViewController: UIViewController {
         view.addSubviews([nicknameLabel, mainLabel, subLabel, skipButton, nextButton])
 
         nicknameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(132 * DiviceConstants.heightRatio)
+            make.top.equalToSuperview().offset(132 * DeviceConstants.heightRatio)
             make.leading.equalToSuperview().offset(20)
         }
 
         mainLabel.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(21 * DiviceConstants.heightRatio)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(21 * DeviceConstants.heightRatio)
             make.leading.equalTo(nicknameLabel.snp.leading)
         }
 
         subLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainLabel.snp.bottom).offset(36 * DiviceConstants.heightRatio)
+            make.top.equalTo(mainLabel.snp.bottom).offset(36 * DeviceConstants.heightRatio)
             make.leading.equalTo(mainLabel.snp.leading)
         }
 
         skipButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(65 * DiviceConstants.heightRatio)
+            make.top.equalToSuperview().offset(65 * DeviceConstants.heightRatio)
             make.trailing.equalToSuperview().offset(-35)
         }
 
         nextButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-30 * DiviceConstants.heightRatio)
+            make.bottom.equalToSuperview().offset(-30 * DeviceConstants.heightRatio)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(nextButton.snp.width).multipliedBy(60.0 / 320.0)

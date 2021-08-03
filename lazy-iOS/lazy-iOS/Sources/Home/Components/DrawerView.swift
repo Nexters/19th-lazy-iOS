@@ -133,7 +133,7 @@ class DrawerView: UIView {
 
         plusButton.snp.makeConstraints { make in
             make.centerY.equalTo(guideLabel.snp.centerY)
-            make.width.height.equalTo(DiviceConstants.widthRatio * 24.0)
+            make.width.height.equalTo(DeviceConstants.widthRatio * 24.0)
             make.trailing.equalToSuperview().offset(-20)
         }
         

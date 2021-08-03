@@ -10,6 +10,14 @@ import UIKit
 class HomeViewController: UIViewController {
     // MARK: - UIComponenets
 
+    let backgroundImageView = UIImageView().then {
+        $0.image = UIImage(named: "bg")
+    }
+
+    let backgroundShadowImageView = UIImageView().then {
+        $0.image = UIImage(named: "txtBg")
+    }
+
     // MARK: - Properties
 
     private lazy var animator = UIDynamicAnimator(referenceView: self.bubbleView)
@@ -34,7 +42,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         BubbleBehaviorManager.bubbleBehavior.collisionBehavior.collisionDelegate = BubbleBehaviorManager.bubbleBehavior
         BubbleBehaviorManager.bubbleBehavior.updateBubblePosition()
-        
+
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
@@ -75,7 +83,6 @@ class HomeViewController: UIViewController {
     // MARK: - Methods
 
     func setView() {
-        view.backgroundColor = .black
         overrideUserInterfaceStyle = .dark
 
         animator.addBehavior(BubbleBehaviorManager.bubbleBehavior)
@@ -86,20 +93,34 @@ class HomeViewController: UIViewController {
                 let randomX = CGFloat.random(in: x - 70 ..< x + 70)
                 let size = UIScreen.main.bounds.width * (150.0 / 375.0)
 
-                let bubbleView = UIView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
-                bubbleView.cornerRounds()
-                bubbleView.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
+                let randomImage = Int.random(in: 1 ... 2)
+                let bubble = UIView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
 
-                bubbleView.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(self.handleBubbleView(_:)))]
+                let bubbleIcon = UIImageView(image: UIImage(named: "habbit\(randomImage)"))
+                bubbleIcon.contentMode = .scaleAspectFit
+                bubble.cornerRounds()
+                bubble.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()
 
-                self.view.addSubview(bubbleView)
-                BubbleBehaviorManager.bubbleBehavior.addBubble(bubbleView)
+                bubble.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(self.handleBubbleView(_:)))]
+
+                bubble.addSubview(bubbleIcon)
+                self.view.addSubview(bubble)
+                BubbleBehaviorManager.bubbleBehavior.addBubble(bubble)
             }
         }
     }
 
     func setConstraints() {
-        view.addSubviews([bubbleView, drawerView])
+        view.addSubviews([backgroundImageView, bubbleView, drawerView, backgroundShadowImageView])
+
+        backgroundImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        backgroundShadowImageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(110 * DeviceConstants.heightRatio)
+        }
 
         bubbleView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()

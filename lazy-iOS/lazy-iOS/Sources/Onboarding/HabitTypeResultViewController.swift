@@ -108,17 +108,17 @@ class HabitTypeResultViewController: UIViewController {
         }
 
         mainLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(132 * DiviceConstants.heightRatio)
+            make.top.equalToSuperview().offset(132 * DeviceConstants.heightRatio)
             make.leading.equalTo(20)
         }
 
         subLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainLabel.snp.bottom).offset(36 * DiviceConstants.heightRatio)
+            make.top.equalTo(mainLabel.snp.bottom).offset(36 * DeviceConstants.heightRatio)
             make.leading.equalTo(mainLabel.snp.leading)
         }
 
         skipButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(65 * DiviceConstants.heightRatio)
+            make.top.equalToSuperview().offset(65 * DeviceConstants.heightRatio)
             make.trailing.equalToSuperview().offset(-35)
         }
 
@@ -126,7 +126,7 @@ class HabitTypeResultViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(nextButton.snp.width).multipliedBy(60.0 / 320.0)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-30 * DiviceConstants.heightRatio)
+            make.bottom.equalToSuperview().offset(-30 * DeviceConstants.heightRatio)
         }
     }
 }

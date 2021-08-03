@@ -102,38 +102,38 @@ class HabitTypeViewController: UIViewController {
         view.addSubviews([nicknameLabel, skipButton, type0Button, type1Button, type2Button, type3Button])
 
         nicknameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(132 * DiviceConstants.heightRatio)
+            make.top.equalToSuperview().offset(132 * DeviceConstants.heightRatio)
             make.leading.equalToSuperview().offset(20)
         }
 
         skipButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(65 * DiviceConstants.heightRatio)
+            make.top.equalToSuperview().offset(65 * DeviceConstants.heightRatio)
             make.trailing.equalToSuperview().offset(-35)
         }
 
         type0Button.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(84 * DiviceConstants.heightRatio)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(84 * DeviceConstants.heightRatio)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(type0Button.snp.width).multipliedBy(60.0 / 320.0)
         }
 
         type1Button.snp.makeConstraints { make in
-            make.top.equalTo(type0Button.snp.bottom).offset(20 * DiviceConstants.heightRatio)
+            make.top.equalTo(type0Button.snp.bottom).offset(20 * DeviceConstants.heightRatio)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(type0Button.snp.width).multipliedBy(60.0 / 320.0)
         }
 
         type2Button.snp.makeConstraints { make in
-            make.top.equalTo(type1Button.snp.bottom).offset(20 * DiviceConstants.heightRatio)
+            make.top.equalTo(type1Button.snp.bottom).offset(20 * DeviceConstants.heightRatio)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(type0Button.snp.width).multipliedBy(60.0 / 320.0)
         }
 
         type3Button.snp.makeConstraints { make in
-            make.top.equalTo(type2Button.snp.bottom).offset(20 * DiviceConstants.heightRatio)
+            make.top.equalTo(type2Button.snp.bottom).offset(20 * DeviceConstants.heightRatio)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(type0Button.snp.width).multipliedBy(60.0 / 320.0)

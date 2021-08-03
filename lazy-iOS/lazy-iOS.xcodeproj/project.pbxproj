@@ -19,7 +19,7 @@
 		AB42C15B26A5657600EB1B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15A26A5657600EB1B92 /* TabBarController.swift */; };
 		AB42C15E26A568A400EB1B92 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15D26A568A400EB1B92 /* MyPageViewController.swift */; };
 		AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C16026A5691000EB1B92 /* AnalysisViewController.swift */; };
-		AB42C16426A5C52C00EB1B92 /* DiviceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C16326A5C52C00EB1B92 /* DiviceConstants.swift */; };
+		AB42C16426A5C52C00EB1B92 /* DeviceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C16326A5C52C00EB1B92 /* DeviceConstants.swift */; };
 		AB42C16626A5C61200EB1B92 /* UIComponentsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C16526A5C61200EB1B92 /* UIComponentsConstants.swift */; };
 		AB42C16926A5D1E200EB1B92 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB42C16826A5D1E200EB1B92 /* Pretendard-ExtraBold.otf */; };
 		AB42C16B26A5D1EE00EB1B92 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB42C16A26A5D1EE00EB1B92 /* Pretendard-Medium.otf */; };
@@ -75,7 +75,7 @@
 		AB42C15A26A5657600EB1B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AB42C15D26A568A400EB1B92 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		AB42C16026A5691000EB1B92 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
-		AB42C16326A5C52C00EB1B92 /* DiviceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiviceConstants.swift; sourceTree = "<group>"; };
+		AB42C16326A5C52C00EB1B92 /* DeviceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceConstants.swift; sourceTree = "<group>"; };
 		AB42C16526A5C61200EB1B92 /* UIComponentsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentsConstants.swift; sourceTree = "<group>"; };
 		AB42C16826A5D1E200EB1B92 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		AB42C16A26A5D1EE00EB1B92 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 		AB42C16226A5C49100EB1B92 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				AB42C16326A5C52C00EB1B92 /* DiviceConstants.swift */,
+				AB42C16326A5C52C00EB1B92 /* DeviceConstants.swift */,
 				AB42C16526A5C61200EB1B92 /* UIComponentsConstants.swift */,
 			);
 			path = Constants;
@@ -557,7 +557,7 @@
 				ABFA4C3D26B93089004731F6 /* HabitTypeResultViewController.swift in Sources */,
 				AB42C18426A9B3B100EB1B92 /* AddHabitViewController.swift in Sources */,
 				AB7F6E4B2699FDB900EF9C6E /* UIDevice+Extension.swift in Sources */,
-				AB42C16426A5C52C00EB1B92 /* DiviceConstants.swift in Sources */,
+				AB42C16426A5C52C00EB1B92 /* DeviceConstants.swift in Sources */,
 				AB00BE8426B4739100A37235 /* NicknameViewController.swift in Sources */,
 				AB8604E626ADA4720029E67E /* CustomNavigationBar.swift in Sources */,
 				AB42C19226AB05AB00EB1B92 /* RoundedView.swift in Sources */,

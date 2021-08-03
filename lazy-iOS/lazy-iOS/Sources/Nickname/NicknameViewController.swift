@@ -131,12 +131,12 @@ class NicknameViewController: UIViewController {
         roundedView.addSubviews([nicknameTextField, textFieldIcon])
         
         guideLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(132 * DiviceConstants.heightRatio)
+            make.top.equalToSuperview().offset(132 * DeviceConstants.heightRatio)
             make.leading.equalTo(roundedView.snp.leading)
         }
         
         roundedView.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(40 * DiviceConstants.heightRatio)
+            make.top.equalTo(guideLabel.snp.bottom).offset(40 * DeviceConstants.heightRatio)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(335.0 / 375.0)
             make.height.equalTo(nicknameTextField.snp.width).multipliedBy(60.0 / 335.0)
@@ -154,7 +154,7 @@ class NicknameViewController: UIViewController {
         }
         
         confirmButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-30 * DiviceConstants.heightRatio)
+            make.bottom.equalToSuperview().offset(-30 * DeviceConstants.heightRatio)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(320.0 / 375.0)
             make.height.equalTo(confirmButton.snp.width).multipliedBy(60.0 / 320.0)
