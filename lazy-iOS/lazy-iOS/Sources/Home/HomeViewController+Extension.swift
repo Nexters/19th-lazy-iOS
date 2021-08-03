@@ -7,13 +7,13 @@
 
 import UIKit
 
-extension MainViewController: UITableViewDelegate {
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         59
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         3
     }
@@ -32,7 +32,7 @@ extension MainViewController: UITableViewDataSource {
 
 // MARK: - DrawerViewDelegate
 
-extension MainViewController: DrawerViewDelegate {
+extension HomeViewController: DrawerViewDelegate {
     func presentAddHabitView() {
         let addHabitViewController = AddHabitViewController()
 
@@ -42,7 +42,7 @@ extension MainViewController: DrawerViewDelegate {
 
 // MARK: - HabitCheckButtonDelegate
 
-extension MainViewController: HabitCheckButtonDelegate {
+extension HomeViewController: HabitCheckButtonDelegate {
     func didTapHabitCheckButton(_ sender: UIButton) {
         sender.isSelected.toggle()
     }

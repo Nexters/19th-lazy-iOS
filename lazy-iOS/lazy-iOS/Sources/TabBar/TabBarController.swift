@@ -25,7 +25,7 @@ class TabBarController: UITabBarController {
         tabBar.backgroundColor = .white
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.pretendard(type: .bold, size: 12)], for: .normal)
         
-        let main = MainViewController()
+        let main = HomeViewController()
         let mainBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         main.tabBarItem = mainBarItem
         

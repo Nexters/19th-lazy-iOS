@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class HomeViewController: UIViewController {
     // MARK: - UIComponenets
 
     // MARK: - Properties
