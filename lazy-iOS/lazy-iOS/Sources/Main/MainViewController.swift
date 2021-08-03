@@ -34,6 +34,8 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         BubbleBehaviorManager.bubbleBehavior.collisionBehavior.collisionDelegate = BubbleBehaviorManager.bubbleBehavior
         BubbleBehaviorManager.bubbleBehavior.updateBubblePosition()
+        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -83,7 +85,7 @@ class MainViewController: UIViewController {
                 let x = self.view.bounds.width / 4.0
                 let randomX = CGFloat.random(in: x - 70 ..< x + 70)
                 let size = UIScreen.main.bounds.width * (150.0 / 375.0)
-                
+
                 let bubbleView = UIView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
                 bubbleView.cornerRounds()
                 bubbleView.backgroundColor = [UIColor.systemBlue, UIColor.systemPink, UIColor.systemOrange].randomElement()

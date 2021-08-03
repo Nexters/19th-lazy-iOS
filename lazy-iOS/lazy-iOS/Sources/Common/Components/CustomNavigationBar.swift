@@ -29,7 +29,7 @@ class CustomNavigationBar: UIView {
     lazy var cancelButton = UIButton().then {
         $0.setTitle("취소", for: .normal)
         $0.titleLabel?.font = .pretendard(type: .regular, size: 18)
-        $0.setTitleColor(.mainColor, for: .normal)
+        $0.setTitleColor(.mainPurple, for: .normal)
         $0.addTarget(self, action: #selector(didTapDismiss(_:)), for: .touchUpInside)
     }
 

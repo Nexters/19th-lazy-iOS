@@ -16,6 +16,13 @@ class LoginViewController: UIViewController {
         $0.setTitleColor(.black.withAlphaComponent(0.85), for: .normal)
         $0.titleLabel?.font = .pretendard(type: .medium, size: 16)
         $0.addTarget(self, action: #selector(handleKakaoLoginButton(_:)), for: .touchUpInside)
+        
+        let logo = UIImageView(image: UIImage(named: "iconKakao")?.withTintColor(.black, renderingMode: .alwaysOriginal))
+        $0.addSubview(logo)
+        logo.snp.makeConstraints { make in
+            make.leading.equalTo(18)
+            make.centerY.equalToSuperview()
+        }
     }
     
     private lazy var appleLoginButton = UIButton().then {
@@ -25,7 +32,7 @@ class LoginViewController: UIViewController {
         $0.titleLabel?.font = .pretendard(type: .medium, size: 16)
         $0.addTarget(self, action: #selector(handleAppleLoginButton(_:)), for: .touchUpInside)
         
-        let logo = UIImageView(image: UIImage(named: "Left White Logo Large"))
+        let logo = UIImageView(image: UIImage(named: "iconApple"))
         $0.addSubview(logo)
         logo.snp.makeConstraints { make in
             make.leading.equalTo(15)
@@ -42,7 +49,7 @@ class LoginViewController: UIViewController {
         $0.numberOfLines = 0
         $0.font = .pretendard(type: .medium, size: 28)
         $0.textColor = .white
-        $0.lineSpacing(spacing: 10)
+        $0.lineSpacing(spacing: 5)
     }
     
     let subLabel = UILabel().then {
@@ -50,7 +57,7 @@ class LoginViewController: UIViewController {
         $0.numberOfLines = 0
         $0.font = .pretendard(type: .regular, size: 14)
         $0.textColor = .white
-        $0.lineSpacing(spacing: 10)
+        $0.lineSpacing(spacing: 5)
     }
     
     // MARK: - Properties
@@ -75,7 +82,7 @@ class LoginViewController: UIViewController {
     @objc
     func handleKakaoLoginButton(_ sender: UIButton) {
         SignManager.shared.requestLoginWithKakao {
-            self.navigationController?.pushViewController(TabBarController(), animated: true)
+            self.navigationController?.pushViewController(NicknameViewController(), animated: true)
         }
     }
     

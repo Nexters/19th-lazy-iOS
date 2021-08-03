@@ -36,8 +36,8 @@ class HabitCheckButton: UIButton {
     init(_ day: Int = 0) {
         super.init(frame: .zero)
 
-        setTitleColor(.textPrimary, for: .normal)
-        setTitleColor(.textSecondary, for: .selected)
+        setTitleColor(.gray1, for: .normal)
+        setTitleColor(.gray2, for: .selected)
 
         setTitle("\(day)일 차", for: .normal)
         setTitle("완료", for: .selected)
@@ -55,18 +55,18 @@ class HabitCheckButton: UIButton {
 
     private func changeActive() {
         layer.borderWidth = 1.0
-        layer.borderColor = UIColor.textPrimary.cgColor
+        layer.borderColor = UIColor.gray1.cgColor
 
         backgroundColor = .clear
-        setTitleColor(.textPrimary, for: .normal)
+        setTitleColor(.gray1, for: .normal)
     }
 
     private func changeInActive() {
         layer.borderWidth = 1.0
-        layer.borderColor = UIColor.textCaption.cgColor
+        layer.borderColor = UIColor.gray3.cgColor
 
         backgroundColor = .clear
-        setTitleColor(.textCaption, for: .normal)
+        setTitleColor(.gray3, for: .normal)
     }
 
     private func changeDone() {

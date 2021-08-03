@@ -68,7 +68,7 @@ class AddHabitViewController: UIViewController {
     }
 
     lazy var alarmSwitch = UISwitch().then {
-        $0.onTintColor = .mainColor
+        $0.onTintColor = .mainPurple
         $0.addTarget(self, action: #selector(didTapSwitch(_:)), for: .valueChanged)
     }
     
@@ -94,7 +94,7 @@ class AddHabitViewController: UIViewController {
     lazy var confirmButton = UIButton().then {
         $0.setTitle("추가하기 ", for: .normal)
         $0.titleLabel?.font = .pretendard(type: .bold, size: 16)
-        $0.backgroundColor = .mainColor
+        $0.backgroundColor = .mainPurple
         $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
     
@@ -102,7 +102,7 @@ class AddHabitViewController: UIViewController {
         $0.setTitle("저장", for: .normal)
         $0.titleLabel?.font = .pretendard(type: .medium, size: 18)
         $0.setTitleColor(.lightGray, for: .disabled)
-        $0.setTitleColor(.mainColor, for: .normal)
+        $0.setTitleColor(.mainPurple, for: .normal)
 //        $0.isEnabled = false
         $0.addTarget(self, action: #selector(didTapSaveButton(_:)), for: .touchUpInside)
     }
@@ -118,12 +118,12 @@ class AddHabitViewController: UIViewController {
         willSet(newValue) {
             if newValue {
                 alarmTimeButton.isUserInteractionEnabled = true
-                alarmTimeButton.setTitleColor(.textSecondary, for: .normal)
-                alarmTimeLabel.textColor = .textPrimary
+                alarmTimeButton.setTitleColor(.gray2, for: .normal)
+                alarmTimeLabel.textColor = .gray1
             } else {
                 alarmTimeButton.isUserInteractionEnabled = false
-                alarmTimeButton.setTitleColor(.textCaption, for: .normal)
-                alarmTimeLabel.textColor = .textCaption
+                alarmTimeButton.setTitleColor(.gray3, for: .normal)
+                alarmTimeLabel.textColor = .gray3
             }
         }
     }

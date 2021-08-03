@@ -21,11 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: scene)
         self.window?.overrideUserInterfaceStyle = .light
 
-        let navigationController = UINavigationController(rootViewController: LoginViewController())
+        let navigationController = UINavigationController(rootViewController: TabBarController())
         navigationController.isNavigationBarHidden = true
-        
+
         self.window?.rootViewController = navigationController
-            self.window?.makeKeyAndVisible()
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
