@@ -67,3 +67,13 @@ extension AddHabitViewController: UICollectionViewDelegate {
         isFirst = false
     }
 }
+
+// MARK: - 주석 종류
+
+extension AddHabitViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+
+        return true
+    }
+}

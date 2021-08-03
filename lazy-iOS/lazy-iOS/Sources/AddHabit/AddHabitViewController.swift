@@ -230,6 +230,7 @@ class AddHabitViewController: UIViewController {
     func setDelegate() {
         presentationController?.delegate = self
         navigationBar.modalDelegate = self
+        habitNameTextField.delegate = self
     }
     
     func confirmCancel() {
