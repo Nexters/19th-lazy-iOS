@@ -21,7 +21,7 @@ class AddHabitViewController: UIViewController {
     lazy var dayOfWeekSettingView = LabeledRoundedView(state: .dayOfTheWeek, dayOfWeekCollectionView)
     lazy var dayOfWeekCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         $0.setCollectionViewLayout(layout, animated: true)
         $0.allowsMultipleSelection = true
         $0.dataSource = self
@@ -90,14 +90,7 @@ class AddHabitViewController: UIViewController {
         }
         $0.locale = Locale(identifier: "ko")
     }
-    
-    lazy var confirmButton = UIButton().then {
-        $0.setTitle("추가하기 ", for: .normal)
-        $0.titleLabel?.font = .pretendard(type: .bold, size: 16)
-        $0.backgroundColor = .mainPurple
-        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
-    }
-    
+
     lazy var saveButton = UIButton().then {
         $0.setTitle("저장", for: .normal)
         $0.titleLabel?.font = .pretendard(type: .medium, size: 18)
@@ -142,8 +135,6 @@ class AddHabitViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        confirmButton.cornerRounds()
         
         isModalInPresentation = hasChanges
     }

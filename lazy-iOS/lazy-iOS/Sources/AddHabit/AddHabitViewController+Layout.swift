@@ -9,27 +9,27 @@ import Foundation
 
 extension AddHabitViewController {
     func setConstraints() {
-        view.addSubviews([navigationBar, habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView, confirmButton])
+        view.addSubviews([navigationBar, habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView])
         navigationBar.addSubview(saveButton)
         
         navigationBar.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18)
+            make.top.equalToSuperview().offset(18 * DeviceConstants.heightRatio)
             make.leading.trailing.equalToSuperview()
         }
         
         saveButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-20)
+            make.trailing.equalToSuperview().offset(-20 * DeviceConstants.widthRatio)
             make.centerY.equalToSuperview()
         }
 
         habitSettingView.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom).offset(58)
+            make.top.equalTo(navigationBar.snp.bottom).offset(58 * DeviceConstants.heightRatio)
             make.width.equalToSuperview().multipliedBy(335.0 / 375.0)
             make.centerX.equalToSuperview()
         }
         
         iconSettingView.snp.makeConstraints { make in
-            make.top.equalTo(habitSettingView.snp.bottom).offset(10)
+            make.top.equalTo(habitSettingView.snp.bottom).offset(10 * DeviceConstants.heightRatio)
             make.leading.trailing.equalTo(habitSettingView)
             make.height.equalTo(iconSettingView.snp.width).multipliedBy(70.0 / 335.0)
             make.centerX.equalToSuperview()
@@ -69,12 +69,6 @@ extension AddHabitViewController {
         alarmTimeButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(16)
             make.centerY.equalTo(alarmTimeLabel.snp.centerY)
-        }
-        
-        confirmButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(alarmSettingView)
-            make.bottom.equalToSuperview().offset(-30)
-            make.height.equalTo(confirmButton.snp.width).multipliedBy(56.0 / 335.0)
         }
     }
 }
