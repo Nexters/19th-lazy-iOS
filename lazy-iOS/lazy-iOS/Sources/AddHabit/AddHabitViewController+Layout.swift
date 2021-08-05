@@ -37,7 +37,7 @@ extension AddHabitViewController {
         
         iconCollectionView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(14)
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().offset(-14)
         }
         

@@ -40,17 +40,23 @@ extension AddHabitViewController: UICollectionViewDataSource {
 extension AddHabitViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == dayOfWeekCollectionView {
-            return CGSize(width: 34, height: 34)
+            let width = Int(dayOfWeekCollectionView.frame.width) - (11 * (weeks.count - 1))
+            let size = Double(width) / Double(weeks.count)
+
+            return CGSize(width: size, height: size)
         }
         return CGSize(width: 42, height: 42)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if collectionView == iconCollectionView {
-            return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == dayOfWeekCollectionView {
+            return 11
         }
+        return 6
+    }
 
-        return .zero
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .zero
     }
 }
 
@@ -68,7 +74,7 @@ extension AddHabitViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 주석 종류
+// MARK: - UITextFieldDelegate
 
 extension AddHabitViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
