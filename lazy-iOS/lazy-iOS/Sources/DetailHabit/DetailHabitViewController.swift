@@ -5,6 +5,7 @@
 //  Created by inae Lee on 2021/08/05.
 //
 
+import FSCalendar
 import UIKit
 
 class DetailHabitViewController: UIViewController {
@@ -58,11 +59,32 @@ class DetailHabitViewController: UIViewController {
         $0.text = "오늘 행동해서 쌓인 걸 없애보아요!"
         $0.font = .pretendard(type: .medium, size: 12)
     }
+    
+    let calendar = FSCalendar()
+    
+    lazy var prevButton = UIButton().then {
+        $0.setImage(UIImage(named: "iconPrev"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapPrevButton(_:)), for: .touchUpInside)
+    }
+
+    lazy var nextButton = UIButton().then {
+        $0.setImage(UIImage(named: "iconNext"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
+    }
+    
+    lazy var calenderHeaderLabel = UILabel().then {
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
+        $0.attributedText = NSMutableAttributedString()
+            .addAttributeString(str: "5월\n", size: 20, color: .gray8)
+            .addAttributeString(str: "2021", size: 14, type: .semiBold, color: .gray6)
+    }
 
     // MARK: - Properties
     
     private let buttonWidth = 103 * DeviceConstants.widthRatio
     private let habitAnnouncementText = "일차\n쌓이고 있어요"
+    private var currPage = Date()
     
     // MARK: - Initializer
     
@@ -72,6 +94,7 @@ class DetailHabitViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
+        setCalendar()
         setDelegate()
         setConstraints()
     }
@@ -83,6 +106,12 @@ class DetailHabitViewController: UIViewController {
     
     // MARK: - Actions
     
+    @objc
+    func didTapNextButton(_ sender: UIButton) {}
+
+    @objc
+    func didTapPrevButton(_ sender: UIButton) {}
+
     // MARK: - Methods
     
     func setView() {
@@ -96,7 +125,7 @@ class DetailHabitViewController: UIViewController {
     func setConstraints() {
         navigationBar.addSubview(editButton)
         displayView.addSubviews([habitLabel, habitDayLabel, messageLabel])
-        contentView.addSubviews([habitsCollectionView, displayView])
+        contentView.addSubviews([habitsCollectionView, displayView, prevButton, calenderHeaderLabel, nextButton, calendar])
         scrollView.addSubview(contentView)
         view.addSubviews([navigationBar, scrollView])
         
@@ -145,6 +174,53 @@ class DetailHabitViewController: UIViewController {
             make.leading.equalTo(habitDayLabel.snp.leading)
             make.bottom.equalToSuperview().offset(-34)
         }
+        
+        calenderHeaderLabel.snp.makeConstraints { make in
+            make.top.equalTo(displayView.snp.bottom).offset(28)
+            make.centerX.equalToSuperview()
+        }
+        
+        prevButton.snp.makeConstraints { make in
+            make.centerY.equalTo(calenderHeaderLabel.snp.centerY)
+            make.trailing.equalTo(calenderHeaderLabel.snp.leading).offset(-20 * DeviceConstants.widthRatio)
+        }
+         
+        nextButton.snp.makeConstraints { make in
+            make.centerY.equalTo(calenderHeaderLabel.snp.centerY)
+            make.leading.equalTo(calenderHeaderLabel.snp.trailing).offset(20 * DeviceConstants.widthRatio)
+        }
+        
+        calendar.snp.makeConstraints { make in
+            make.top.equalTo(calenderHeaderLabel.snp.bottom).offset(26)
+            make.leading.trailing.equalToSuperview().inset(18 * DeviceConstants.widthRatio)
+            make.height.equalTo(200 * DeviceConstants.heightRatio)
+        }
+    }
+    
+    func setCalendar() {
+        calendar.scope = .month
+        calendar.dataSource = self
+
+        /// 요일 한글 변환
+        calendar.locale = Locale(identifier: "ko_KR")
+
+        /// 날짜 선택
+        calendar.allowsMultipleSelection = false
+        calendar.allowsSelection = false
+
+        /// textColor
+        calendar.appearance.weekdayTextColor = .gray8
+
+        /// hide top, bottom border
+//        calendar.clipsToBounds = true
+
+        calendar.today = nil /// 오늘 표시 숨기기
+
+        /// Header
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
+        calendar.headerHeight = 0
+
+//        calendarHeaderLabel.text = dateFormatter.string(from: calendar.currentPage)
     }
 }
 
@@ -180,3 +256,6 @@ extension DetailHabitViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+/// 날짜 아래 이미지 띄우기
+extension DetailHabitViewController: FSCalendarDataSource {}
