@@ -19,7 +19,7 @@ class HabitButtonCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        button.setTitle("런데이하기gjsepdlfkma;ldfkm", for: .normal)
+        button.setTitle("런데이하기", for: .normal)
         button.setBorderColor(color: UIColor(228, 228, 228, 1))
         button.titleLabel?.font = .pretendard(type: .medium, size: 12)
         setConstraints()

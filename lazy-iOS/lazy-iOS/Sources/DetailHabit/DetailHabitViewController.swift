@@ -30,9 +30,36 @@ class DetailHabitViewController: UIViewController {
         $0.dataSource = self
     }
     
+    let displayView = UIView().then {
+        $0.backgroundColor = .gray1
+        $0.cornerRound(radius: 10)
+    }
+    
+    lazy var habitLabel = UILabel().then {
+        $0.text = "런데이하기가"
+        $0.font = .pretendard(type: .medium, size: 20)
+        $0.textColor = .gray8
+        $0.lineBreakMode = .byTruncatingTail
+    }
+
+    lazy var habitDayLabel = UILabel().then {
+        $0.font = .pretendard(type: .bold, size: 52)
+        $0.numberOfLines = 0
+        $0.attributedText = NSMutableAttributedString()
+            .addAttributeString(str: "5", size: 52, type: .bold, color: .mainPurple)
+            .addAttributeString(str: self.habitAnnouncementText, size: 20, type: .bold, color: .gray8)
+    }
+    
+    let messageLabel = UILabel().then {
+        $0.textColor = .gray8
+        $0.text = "오늘 행동해서 쌓인 걸 없애보아요!"
+        $0.font = .pretendard(type: .medium, size: 12)
+    }
+
     // MARK: - Properties
     
     private let buttonWidth = 103 * DeviceConstants.widthRatio
+    private let habitAnnouncementText = "일차\n쌓이고 있어요"
     
     // MARK: - Initializer
     
@@ -65,7 +92,8 @@ class DetailHabitViewController: UIViewController {
     
     func setConstraints() {
         navigationBar.addSubview(editButton)
-        view.addSubviews([navigationBar, habitsCollectionView])
+        displayView.addSubviews([habitLabel, habitDayLabel, messageLabel])
+        view.addSubviews([navigationBar, habitsCollectionView, displayView])
         
         editButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20 * DeviceConstants.widthRatio)
@@ -80,6 +108,28 @@ class DetailHabitViewController: UIViewController {
             make.top.equalTo(navigationBar.snp.bottom).offset(38 * DeviceConstants.heightRatio)
             make.leading.trailing.equalToSuperview().inset(20 * DeviceConstants.widthRatio)
             make.height.equalTo(32 * DeviceConstants.heightRatio)
+        }
+        
+        displayView.snp.makeConstraints { make in
+            make.top.equalTo(habitsCollectionView.snp.bottom).offset(16)
+            make.width.equalToSuperview().multipliedBy(335.0 / 375.0)
+            make.height.equalTo(203 * DeviceConstants.heightRatio)
+            make.centerX.equalToSuperview()
+        }
+        
+        habitLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(28)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        habitDayLabel.snp.makeConstraints { make in
+            make.top.equalTo(habitLabel.snp.bottom)
+            make.leading.equalTo(habitLabel.snp.leading)
+        }
+        
+        messageLabel.snp.makeConstraints { make in
+            make.leading.equalTo(habitDayLabel.snp.leading)
+            make.bottom.equalToSuperview().offset(-34)
         }
     }
 }
