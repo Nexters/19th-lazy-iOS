@@ -15,13 +15,13 @@ class HabitTypeResultViewController: UIViewController {
     private let mainLabel = UILabel().then {
         $0.font = .pretendard(type: .medium, size: 24)
         $0.numberOfLines = 0
-        $0.textColor = .gray1
+        $0.textColor = .gray8
     }
 
     private let subLabel = UILabel().then {
         $0.font = .pretendard(type: .medium, size: 16)
         $0.numberOfLines = 0
-        $0.textColor = .gray3
+        $0.textColor = .gray6
         $0.lineSpacing(spacing: 5)
     }
 
@@ -32,7 +32,7 @@ class HabitTypeResultViewController: UIViewController {
         $0.titleLabel?.font = .pretendard(type: .medium, size: 14)
         $0.titleLabel?.attributedText = title
         $0.setTitle(text, for: .normal)
-        $0.setTitleColor(.gray3, for: .normal)
+        $0.setTitleColor(.gray6, for: .normal)
         $0.addTarget(self, action: #selector(didTapSkipButton(_:)), for: .touchUpInside)
     }
 

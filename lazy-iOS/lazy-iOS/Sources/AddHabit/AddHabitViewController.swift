@@ -118,12 +118,12 @@ class AddHabitViewController: UIViewController {
         willSet(newValue) {
             if newValue {
                 alarmTimeButton.isUserInteractionEnabled = true
-                alarmTimeButton.setTitleColor(.gray2, for: .normal)
-                alarmTimeLabel.textColor = .gray1
+                alarmTimeButton.setTitleColor(.gray7, for: .normal)
+                alarmTimeLabel.textColor = .gray8
             } else {
                 alarmTimeButton.isUserInteractionEnabled = false
-                alarmTimeButton.setTitleColor(.gray3, for: .normal)
-                alarmTimeLabel.textColor = .gray3
+                alarmTimeButton.setTitleColor(.gray6, for: .normal)
+                alarmTimeLabel.textColor = .gray6
             }
         }
     }

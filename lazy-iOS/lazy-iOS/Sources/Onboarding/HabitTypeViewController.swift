@@ -14,7 +14,7 @@ class HabitTypeViewController: UIViewController {
         $0.font = .pretendard(type: .medium, size: 28)
         $0.text = "밍굴맹굴님의\n습관 유형은 무엇인가요?"
         $0.numberOfLines = 0
-        $0.textColor = .gray1
+        $0.textColor = .gray8
         $0.lineSpacing(spacing: 5)
 
         if let text = $0.text {
@@ -31,7 +31,7 @@ class HabitTypeViewController: UIViewController {
         $0.titleLabel?.font = .pretendard(type: .medium, size: 14)
         $0.titleLabel?.attributedText = title
         $0.setTitle(text, for: .normal)
-        $0.setTitleColor(.gray3, for: .normal)
+        $0.setTitleColor(.gray6, for: .normal)
         $0.addTarget(self, action: #selector(didTapSkipButton(_:)), for: .touchUpInside)
     }
 

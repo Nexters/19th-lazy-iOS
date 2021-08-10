@@ -37,7 +37,7 @@ class RoundedButton: UIButton {
                 setTitleColor(.white, for: .normal)
             case .white:
                 backgroundColor = .white
-                setTitleColor(.gray1, for: .normal)
+                setTitleColor(.gray8, for: .normal)
             }
         }
     }
@@ -59,7 +59,7 @@ class RoundedButton: UIButton {
             labelColor = .white
         case .white:
             bgColor = .white
-            labelColor = .gray1
+            labelColor = .gray8
         }
 
         setButton()
@@ -96,7 +96,7 @@ class RoundedButton: UIButton {
     }
 
     func changeInactive() {
-        setTitleColor(.gray3, for: .disabled)
+        setTitleColor(.gray6, for: .disabled)
         backgroundColor = .gray5
     }
 }
