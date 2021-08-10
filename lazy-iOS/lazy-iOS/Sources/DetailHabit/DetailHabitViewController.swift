@@ -92,8 +92,8 @@ class DetailHabitViewController: UIViewController {
 
     // MARK: - Properties
     
-    private let buttonWidth = 103 * DeviceConstants.widthRatio
-    private let habitAnnouncementText = "일차\n쌓이고 있어요"
+    let buttonWidth = 103 * DeviceConstants.widthRatio
+    let habitAnnouncementText = "일차\n쌓이고 있어요"
     private var currPage = Date()
     
     // MARK: - Initializer
@@ -132,87 +132,6 @@ class DetailHabitViewController: UIViewController {
         navigationBar.navigationDelegate = self
     }
     
-    func setConstraints() {
-        navigationBar.addSubview(editButton)
-        displayView.addSubviews([habitLabel, habitDayLabel, messageLabel])
-        contentView.addSubviews([habitsCollectionView, displayView, prevButton, calenderHeaderLabel, nextButton, calendar, giveUpButton])
-        scrollView.addSubview(contentView)
-        view.addSubviews([navigationBar, scrollView])
-        
-        scrollView.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom)
-            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        contentView.snp.makeConstraints { make in
-            make.top.bottom.width.equalToSuperview()
-        }
-        
-        editButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-20 * DeviceConstants.widthRatio)
-            make.centerY.equalToSuperview()
-        }
-        
-        navigationBar.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        habitsCollectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(38)
-            make.leading.trailing.equalToSuperview().inset(20 * DeviceConstants.widthRatio)
-            make.height.equalTo(32 * DeviceConstants.heightRatio)
-        }
-        
-        displayView.snp.makeConstraints { make in
-            make.top.equalTo(habitsCollectionView.snp.bottom).offset(16)
-            make.width.equalToSuperview().multipliedBy(335.0 / 375.0)
-            make.height.equalTo(203 * DeviceConstants.heightRatio)
-            make.centerX.equalToSuperview()
-        }
-        
-        habitLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(28)
-            make.leading.trailing.equalToSuperview().inset(20)
-        }
-        
-        habitDayLabel.snp.makeConstraints { make in
-            make.top.equalTo(habitLabel.snp.bottom)
-            make.leading.equalTo(habitLabel.snp.leading)
-        }
-        
-        messageLabel.snp.makeConstraints { make in
-            make.leading.equalTo(habitDayLabel.snp.leading)
-            make.bottom.equalToSuperview().offset(-34)
-        }
-        
-        calenderHeaderLabel.snp.makeConstraints { make in
-            make.top.equalTo(displayView.snp.bottom).offset(28)
-            make.centerX.equalToSuperview()
-        }
-        
-        prevButton.snp.makeConstraints { make in
-            make.centerY.equalTo(calenderHeaderLabel.snp.centerY)
-            make.trailing.equalTo(calenderHeaderLabel.snp.leading).offset(-20 * DeviceConstants.widthRatio)
-        }
-         
-        nextButton.snp.makeConstraints { make in
-            make.centerY.equalTo(calenderHeaderLabel.snp.centerY)
-            make.leading.equalTo(calenderHeaderLabel.snp.trailing).offset(20 * DeviceConstants.widthRatio)
-        }
-        
-        calendar.snp.makeConstraints { make in
-            make.top.equalTo(calenderHeaderLabel.snp.bottom).offset(26)
-            make.leading.trailing.equalToSuperview().inset(18 * DeviceConstants.widthRatio)
-            make.height.equalTo(250 * DeviceConstants.heightRatio)
-        }
-        
-        giveUpButton.snp.makeConstraints { make in
-            make.top.equalTo(calendar.snp.bottom).offset(50)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-30)
-        }
-    }
-    
     func setCalendar() {
         calendar.scope = .month
         calendar.dataSource = self
@@ -239,39 +158,3 @@ class DetailHabitViewController: UIViewController {
 //        calendarHeaderLabel.text = dateFormatter.string(from: calendar.currentPage)
     }
 }
-
-extension DetailHabitViewController: NavigationDelegate {
-    func pop() {
-        navigationController?.popViewController(animated: true)
-    }
-}
-
-// MARK: - UICollectionViewFlowLayout
-
-extension DetailHabitViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = habitsCollectionView.frame.height
-        return CGSize(width: buttonWidth, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        ((habitsCollectionView.frame.width - (buttonWidth * 3)) / 2)
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension DetailHabitViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: HabitButtonCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        
-        return cell
-    }
-}
-
-/// 날짜 아래 이미지 띄우기
-extension DetailHabitViewController: FSCalendarDataSource {}
