@@ -79,6 +79,16 @@ class DetailHabitViewController: UIViewController {
             .addAttributeString(str: "5월\n", size: 20, color: .gray8)
             .addAttributeString(str: "2021", size: 14, type: .semiBold, color: .gray6)
     }
+    
+    lazy var giveUpButton = UIButton().then {
+        let text = "습관 포기"
+        $0.setTitle(text, for: .normal)
+        $0.setTitleColor(.gray7, for: .normal)
+        $0.titleLabel?.font = .pretendard(type: .medium, size: 16)
+        let title = NSMutableAttributedString(string: text)
+        title.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange(location: 0, length: text.count))
+        $0.titleLabel?.attributedText = title
+    }
 
     // MARK: - Properties
     
@@ -125,7 +135,7 @@ class DetailHabitViewController: UIViewController {
     func setConstraints() {
         navigationBar.addSubview(editButton)
         displayView.addSubviews([habitLabel, habitDayLabel, messageLabel])
-        contentView.addSubviews([habitsCollectionView, displayView, prevButton, calenderHeaderLabel, nextButton, calendar])
+        contentView.addSubviews([habitsCollectionView, displayView, prevButton, calenderHeaderLabel, nextButton, calendar, giveUpButton])
         scrollView.addSubview(contentView)
         view.addSubviews([navigationBar, scrollView])
         
@@ -193,7 +203,13 @@ class DetailHabitViewController: UIViewController {
         calendar.snp.makeConstraints { make in
             make.top.equalTo(calenderHeaderLabel.snp.bottom).offset(26)
             make.leading.trailing.equalToSuperview().inset(18 * DeviceConstants.widthRatio)
-            make.height.equalTo(200 * DeviceConstants.heightRatio)
+            make.height.equalTo(250 * DeviceConstants.heightRatio)
+        }
+        
+        giveUpButton.snp.makeConstraints { make in
+            make.top.equalTo(calendar.snp.bottom).offset(50)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-30)
         }
     }
     
