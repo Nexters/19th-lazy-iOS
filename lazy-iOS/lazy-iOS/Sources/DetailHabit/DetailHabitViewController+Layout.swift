@@ -42,12 +42,12 @@ extension DetailHabitViewController {
         displayView.snp.makeConstraints { make in
             make.top.equalTo(habitsCollectionView.snp.bottom).offset(16)
             make.width.equalToSuperview().multipliedBy(335.0 / 375.0)
-            make.height.equalTo(203 * DeviceConstants.heightRatio)
+            make.height.equalTo(displayView.snp.width).multipliedBy(203.0 / 335.0)
             make.centerX.equalToSuperview()
         }
         
         habitLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(28)
+            make.top.equalToSuperview().offset(28 * DeviceConstants.heightRatio)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         
@@ -58,7 +58,7 @@ extension DetailHabitViewController {
         
         messageLabel.snp.makeConstraints { make in
             make.leading.equalTo(habitDayLabel.snp.leading)
-            make.bottom.equalToSuperview().offset(-34)
+            make.bottom.equalToSuperview().offset(-34 * DeviceConstants.heightRatio)
         }
         
         calenderHeaderLabel.snp.makeConstraints { make in
