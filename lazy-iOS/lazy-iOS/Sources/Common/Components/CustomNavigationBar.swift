@@ -17,7 +17,7 @@ class CustomNavigationBar: UIView {
     // MARK: - UIComponents
 
     let titleLabel = UILabel().then {
-        $0.font = .pretendard(type: .bold, size: 18)
+        $0.font = .pretendard(type: .semiBold, size: 18)
         $0.textColor = UIColor(25, 31, 40, 1)
     }
 

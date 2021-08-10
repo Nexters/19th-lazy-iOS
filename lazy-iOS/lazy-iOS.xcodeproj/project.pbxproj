@@ -55,6 +55,7 @@
 		AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */; };
 		ABFA4C3B26B855BE004731F6 /* HabitTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */; };
 		ABFA4C3D26B93089004731F6 /* HabitTypeResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */; };
+		ABFA4C7E26BBF222004731F6 /* DetailHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C7D26BBF222004731F6 /* DetailHabitViewController.swift */; };
 		B7D2DDC6465AE19DD610ECC1 /* Pods_lazy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddHabitViewController+Layout.swift"; sourceTree = "<group>"; };
 		ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTypeViewController.swift; sourceTree = "<group>"; };
 		ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTypeResultViewController.swift; sourceTree = "<group>"; };
+		ABFA4C7D26BBF222004731F6 /* DetailHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHabitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +305,7 @@
 		AB7F6E3F2699F6A500EF9C6E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				ABFA4C7C26BBF1FB004731F6 /* DetailHabit */,
 				AB00BE8C26B59F8400A37235 /* Onboarding */,
 				AB00BE8226B4731000A37235 /* Nickname */,
 				AB42C18226A9B37900EB1B92 /* AddHabit */,
@@ -409,6 +412,14 @@
 				AB86052B26B122330029E67E /* ModalDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		ABFA4C7C26BBF1FB004731F6 /* DetailHabit */ = {
+			isa = PBXGroup;
+			children = (
+				ABFA4C7D26BBF222004731F6 /* DetailHabitViewController.swift */,
+			);
+			path = DetailHabit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,6 +544,7 @@
 				AB00BE7B26B31C8900A37235 /* HabitCheckButton.swift in Sources */,
 				AB7F6E3026997ABD00EF9C6E /* HomeViewController.swift in Sources */,
 				AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */,
+				ABFA4C7E26BBF222004731F6 /* DetailHabitViewController.swift in Sources */,
 				AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */,
 				AB7F6E54269A02E100EF9C6E /* KeyConstants.swift in Sources */,
 				AB86052C26B122330029E67E /* ModalDelegate.swift in Sources */,

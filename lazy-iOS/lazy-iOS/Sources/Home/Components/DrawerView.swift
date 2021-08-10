@@ -44,7 +44,6 @@ class DrawerView: UIView {
         $0.backgroundColor = .white
         $0.alwaysBounceVertical = false
         $0.separatorStyle = .none
-        $0.allowsSelection = false
     }
     
     // MARK: - Properties
