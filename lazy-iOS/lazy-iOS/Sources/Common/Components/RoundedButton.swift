@@ -81,6 +81,15 @@ class RoundedButton: UIButton {
         titleLabel?.font = .pretendard(type: .bold, size: 16)
     }
 
+    func setBorderColor(color: UIColor) {
+        layer.borderWidth = 1.0
+        layer.borderColor = color.cgColor
+    }
+
+    func removeBorderColor() {
+        layer.borderWidth = 0.0
+    }
+
     func changeActive() {
         setTitleColor(labelColor, for: .normal)
         backgroundColor = bgColor

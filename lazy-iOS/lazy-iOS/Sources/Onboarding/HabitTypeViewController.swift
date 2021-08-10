@@ -37,32 +37,28 @@ class HabitTypeViewController: UIViewController {
 
     lazy var type0Button = RoundedButton(style: .white).then {
         $0.setTitle("앗 내게 습관이 있었던가?", for: .normal)
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.gray1.cgColor
+        $0.setBorderColor(color: UIColor.gray)
         $0.addTarget(self, action: #selector(didTapTypeButton(_:)), for: .touchUpInside)
         $0.tag = 0
     }
 
     lazy var type1Button = RoundedButton(style: .white).then {
         $0.setTitle("습관 계획세우기 귀찮아요", for: .normal)
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.gray1.cgColor
+        $0.setBorderColor(color: UIColor.gray)
         $0.addTarget(self, action: #selector(didTapTypeButton(_:)), for: .touchUpInside)
         $0.tag = 1
     }
 
     lazy var type2Button = RoundedButton(style: .white).then {
         $0.setTitle("습관달성한 날이 손에 꼽아요", for: .normal)
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.gray1.cgColor
+        $0.setBorderColor(color: UIColor.gray)
         $0.addTarget(self, action: #selector(didTapTypeButton(_:)), for: .touchUpInside)
         $0.tag = 2
     }
 
     lazy var type3Button = RoundedButton(style: .white).then {
         $0.setTitle("습관 뺴먹은 날이 너무 아까워요", for: .normal)
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.gray1.cgColor
+        $0.setBorderColor(color: UIColor.gray)
         $0.addTarget(self, action: #selector(didTapTypeButton(_:)), for: .touchUpInside)
         $0.tag = 3
     }
