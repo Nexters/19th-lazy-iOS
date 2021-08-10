@@ -27,6 +27,7 @@ class DetailHabitViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
+        setDelegate()
         setConstraints()
     }
     
@@ -41,6 +42,10 @@ class DetailHabitViewController: UIViewController {
     
     func setView() {
         view.backgroundColor = .white
+    }
+    
+    func setDelegate() {
+        navigationBar.navigationDelegate = self
     }
     
     func setConstraints() {
@@ -58,4 +63,10 @@ class DetailHabitViewController: UIViewController {
     }
     
     // MARK: - Protocols
+}
+
+extension DetailHabitViewController: NavigationDelegate {
+    func pop() {
+        navigationController?.popViewController(animated: true)
+    }
 }
