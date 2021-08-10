@@ -17,6 +17,9 @@ class DetailHabitViewController: UIViewController {
         $0.setTitleColor(.mainPurple, for: .normal)
     }
     
+    let scrollView = UIScrollView()
+    let contentView = UIView()
+    
     lazy var habitsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -93,7 +96,18 @@ class DetailHabitViewController: UIViewController {
     func setConstraints() {
         navigationBar.addSubview(editButton)
         displayView.addSubviews([habitLabel, habitDayLabel, messageLabel])
-        view.addSubviews([navigationBar, habitsCollectionView, displayView])
+        contentView.addSubviews([habitsCollectionView, displayView])
+        scrollView.addSubview(contentView)
+        view.addSubviews([navigationBar, scrollView])
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(navigationBar.snp.bottom)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.top.bottom.width.equalToSuperview()
+        }
         
         editButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20 * DeviceConstants.widthRatio)
@@ -105,7 +119,7 @@ class DetailHabitViewController: UIViewController {
         }
         
         habitsCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom).offset(38 * DeviceConstants.heightRatio)
+            make.top.equalToSuperview().offset(38)
             make.leading.trailing.equalToSuperview().inset(20 * DeviceConstants.widthRatio)
             make.height.equalTo(32 * DeviceConstants.heightRatio)
         }
