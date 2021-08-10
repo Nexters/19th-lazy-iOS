@@ -7,6 +7,8 @@
 
 import UIKit
 
+// TODO: - 안쓰기 각임..
+
 class PopUpViewController: UIViewController {
     // MARK: - UIComponents
 

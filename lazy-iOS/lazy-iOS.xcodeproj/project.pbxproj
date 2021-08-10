@@ -53,6 +53,7 @@
 		AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052926B120B90029E67E /* NavigationDelegate.swift */; };
 		AB86052C26B122330029E67E /* ModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052B26B122330029E67E /* ModalDelegate.swift */; };
 		AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */; };
+		ABE9555A26C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9555926C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift */; };
 		ABFA4C3B26B855BE004731F6 /* HabitTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */; };
 		ABFA4C3D26B93089004731F6 /* HabitTypeResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */; };
 		ABFA4C7E26BBF222004731F6 /* DetailHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C7D26BBF222004731F6 /* DetailHabitViewController.swift */; };
@@ -112,6 +113,7 @@
 		AB86052926B120B90029E67E /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		AB86052B26B122330029E67E /* ModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDelegate.swift; sourceTree = "<group>"; };
 		AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddHabitViewController+Layout.swift"; sourceTree = "<group>"; };
+		ABE9555926C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTypeViewController.swift; sourceTree = "<group>"; };
 		ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTypeResultViewController.swift; sourceTree = "<group>"; };
 		ABFA4C7D26BBF222004731F6 /* DetailHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHabitViewController.swift; sourceTree = "<group>"; };
@@ -414,9 +416,18 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		ABE9555826C29F21001E51F5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ABE9555926C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		ABFA4C7C26BBF1FB004731F6 /* DetailHabit */ = {
 			isa = PBXGroup;
 			children = (
+				ABE9555826C29F21001E51F5 /* Cell */,
 				ABFA4C7D26BBF222004731F6 /* DetailHabitViewController.swift */,
 			);
 			path = DetailHabit;
@@ -572,6 +583,7 @@
 				AB42C16426A5C52C00EB1B92 /* DeviceConstants.swift in Sources */,
 				AB00BE8426B4739100A37235 /* NicknameViewController.swift in Sources */,
 				AB8604E626ADA4720029E67E /* CustomNavigationBar.swift in Sources */,
+				ABE9555A26C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift in Sources */,
 				AB42C19226AB05AB00EB1B92 /* RoundedView.swift in Sources */,
 				AB42C17D26A839B200EB1B92 /* PopUpViewController.swift in Sources */,
 				AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */,
