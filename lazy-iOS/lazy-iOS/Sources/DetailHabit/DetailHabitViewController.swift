@@ -36,7 +36,7 @@ class DetailHabitViewController: UIViewController {
     
     let displayView = UIView().then {
         $0.backgroundColor = .gray1
-        $0.cornerRound(radius: 10)
+        $0.cornerRound(radius: 12)
     }
     
     lazy var habitLabel = UILabel().then {

@@ -21,7 +21,7 @@ extension DetailHabitViewController {
         }
         
         contentView.snp.makeConstraints { make in
-            make.top.bottom.width.equalToSuperview()
+            make.top.bottom.leading.trailing.width.equalToSuperview()
         }
         
         editButton.snp.makeConstraints { make in
