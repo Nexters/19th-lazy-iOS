@@ -16,6 +16,7 @@ class DetailHabitViewController: UIViewController {
     lazy var editButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
         $0.setTitleColor(.mainPurple, for: .normal)
+        $0.addTarget(self, action: #selector(didTapEditButton(_:)), for: .touchUpInside)
     }
     
     let scrollView = UIScrollView()
@@ -151,6 +152,13 @@ class DetailHabitViewController: UIViewController {
         alert.addAction(continueAction)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc
+    func didTapEditButton(_ sender: UIButton) {
+        let editHabitVC = AddHabitViewController(mode: .edit)
+        
+        present(editHabitVC, animated: true, completion: nil)
     }
 
     // MARK: - Methods

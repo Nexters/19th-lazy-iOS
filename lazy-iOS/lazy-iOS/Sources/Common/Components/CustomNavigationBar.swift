@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum NavigationState {
+enum NavigationMode {
     case navigation
     case modal
     case none
@@ -38,7 +38,7 @@ class CustomNavigationBar: UIView {
     var navigationDelegate: NavigationDelegate?
     var modalDelegate: ModalDelegate?
 
-    init(_ title: String, state: NavigationState) {
+    init(_ title: String, state: NavigationMode) {
         super.init(frame: .zero)
 
         self.titleLabel.text = title
@@ -80,7 +80,7 @@ class CustomNavigationBar: UIView {
         self.modalDelegate?.dismiss()
     }
 
-    func setView(_ state: NavigationState) {
+    func setView(_ state: NavigationMode) {
         switch state {
         case .navigation:
             self.cancelButton.isHidden = true

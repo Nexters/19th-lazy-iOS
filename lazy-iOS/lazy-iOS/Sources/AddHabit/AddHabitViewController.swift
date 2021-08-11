@@ -7,10 +7,15 @@
 
 import UIKit
 
+enum habitMode: String {
+    case add = "새로운 습관"
+    case edit = "습관 편집"
+}
+
 class AddHabitViewController: UIViewController {
     // MARK: - UIComponenets
     
-    let navigationBar = CustomNavigationBar("새로운 습관", state: .modal)
+    let navigationBar = CustomNavigationBar("", state: .modal)
     
     lazy var habitSettingView = LabeledRoundedView(state: .setHabit, habitNameTextField)
     lazy var habitNameTextField = UITextField().then {
@@ -129,6 +134,17 @@ class AddHabitViewController: UIViewController {
     }
     
     // MARK: - Initializer
+    
+    init(mode: habitMode, habit: Data? = nil) {
+        navigationBar.titleLabel.text = mode.rawValue
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LifeCycle
 
