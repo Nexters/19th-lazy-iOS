@@ -234,7 +234,7 @@ class AddHabitViewController: UIViewController {
     }
     
     func confirmCancel() {
-        let alert = UIAlertController(title: "수정을 완료하지 않고 나가시겠어요?", message: "포기하면 다시 되돌릴 수 없어요.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "수정을 완료하지 않고 나가시겠어요?", message: "포기하면 다시 되돌릴 수 없어요", preferredStyle: .alert)
         
         let continueAction = UIAlertAction(title: "계속하기", style: .default, handler: nil)
         let cancelAction = UIAlertAction(title: "그만하기", style: .cancel) { _ in

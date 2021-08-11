@@ -86,6 +86,7 @@ class DetailHabitViewController: UIViewController {
         let title = NSMutableAttributedString(string: text)
         title.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange(location: 0, length: text.count))
         $0.titleLabel?.attributedText = title
+        $0.addTarget(self, action: #selector(didTapGiveUpButton(_:)), for: .touchUpInside)
     }
 
     // MARK: - Properties
@@ -135,6 +136,21 @@ class DetailHabitViewController: UIViewController {
     @objc
     func didTapPrevButton(_ sender: UIButton) {
         didChangeCalendarPage(at: -1)
+    }
+    
+    @objc
+    func didTapGiveUpButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "이대로 습관을\n포기하시겠다구요?", message: "포기하면 다시 되돌릴 수 없어요", preferredStyle: .alert)
+        
+        let continueAction = UIAlertAction(title: "계속하기", style: .cancel, handler: nil)
+        let giveUpAction = UIAlertAction(title: "포기하기", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(giveUpAction)
+        alert.addAction(continueAction)
+        
+        present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Methods

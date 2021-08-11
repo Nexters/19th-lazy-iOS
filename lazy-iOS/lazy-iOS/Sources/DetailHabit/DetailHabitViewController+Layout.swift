@@ -84,9 +84,9 @@ extension DetailHabitViewController {
         }
         
         giveUpButton.snp.makeConstraints { make in
-            make.top.equalTo(calendar.snp.bottom).offset(36)
+            make.top.equalTo(calendar.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-30)
+            make.bottom.equalToSuperview().offset(-14)
         }
     }
 }
