@@ -11,6 +11,12 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         59
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailHabitViewController = DetailHabitViewController()
+
+        navigationController?.pushViewController(detailHabitViewController, animated: true)
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -21,7 +27,8 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeHabitTableViewCell.identifier, for: indexPath) as? HomeHabitTableViewCell else { return UITableViewCell() }
         cell.checkButtonDelegate = self
-        
+        cell.selectionStyle = .none
+
         if indexPath.row == 1 {
             cell.changeInActive()
         }
@@ -34,7 +41,7 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: DrawerViewDelegate {
     func presentAddHabitView() {
-        let addHabitViewController = AddHabitViewController()
+        let addHabitViewController = AddHabitViewController(mode: .add)
 
         self.present(addHabitViewController, animated: true, completion: nil)
     }

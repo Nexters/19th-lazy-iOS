@@ -13,7 +13,7 @@ class NicknameViewController: UIViewController {
     
     let guideLabel = UILabel().then {
         $0.text = "뭐라고 부르면 될까요?"
-        $0.textColor = .gray1
+        $0.textColor = .gray8
         $0.font = .pretendard(type: .medium, size: 28)
     }
     
@@ -22,7 +22,7 @@ class NicknameViewController: UIViewController {
     lazy var nicknameTextField = UITextField().then {
         $0.font = .pretendard(type: .medium, size: 18)
         $0.placeholder = "닉네임을 입력하세요"
-        $0.textColor = .gray1
+        $0.textColor = .gray8
         $0.autocorrectionType = .no
         $0.addTarget(self, action: #selector(editTextField(_:)), for: .editingChanged)
         $0.delegate = self

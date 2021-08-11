@@ -47,7 +47,7 @@ class HomeViewController: UIViewController {
         BubbleBehaviorManager.bubbleBehavior.collisionBehavior.collisionDelegate = BubbleBehaviorManager.bubbleBehavior
         BubbleBehaviorManager.bubbleBehavior.updateBubblePosition()
 
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+//        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     override func viewDidDisappear(_ animated: Bool) {

@@ -10,5 +10,5 @@ target 'lazy-iOS' do
   pod 'Then'
   pod 'Moya', '~> 14.0'
   pod 'KakaoSDK'
-
+  pod 'FSCalendar'
 end

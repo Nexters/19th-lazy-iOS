@@ -14,7 +14,7 @@ class HabitTypeViewController: UIViewController {
         $0.font = .pretendard(type: .medium, size: 28)
         $0.text = "밍굴맹굴님의\n습관 유형은 무엇인가요?"
         $0.numberOfLines = 0
-        $0.textColor = .gray1
+        $0.textColor = .gray8
         $0.lineSpacing(spacing: 5)
 
         if let text = $0.text {
@@ -31,38 +31,34 @@ class HabitTypeViewController: UIViewController {
         $0.titleLabel?.font = .pretendard(type: .medium, size: 14)
         $0.titleLabel?.attributedText = title
         $0.setTitle(text, for: .normal)
-        $0.setTitleColor(.gray3, for: .normal)
+        $0.setTitleColor(.gray6, for: .normal)
         $0.addTarget(self, action: #selector(didTapSkipButton(_:)), for: .touchUpInside)
     }
 
     lazy var type0Button = RoundedButton(style: .white).then {
         $0.setTitle("앗 내게 습관이 있었던가?", for: .normal)
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.gray1.cgColor
+        $0.setBorderColor(color: UIColor.gray)
         $0.addTarget(self, action: #selector(didTapTypeButton(_:)), for: .touchUpInside)
         $0.tag = 0
     }
 
     lazy var type1Button = RoundedButton(style: .white).then {
         $0.setTitle("습관 계획세우기 귀찮아요", for: .normal)
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.gray1.cgColor
+        $0.setBorderColor(color: UIColor.gray)
         $0.addTarget(self, action: #selector(didTapTypeButton(_:)), for: .touchUpInside)
         $0.tag = 1
     }
 
     lazy var type2Button = RoundedButton(style: .white).then {
         $0.setTitle("습관달성한 날이 손에 꼽아요", for: .normal)
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.gray1.cgColor
+        $0.setBorderColor(color: UIColor.gray)
         $0.addTarget(self, action: #selector(didTapTypeButton(_:)), for: .touchUpInside)
         $0.tag = 2
     }
 
     lazy var type3Button = RoundedButton(style: .white).then {
         $0.setTitle("습관 뺴먹은 날이 너무 아까워요", for: .normal)
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.gray1.cgColor
+        $0.setBorderColor(color: UIColor.gray)
         $0.addTarget(self, action: #selector(didTapTypeButton(_:)), for: .touchUpInside)
         $0.tag = 3
     }

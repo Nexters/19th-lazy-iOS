@@ -37,6 +37,8 @@
 		AB42C19226AB05AB00EB1B92 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C19126AB05AB00EB1B92 /* RoundedView.swift */; };
 		AB42C19426AB079D00EB1B92 /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C19326AB079D00EB1B92 /* IconCollectionViewCell.swift */; };
 		AB42C19626AB167000EB1B92 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */; };
+		AB5516FA26C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5516F926C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift */; };
+		AB5516FC26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5516FB26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift */; };
 		AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */; };
 		AB7F6E2E26997ABD00EF9C6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2D26997ABD00EF9C6E /* SceneDelegate.swift */; };
 		AB7F6E3026997ABD00EF9C6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2F26997ABD00EF9C6E /* HomeViewController.swift */; };
@@ -53,8 +55,11 @@
 		AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052926B120B90029E67E /* NavigationDelegate.swift */; };
 		AB86052C26B122330029E67E /* ModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052B26B122330029E67E /* ModalDelegate.swift */; };
 		AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */; };
+		ABE9555A26C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9555926C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift */; };
+		ABE9555C26C2BAE4001E51F5 /* NSMutableAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9555B26C2BAE4001E51F5 /* NSMutableAttributedString+Extension.swift */; };
 		ABFA4C3B26B855BE004731F6 /* HabitTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */; };
 		ABFA4C3D26B93089004731F6 /* HabitTypeResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */; };
+		ABFA4C7E26BBF222004731F6 /* DetailHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C7D26BBF222004731F6 /* DetailHabitViewController.swift */; };
 		B7D2DDC6465AE19DD610ECC1 /* Pods_lazy_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3E8A640D9EFD43FACD2902 /* Pods_lazy_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +98,8 @@
 		AB42C19126AB05AB00EB1B92 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		AB42C19326AB079D00EB1B92 /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		AB5516F926C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailHabitViewController+Layout.swift"; sourceTree = "<group>"; };
+		AB5516FB26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailHabitViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB7F6E2826997ABD00EF9C6E /* lazy-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lazy-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB7F6E2D26997ABD00EF9C6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,8 +118,11 @@
 		AB86052926B120B90029E67E /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		AB86052B26B122330029E67E /* ModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDelegate.swift; sourceTree = "<group>"; };
 		AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddHabitViewController+Layout.swift"; sourceTree = "<group>"; };
+		ABE9555926C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABE9555B26C2BAE4001E51F5 /* NSMutableAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extension.swift"; sourceTree = "<group>"; };
 		ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTypeViewController.swift; sourceTree = "<group>"; };
 		ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTypeResultViewController.swift; sourceTree = "<group>"; };
+		ABFA4C7D26BBF222004731F6 /* DetailHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHabitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +313,7 @@
 		AB7F6E3F2699F6A500EF9C6E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				ABFA4C7C26BBF1FB004731F6 /* DetailHabit */,
 				AB00BE8C26B59F8400A37235 /* Onboarding */,
 				AB00BE8226B4731000A37235 /* Nickname */,
 				AB42C18226A9B37900EB1B92 /* AddHabit */,
@@ -363,6 +374,7 @@
 				AB42C18F26AA7DD700EB1B92 /* UICollectionView+Extension.swift */,
 				AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */,
 				AB00BE8026B46FCD00A37235 /* UILabel+Extension.swift */,
+				ABE9555B26C2BAE4001E51F5 /* NSMutableAttributedString+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -409,6 +421,25 @@
 				AB86052B26B122330029E67E /* ModalDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		ABE9555826C29F21001E51F5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ABE9555926C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ABFA4C7C26BBF1FB004731F6 /* DetailHabit */ = {
+			isa = PBXGroup;
+			children = (
+				ABE9555826C29F21001E51F5 /* Cell */,
+				ABFA4C7D26BBF222004731F6 /* DetailHabitViewController.swift */,
+				AB5516F926C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift */,
+				AB5516FB26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift */,
+			);
+			path = DetailHabit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,13 +564,16 @@
 				AB00BE7B26B31C8900A37235 /* HabitCheckButton.swift in Sources */,
 				AB7F6E3026997ABD00EF9C6E /* HomeViewController.swift in Sources */,
 				AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */,
+				ABFA4C7E26BBF222004731F6 /* DetailHabitViewController.swift in Sources */,
 				AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */,
+				ABE9555C26C2BAE4001E51F5 /* NSMutableAttributedString+Extension.swift in Sources */,
 				AB7F6E54269A02E100EF9C6E /* KeyConstants.swift in Sources */,
 				AB86052C26B122330029E67E /* ModalDelegate.swift in Sources */,
 				AB42C18E26AA7D0A00EB1B92 /* AddHabitViewController+Extension.swift in Sources */,
 				AB42C19026AA7DD700EB1B92 /* UICollectionView+Extension.swift in Sources */,
 				AB42C19626AB167000EB1B92 /* UIColor+Extension.swift in Sources */,
 				AB7F6E57269A2CAB00EF9C6E /* SignManager.swift in Sources */,
+				AB5516FA26C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift in Sources */,
 				AB42C18C26AA767F00EB1B92 /* DayOfWeekCollectionViewCell.swift in Sources */,
 				AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */,
 				AB42C17626A5E1EF00EB1B92 /* HomeHabitTableViewCell.swift in Sources */,
@@ -548,6 +582,7 @@
 				AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */,
 				ABFA4C3B26B855BE004731F6 /* HabitTypeViewController.swift in Sources */,
 				AB00BE8126B46FCD00A37235 /* UILabel+Extension.swift in Sources */,
+				AB5516FC26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift in Sources */,
 				AB42C18726A9BFA500EB1B92 /* LabeledRoundedView.swift in Sources */,
 				AB42C17826A5E7C500EB1B92 /* HomeViewController+Extension.swift in Sources */,
 				AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */,
@@ -560,6 +595,7 @@
 				AB42C16426A5C52C00EB1B92 /* DeviceConstants.swift in Sources */,
 				AB00BE8426B4739100A37235 /* NicknameViewController.swift in Sources */,
 				AB8604E626ADA4720029E67E /* CustomNavigationBar.swift in Sources */,
+				ABE9555A26C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift in Sources */,
 				AB42C19226AB05AB00EB1B92 /* RoundedView.swift in Sources */,
 				AB42C17D26A839B200EB1B92 /* PopUpViewController.swift in Sources */,
 				AB42C16126A5691000EB1B92 /* AnalysisViewController.swift in Sources */,

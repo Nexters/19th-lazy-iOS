@@ -19,7 +19,7 @@ class ConfirmViewController: UIViewController {
 
         if let text = $0.text {
             let attributedStr = NSMutableAttributedString(string: text)
-            attributedStr.addAttribute(.foregroundColor, value: UIColor.gray1, range: (text as NSString).range(of: "님"))
+            attributedStr.addAttribute(.foregroundColor, value: UIColor.gray8, range: (text as NSString).range(of: "님"))
             $0.attributedText = attributedStr
         }
     }
@@ -28,7 +28,7 @@ class ConfirmViewController: UIViewController {
         $0.font = .pretendard(type: .bold, size: 24)
         $0.text = "습관을 세우고 한 번도\n실행하지 않았다구요?"
         $0.numberOfLines = 0
-        $0.textColor = .gray1
+        $0.textColor = .gray8
         $0.lineSpacing(spacing: 5)
     }
 
@@ -36,7 +36,7 @@ class ConfirmViewController: UIViewController {
         $0.font = .pretendard(type: .medium, size: 16)
         $0.text = "습관이 누적되지 않아 휑한 일정표를\n많이 경험하진 않았나요?"
         $0.numberOfLines = 0
-        $0.textColor = .gray3
+        $0.textColor = .gray6
         $0.lineSpacing(spacing: 5)
     }
 
@@ -47,7 +47,7 @@ class ConfirmViewController: UIViewController {
         $0.titleLabel?.font = .pretendard(type: .medium, size: 14)
         $0.titleLabel?.attributedText = title
         $0.setTitle(text, for: .normal)
-        $0.setTitleColor(.gray3, for: .normal)
+        $0.setTitleColor(.gray6, for: .normal)
         $0.addTarget(self, action: #selector(didTapSkipButton(_:)), for: .touchUpInside)
     }
 
