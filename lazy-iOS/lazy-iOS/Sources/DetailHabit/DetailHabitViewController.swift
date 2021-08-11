@@ -40,10 +40,11 @@ class DetailHabitViewController: UIViewController {
     }
     
     lazy var habitLabel = UILabel().then {
-        $0.text = "런데이하기가"
-        $0.font = .pretendard(type: .medium, size: 20)
+        $0.text = "런데이하기"
+        $0.font = .pretendard(type: .medium, size: 18)
         $0.textColor = .gray8
         $0.lineBreakMode = .byTruncatingTail
+        $0.lineSpacing(spacing: 8)
     }
 
     lazy var habitDayLabel = UILabel().then {
@@ -72,12 +73,9 @@ class DetailHabitViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
     }
     
-    lazy var calenderHeaderLabel = UILabel().then {
+    lazy var calendarHeaderLabel = UILabel().then {
         $0.numberOfLines = 0
         $0.textAlignment = .center
-        $0.attributedText = NSMutableAttributedString()
-            .addAttributeString(str: "5월\n", size: 20, color: .gray8)
-            .addAttributeString(str: "2021", size: 14, type: .semiBold, color: .gray6)
     }
     
     lazy var giveUpButton = UIButton().then {
@@ -93,10 +91,23 @@ class DetailHabitViewController: UIViewController {
     // MARK: - Properties
     
     let buttonWidth = 103 * DeviceConstants.widthRatio
-    let habitAnnouncementText = "일차\n쌓이고 있어요"
-    private var currPage = Date()
+    let habitAnnouncementText = " 일차\n쌓이고 있어요"
+    private var currPage = Date() {
+        didSet {
+            changeCalendarHeaderLabel(to: currPage)
+        }
+    }
     
     // MARK: - Initializer
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LifeCycle
 
@@ -117,10 +128,14 @@ class DetailHabitViewController: UIViewController {
     // MARK: - Actions
     
     @objc
-    func didTapNextButton(_ sender: UIButton) {}
+    func didTapNextButton(_ sender: UIButton) {
+        didChangeCalendarPage(at: 1)
+    }
 
     @objc
-    func didTapPrevButton(_ sender: UIButton) {}
+    func didTapPrevButton(_ sender: UIButton) {
+        didChangeCalendarPage(at: -1)
+    }
 
     // MARK: - Methods
     
@@ -130,11 +145,12 @@ class DetailHabitViewController: UIViewController {
     
     func setDelegate() {
         navigationBar.navigationDelegate = self
+        calendar.dataSource = self
+        calendar.delegate = self
     }
     
     func setCalendar() {
         calendar.scope = .month
-        calendar.dataSource = self
 
         /// 요일 한글 변환
         calendar.locale = Locale(identifier: "ko_KR")
@@ -145,16 +161,40 @@ class DetailHabitViewController: UIViewController {
 
         /// textColor
         calendar.appearance.weekdayTextColor = .gray8
-
-        /// hide top, bottom border
-//        calendar.clipsToBounds = true
+        calendar.appearance.weekdayFont = .pretendard(type: .semiBold, size: 14)
+        calendar.appearance.titleDefaultColor = .gray8
+        calendar.appearance.titleFont = .pretendard(type: .regular, size: 14)
 
         calendar.today = nil /// 오늘 표시 숨기기
 
         /// Header
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.headerHeight = 0
+        
+        currPage = Date()
+    }
+    
+    func didChangeCalendarPage(at page: Int) {
+        let cal = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.month = page
 
-//        calendarHeaderLabel.text = dateFormatter.string(from: calendar.currentPage)
+        currPage = cal.date(byAdding: dateComponents, to: currPage) ?? Date()
+        calendar.setCurrentPage(currPage, animated: true)
+    }
+    
+    func changeCalendarHeaderLabel(to date: Date) {
+        let month = Date().dateToString(format: "M월\n", date: date)
+        let year = Date().dateToString(format: "YYYY", date: date)
+        
+        calendarHeaderLabel.attributedText = NSMutableAttributedString()
+            .addAttributeString(str: month, size: 20, color: .gray8)
+            .addAttributeString(str: year, size: 14, type: .semiBold, color: .gray6)
+    }
+}
+
+extension DetailHabitViewController: FSCalendarDelegate {
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        currPage = calendar.currentPage
     }
 }
