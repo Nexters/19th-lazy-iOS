@@ -17,7 +17,7 @@ class CustomNavigationBar: UIView {
     // MARK: - UIComponents
 
     let titleLabel = UILabel().then {
-        $0.font = .pretendard(type: .bold, size: 18)
+        $0.font = .pretendard(type: .semiBold, size: 18)
         $0.textColor = UIColor(25, 31, 40, 1)
     }
 
@@ -58,12 +58,12 @@ class CustomNavigationBar: UIView {
         }
 
         self.cancelButton.snp.makeConstraints { make in
-            make.leading.equalTo(20)
+            make.leading.equalTo(20 * DeviceConstants.widthRatio)
             make.centerY.equalToSuperview()
         }
 
         self.backButton.snp.makeConstraints { make in
-            make.leading.equalTo(20)
+            make.leading.equalTo(20 * DeviceConstants.widthRatio)
             make.centerY.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(30.0 / 375.0)
             make.height.equalTo(backButton.snp.width)

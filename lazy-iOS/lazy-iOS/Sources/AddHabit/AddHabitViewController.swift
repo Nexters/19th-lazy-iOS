@@ -21,7 +21,7 @@ class AddHabitViewController: UIViewController {
     lazy var dayOfWeekSettingView = LabeledRoundedView(state: .dayOfTheWeek, dayOfWeekCollectionView)
     lazy var dayOfWeekCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         $0.setCollectionViewLayout(layout, animated: true)
         $0.allowsMultipleSelection = true
         $0.dataSource = self
@@ -90,14 +90,7 @@ class AddHabitViewController: UIViewController {
         }
         $0.locale = Locale(identifier: "ko")
     }
-    
-    lazy var confirmButton = UIButton().then {
-        $0.setTitle("추가하기 ", for: .normal)
-        $0.titleLabel?.font = .pretendard(type: .bold, size: 16)
-        $0.backgroundColor = .mainPurple
-        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
-    }
-    
+
     lazy var saveButton = UIButton().then {
         $0.setTitle("저장", for: .normal)
         $0.titleLabel?.font = .pretendard(type: .medium, size: 18)
@@ -112,7 +105,7 @@ class AddHabitViewController: UIViewController {
     var weeks = ["일", "월", "화", "수", "목", "금", "토"]
     var colors = [UIColor.icon1, UIColor.icon2, UIColor.icon3, UIColor.icon4, UIColor.icon5, UIColor.icon6, UIColor.icon7, UIColor.icon8]
     var isFirst: Bool = true
-    var hasChanges: Bool = false
+    var hasChanges: Bool = true
     
     var isOnAlarmSwitch = false {
         willSet(newValue) {
@@ -142,8 +135,6 @@ class AddHabitViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        confirmButton.cornerRounds()
         
         isModalInPresentation = hasChanges
     }
@@ -234,12 +225,12 @@ class AddHabitViewController: UIViewController {
     }
     
     func confirmCancel() {
-        let alert = UIAlertController(title: "수정을 완료하지 않고 나가시겠어요?", message: "포기하면 다시 되돌릴 수 없어요.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "습관 작성을 그만하시겠어요?", message: "작성한 내용은 저장되지 않아요", preferredStyle: .alert)
         
-        let continueAction = UIAlertAction(title: "계속하기", style: .default, handler: nil)
-        let cancelAction = UIAlertAction(title: "그만하기", style: .cancel) { _ in
+        let continueAction = UIAlertAction(title: "확인", style: .default) { _ in
             self.dismiss(animated: true, completion: nil)
         }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         
         alert.addAction(cancelAction)
         alert.addAction(continueAction)
