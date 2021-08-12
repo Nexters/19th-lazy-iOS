@@ -24,12 +24,12 @@ class HomeViewController: UIViewController {
 
     // MARK: - Properties
 
-    private lazy var animator = UIDynamicAnimator(referenceView: self.bubbleAreaView)
-    private let bubbleAreaView = UIView().then {
+    lazy var animator = UIDynamicAnimator(referenceView: self.bubbleAreaView)
+    let bubbleAreaView = UIView().then {
         $0.backgroundColor = .clear
     }
 
-    private let drawerView = DrawerView()
+    let drawerView = DrawerView()
 
     // MARK: - Initializer
 
@@ -44,15 +44,15 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        BubbleBehaviorManager.bubbleBehavior.collisionBehavior.collisionDelegate = BubbleBehaviorManager.bubbleBehavior
-        BubbleBehaviorManager.bubbleBehavior.updateBubblePosition()
+        BubbleBehaviorManager.shared.collisionBehavior.collisionDelegate = BubbleBehaviorManager.shared
+        BubbleBehaviorManager.shared.updateBubblePosition()
 
 //        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-        BubbleBehaviorManager.bubbleBehavior.collisionBehavior.collisionDelegate = nil
-        BubbleBehaviorManager.bubbleBehavior.stopBubble()
+        BubbleBehaviorManager.shared.collisionBehavior.collisionDelegate = nil
+        BubbleBehaviorManager.shared.stopBubble()
     }
 
     override func viewWillLayoutSubviews() {
@@ -65,54 +65,24 @@ class HomeViewController: UIViewController {
 
     // MARK: - Actions
 
-    @objc
-    func handleBubbleView(_ gesture: UIPanGestureRecognizer) {
-        guard let bubble = gesture.view else { return }
-
-        switch gesture.state {
-//        case .changed:
-//            let translation = gesture.translation(in: bubbleView)
-//            bubble.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
-//
-        case .ended:
-            let velocity = gesture.velocity(in: bubbleAreaView)
-            let itemBehavior = UIDynamicItemBehavior(items: [bubble])
-            itemBehavior.addLinearVelocity(velocity, for: bubble)
-
-            animator.addBehavior(itemBehavior)
-            animator.updateItem(usingCurrentState: bubble)
-        default:
-            break
-        }
-    }
-
     // MARK: - Methods
 
     func setView() {
         overrideUserInterfaceStyle = .dark
 
-        animator.addBehavior(BubbleBehaviorManager.bubbleBehavior)
+        animator.addBehavior(BubbleBehaviorManager.shared)
 
         for idx in 0 ... 6 {
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(idx * 400)) {
                 let x = self.view.bounds.width / 4.0
                 let randomX = CGFloat.random(in: x - 70 ..< x + 70)
-                let size = UIScreen.main.bounds.width * (150.0 / 375.0)
+                let size = 150.0 * DeviceConstants.widthRatio
 
-                let bubbleView = UIView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
-                bubbleView.cornerRounds()
-                bubbleView.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(self.handleBubbleView(_:)))]
+                let bubbleView = BubbleView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
+                bubbleView.gestureDelegate = self
 
-                let randomImage = Int.random(in: 1 ... 2)
-                let bubbleIcon = UIImageView(image: UIImage(named: "habbit\(randomImage)"))
-
-                bubbleView.addSubview(bubbleIcon)
-                bubbleIcon.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
-                }
-
-                self.view.addSubview(bubbleView)
-                BubbleBehaviorManager.bubbleBehavior.addBubble(bubbleView)
+                self.bubbleAreaView.addSubview(bubbleView)
+                BubbleBehaviorManager.shared.addBubble(bubbleView)
             }
         }
     }
@@ -152,6 +122,4 @@ class HomeViewController: UIViewController {
         drawerView.habitTableView.dataSource = self
         drawerView.drawerViewDelegate = self
     }
-
-    // MARK: - Protocols
 }

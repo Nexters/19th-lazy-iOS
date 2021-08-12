@@ -54,3 +54,15 @@ extension HomeViewController: HabitCheckButtonDelegate {
         sender.isSelected.toggle()
     }
 }
+
+// MARK: - BubbleGestureDelegate
+
+extension HomeViewController: BubbleGestureDelegate {
+    func updateAnimator(velocity: CGPoint, item: UIView) {
+        let itemBehavior = UIDynamicItemBehavior(items: [item])
+        itemBehavior.addLinearVelocity(velocity, for: item)
+
+        animator.addBehavior(itemBehavior)
+        animator.updateItem(usingCurrentState: item)
+    }
+}

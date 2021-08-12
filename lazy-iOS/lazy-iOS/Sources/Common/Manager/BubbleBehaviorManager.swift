@@ -9,7 +9,7 @@ import Then
 import UIKit
 
 class BubbleBehaviorManager: UIDynamicBehavior {
-    static let bubbleBehavior = BubbleBehaviorManager()
+    static let shared = BubbleBehaviorManager()
 
     // MARK: - Properties
 
