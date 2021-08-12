@@ -12,9 +12,7 @@ class HomeHabitTableViewCell: UITableViewCell {
 
     // MARK: - UIComponents
 
-    let iconView = UIView().then {
-        $0.backgroundColor = .systemOrange
-    }
+    let iconView = UIImageView()
     
     let titleLabel = UILabel().then {
         $0.text = "습관 A"
@@ -111,6 +109,26 @@ class HomeHabitTableViewCell: UITableViewCell {
             make.width.equalToSuperview().multipliedBy(54.0 / 375.0)
             make.height.equalTo(checkButton.snp.width).multipliedBy(34.0 / 54.0)
             make.centerY.equalToSuperview()
+        }
+    }
+    
+    // FIXME: - 예쁘게 고쳐야겠죠..
+    func setHabitData(habit: Habit) {
+        iconView.image = UIImage(named: "habbit\(habit.iconIdx)")
+        titleLabel.text = habit.name
+        
+        let todayWeekDay = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
+        
+        if habit.completion {
+            commentLabel.text = "와우! 대단해요"
+            checkButton.isSelected = true
+        } else {
+            commentLabel.text = "얼마 남았어요"
+            checkButton.isSelected = false
+        }
+        
+        if !habit.repeatDays.contains(todayWeekDay) {
+            changeInActive()
         }
     }
     

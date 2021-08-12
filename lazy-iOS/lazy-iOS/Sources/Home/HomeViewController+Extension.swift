@@ -21,13 +21,14 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        HabitManager.shared.habitCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeHabitTableViewCell.identifier, for: indexPath) as? HomeHabitTableViewCell else { return UITableViewCell() }
         cell.checkButtonDelegate = self
         cell.selectionStyle = .none
+        cell.setHabitData(habit: HabitManager.shared.habits[indexPath.row])
 
         if indexPath.row == 1 {
             cell.changeInActive()

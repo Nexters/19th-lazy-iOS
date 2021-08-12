@@ -56,6 +56,7 @@
 		AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052926B120B90029E67E /* NavigationDelegate.swift */; };
 		AB86052C26B122330029E67E /* ModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052B26B122330029E67E /* ModalDelegate.swift */; };
 		AB86052E26B12F4C0029E67E /* AddHabitViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */; };
+		ABC5DEE326C57CBF00FDD50D /* HabitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC5DEE226C57CBF00FDD50D /* HabitManager.swift */; };
 		ABE9555A26C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9555926C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift */; };
 		ABE9555C26C2BAE4001E51F5 /* NSMutableAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9555B26C2BAE4001E51F5 /* NSMutableAttributedString+Extension.swift */; };
 		ABFA4C3B26B855BE004731F6 /* HabitTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */; };
@@ -120,6 +121,7 @@
 		AB86052926B120B90029E67E /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		AB86052B26B122330029E67E /* ModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDelegate.swift; sourceTree = "<group>"; };
 		AB86052D26B12F4C0029E67E /* AddHabitViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddHabitViewController+Layout.swift"; sourceTree = "<group>"; };
+		ABC5DEE226C57CBF00FDD50D /* HabitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitManager.swift; sourceTree = "<group>"; };
 		ABE9555926C29F7F001E51F5 /* HabitButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABE9555B26C2BAE4001E51F5 /* NSMutableAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extension.swift"; sourceTree = "<group>"; };
 		ABFA4C3A26B855BE004731F6 /* HabitTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTypeViewController.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 			children = (
 				AB7F6E56269A2CAB00EF9C6E /* SignManager.swift */,
 				AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */,
+				ABC5DEE226C57CBF00FDD50D /* HabitManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABC5DEE326C57CBF00FDD50D /* HabitManager.swift in Sources */,
 				AB7F6E512699FF7B00EF9C6E /* LoginViewController.swift in Sources */,
 				AB00BE7B26B31C8900A37235 /* HabitCheckButton.swift in Sources */,
 				AB7F6E3026997ABD00EF9C6E /* HomeViewController.swift in Sources */,
