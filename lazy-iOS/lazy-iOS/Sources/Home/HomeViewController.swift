@@ -24,8 +24,8 @@ class HomeViewController: UIViewController {
 
     // MARK: - Properties
 
-    private lazy var animator = UIDynamicAnimator(referenceView: self.bubbleView)
-    private let bubbleView = UIView().then {
+    private lazy var animator = UIDynamicAnimator(referenceView: self.bubbleAreaView)
+    private let bubbleAreaView = UIView().then {
         $0.backgroundColor = .clear
     }
 
@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillLayoutSubviews() {
-        bubbleView.snp.updateConstraints { make in
+        bubbleAreaView.snp.updateConstraints { make in
             make.bottom.equalTo(drawerView.snp.top).offset(1)
         }
 
@@ -75,7 +75,7 @@ class HomeViewController: UIViewController {
 //            bubble.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
 //
         case .ended:
-            let velocity = gesture.velocity(in: bubbleView)
+            let velocity = gesture.velocity(in: bubbleAreaView)
             let itemBehavior = UIDynamicItemBehavior(items: [bubble])
             itemBehavior.addLinearVelocity(velocity, for: bubble)
 
@@ -99,26 +99,26 @@ class HomeViewController: UIViewController {
                 let randomX = CGFloat.random(in: x - 70 ..< x + 70)
                 let size = UIScreen.main.bounds.width * (150.0 / 375.0)
 
-                let bubble = UIView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
-                bubble.cornerRounds()
-                bubble.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(self.handleBubbleView(_:)))]
+                let bubbleView = UIView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
+                bubbleView.cornerRounds()
+                bubbleView.gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(self.handleBubbleView(_:)))]
 
                 let randomImage = Int.random(in: 1 ... 2)
                 let bubbleIcon = UIImageView(image: UIImage(named: "habbit\(randomImage)"))
 
-                bubble.addSubview(bubbleIcon)
+                bubbleView.addSubview(bubbleIcon)
                 bubbleIcon.snp.makeConstraints { make in
                     make.edges.equalToSuperview()
                 }
 
-                self.view.addSubview(bubble)
-                BubbleBehaviorManager.bubbleBehavior.addBubble(bubble)
+                self.view.addSubview(bubbleView)
+                BubbleBehaviorManager.bubbleBehavior.addBubble(bubbleView)
             }
         }
     }
 
     func setConstraints() {
-        view.addSubviews([backgroundImageView, bubbleView, drawerView, backgroundShadowView, notificationLabel])
+        view.addSubviews([backgroundImageView, bubbleAreaView, drawerView, backgroundShadowView, notificationLabel])
 
         backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -134,7 +134,7 @@ class HomeViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
 
-        bubbleView.snp.makeConstraints { make in
+        bubbleAreaView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(drawerView.snp.top).offset(3)
             make.height.equalTo(view.snp.height).offset(500)
