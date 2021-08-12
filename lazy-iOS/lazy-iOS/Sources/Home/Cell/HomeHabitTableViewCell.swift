@@ -68,6 +68,10 @@ class HomeHabitTableViewCell: UITableViewCell {
         iconView.cornerRound(radius: 18)
     }
     
+    override func prepareForReuse() {
+        changeActive()
+    }
+    
     // MARK: - Actions
     
     @objc
@@ -116,5 +120,13 @@ class HomeHabitTableViewCell: UITableViewCell {
         commentLabel.alpha = 0.5
         
         checkButton.isEnabled = false
+    }
+    
+    func changeActive() {
+        iconView.alpha = 1.0
+        titleLabel.alpha = 1.0
+        commentLabel.alpha = 1.0
+        
+        checkButton.isEnabled = true
     }
 }
