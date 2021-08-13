@@ -44,13 +44,18 @@ class DrawerView: UIView {
         $0.backgroundColor = .white
         $0.alwaysBounceVertical = false
         $0.separatorStyle = .none
+        $0.estimatedRowHeight = 0
     }
     
     // MARK: - Properties
     
     var totalDelayedDate: Int = 0
     var drawerViewDelegate: DrawerViewDelegate?
-    var isOpen: Bool = false
+
+    var tableViewContentHeight: CGFloat {
+        habitTableView.layoutIfNeeded()
+        return habitTableView.contentSize.height + UIComponentsConstants.homeDrawerCloseHeight + 12.0
+    }
     
     // MARK: - Initializer
     
@@ -78,7 +83,6 @@ class DrawerView: UIView {
         let translationY = gestrue.translation(in: self).y
         let height = bounds.height
         let velocity = gestrue.velocity(in: self)
-        let tableViewHeight = habitTableView.contentSize.height + UIComponentsConstants.homeDrawerCloseHeight + 12.0
         
         switch gestrue.state {
         case .ended:
@@ -92,7 +96,7 @@ class DrawerView: UIView {
             
             springAnimation()
         case .changed:
-            if height - translationY > UIComponentsConstants.homeDrawerCloseHeight, height - translationY <= tableViewHeight {
+            if height - translationY > UIComponentsConstants.homeDrawerCloseHeight, height - translationY <= tableViewContentHeight {
                 snp.updateConstraints { make in
                     make.height.equalTo(height - translationY)
                 }
@@ -142,13 +146,13 @@ class DrawerView: UIView {
         }
     }
     
-    func openDrawer() {
+    private func openDrawer() {
         snp.updateConstraints { make in
-            make.height.equalTo(self.habitTableView.contentSize.height + UIComponentsConstants.homeDrawerCloseHeight + 12.0)
+            make.height.equalTo(tableViewContentHeight)
         }
     }
     
-    func closeDrawer() {
+    private func closeDrawer() {
         snp.updateConstraints { make in
             make.height.equalTo(UIComponentsConstants.homeDrawerCloseHeight)
         }

@@ -30,10 +30,6 @@ extension HomeViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         cell.setHabitData(habit: HabitManager.shared.habits[indexPath.row])
 
-        if indexPath.row == 1 {
-            cell.changeInActive()
-        }
-
         return cell
     }
 }

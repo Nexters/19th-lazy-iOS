@@ -39,8 +39,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         setView()
-        setConstraints()
         setDelegate()
+        setConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,10 +56,6 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillLayoutSubviews() {
-        bubbleAreaView.snp.updateConstraints { make in
-            make.bottom.equalTo(drawerView.snp.top).offset(1)
-        }
-
         backgroundShadowView.setGradient(color1: UIColor(80, 68, 222, 1.0), color2: UIColor.mainPurple.withAlphaComponent(0.0))
     }
 
@@ -113,7 +109,7 @@ class HomeViewController: UIViewController {
         drawerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(50)
-            make.height.equalTo(UIComponentsConstants.homeDrawerOpenHeight)
+            make.height.equalTo(drawerView.tableViewContentHeight)
         }
     }
 
