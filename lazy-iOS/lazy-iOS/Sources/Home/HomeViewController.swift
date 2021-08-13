@@ -68,20 +68,6 @@ class HomeViewController: UIViewController {
         overrideUserInterfaceStyle = .dark
 
         animator.addBehavior(BubbleBehaviorManager.shared)
-
-        for idx in 0 ... 6 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(idx * 400)) {
-                let x = self.view.bounds.width / 4.0
-                let randomX = CGFloat.random(in: x - 70 ..< x + 70)
-                let size = 150.0 * DeviceConstants.widthRatio
-
-                let bubbleView = BubbleView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
-                bubbleView.gestureDelegate = self
-
-                self.bubbleAreaView.addSubview(bubbleView)
-                BubbleBehaviorManager.shared.addBubble(bubbleView)
-            }
-        }
     }
 
     func setConstraints() {
@@ -110,7 +96,7 @@ class HomeViewController: UIViewController {
         drawerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(50)
-            make.height.equalTo(drawerView.tableViewContentHeight)
+            make.height.equalTo(UIComponentsConstants.homeDrawerOpenHeight)
         }
     }
 
@@ -118,6 +104,8 @@ class HomeViewController: UIViewController {
         drawerView.habitTableView.delegate = self
         drawerView.habitTableView.dataSource = self
         drawerView.drawerViewDelegate = self
+
+        HabitManager.shared.habitManagerDelegate = self
     }
 
     func fetchHabitsData() {
@@ -125,5 +113,42 @@ class HomeViewController: UIViewController {
         let habits = [Habit(idx: 3, iconIdx: 2, name: "런데이! 🏃🏼‍♀️", frequency: 5, delayDay: 6, registrationDate: Date(), isAlarm: true, repeatDays: [1, 3, 5, 7], completion: false), Habit(idx: 4, iconIdx: 1, name: "1일 1알고리즘", frequency: 5, delayDay: 2, registrationDate: Date(), isAlarm: true, repeatDays: [1, 2, 3, 4, 5, 6, 7], completion: false)]
 
         HabitManager.shared.appendHabits(habits)
+    }
+}
+
+// TODO: - Home & Drawer Delegate 분리 (지금은 그냥 합쳤어)
+// TODO: - 버블 사이즈 enum
+extension HomeViewController: HabitManagerDelegate {
+    func addHabits(_ habits: [Habit]) {
+        let x = view.bounds.width / 4.0
+        let size = 150.0 * DeviceConstants.widthRatio
+
+        for (idx, habit) in habits.enumerated() {
+            for _ in 0 ..< habit.delayDay {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(idx * 400)) {
+                    let randomX = CGFloat.random(in: x - 70 ..< x + 70)
+                    let bubbleView = BubbleView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
+                    bubbleView.gestureDelegate = self
+                    bubbleView.habit = habit
+
+                    self.bubbleAreaView.addSubview(bubbleView)
+                    BubbleBehaviorManager.shared.addBubble(bubbleView)
+                }
+            }
+        }
+
+        drawerView.snp.updateConstraints { make in
+            make.height.equalTo(drawerView.tableViewContentHeight)
+        }
+
+        drawerView.habitTableView.reloadData()
+    }
+
+    func completedHabit(habit: Habit) {
+        print("\(habit.name) 습관 완료 😀")
+    }
+
+    func incompleteHabit(habit: Habit) {
+        print("\(habit.name) 습관 미완료 🤬")
     }
 }

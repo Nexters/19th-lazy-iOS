@@ -21,6 +21,13 @@ class BubbleView: UIView {
     // MARK: - Properties
     
     var gestureDelegate: BubbleGestureDelegate?
+    var habit: Habit? {
+        didSet {
+            if let newHabit = habit {
+                setIconImage(idx: newHabit.iconIdx)
+            }
+        }
+    }
     
     // MARK: - Initializer
     
@@ -58,9 +65,6 @@ class BubbleView: UIView {
     
     private func setView() {
         cornerRounds()
-        
-        let randomImage = Int.random(in: 1 ... 2)
-        setIconImage(idx: randomImage)
         
         gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(handleBubbleView(_:)))]
     }

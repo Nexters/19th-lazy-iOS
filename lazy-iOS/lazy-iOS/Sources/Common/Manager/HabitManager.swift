@@ -7,13 +7,16 @@
 
 import UIKit
 
-@objc
-protocol HabitManagerDelegate {
-    @objc optional func completedHabit(habit: Int)
+protocol HabitManagerDelegate: AnyObject {
+    func addHabits(_ habits: [Habit])
+    func completedHabit(habit: Habit)
+    func incompleteHabit(habit: Habit)
 }
 
 class HabitManager {
     static let shared = HabitManager()
+
+    // MARK: - Properties
 
     private(set) var habits: [Habit] = [] {
         willSet {
@@ -25,12 +28,6 @@ class HabitManager {
         }
     }
 
-    private var limit: Int = 3
-
-    var habitCount: Int {
-        habits.count
-    }
-
     var delayDaysCount: Int {
         let count = habits.reduce(0) { (result: Int, habit: Habit) in
             result + habit.delayDay
@@ -39,17 +36,25 @@ class HabitManager {
         return count
     }
 
+    private var limit: Int = 3
+
+    var habitCount: Int {
+        habits.count
+    }
+
+    weak var habitManagerDelegate: HabitManagerDelegate?
+
     // MARK: - Initializer
 
-    init() {
-        habits = [Habit(idx: 3, iconIdx: 2, name: "런데이! 🏃🏼‍♀️", frequency: 5, delayDay: 6, registrationDate: Date(), isAlarm: true, repeatDays: [1, 3, 5, 7], completion: false)]
-    }
+    init() {}
 
     // MARK: - Methods
 
     func appendHabits(_ habits: [Habit]) {
         let newHabits = habits.filter { !self.habits.contains($0) }
         self.habits.append(contentsOf: newHabits)
+        
+        habitManagerDelegate?.addHabits(newHabits)
     }
 }
 
