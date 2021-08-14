@@ -34,6 +34,7 @@ class BubbleView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        clipsToBounds = false
         setView()
         setConstraints()
     }

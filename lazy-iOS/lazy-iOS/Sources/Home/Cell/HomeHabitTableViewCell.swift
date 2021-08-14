@@ -127,6 +127,8 @@ class HomeHabitTableViewCell: UITableViewCell {
             checkButton.isSelected = false
         }
         
+        checkButton.setTitle("\(habit.delayDay)일 차", for: .normal)
+        
         if !habit.repeatDays.contains(todayWeekDay) {
             changeInActive()
         }

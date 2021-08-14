@@ -105,7 +105,7 @@ class HomeViewController: UIViewController {
         drawerView.habitTableView.dataSource = self
         drawerView.drawerViewDelegate = self
 
-        HabitManager.shared.habitManagerDelegate = self
+        HabitManager.shared.homeHabitManagerDelegate = self
     }
 
     func fetchHabitsData() {
@@ -116,12 +116,11 @@ class HomeViewController: UIViewController {
     }
 }
 
-// TODO: - Home & Drawer Delegate 분리 (지금은 그냥 합쳤어)
 // TODO: - 버블 사이즈 enum
-extension HomeViewController: HabitManagerDelegate {
+extension HomeViewController: HomeHabitManagerDelegate {
     func addHabits(_ habits: [Habit]) {
         let x = view.bounds.width / 4.0
-        let size = 150.0 * DeviceConstants.widthRatio
+        let size = 110.0 * DeviceConstants.widthRatio
 
         for (idx, habit) in habits.enumerated() {
             for _ in 0 ..< habit.delayDay {
@@ -136,12 +135,16 @@ extension HomeViewController: HabitManagerDelegate {
                 }
             }
         }
+        
+//        drawerView.snp.updateConstraints { make in
+//            make.height.equalTo(CGFloat((59 * HabitManager.shared.habitCount)) + UIComponentsConstants.homeDrawerCloseHeight + 12.0)
+//        }
 
-        drawerView.snp.updateConstraints { make in
-            make.height.equalTo(drawerView.tableViewContentHeight)
-        }
-
-        drawerView.habitTableView.reloadData()
+//        drawerView.snp.updateConstraints { make in
+//            make.height.equalTo(drawerView.tableViewContentHeight)
+//        }
+//
+//        drawerView.habitTableView.reloadData()
     }
 
     func completedHabit(habit: Habit) {

@@ -63,6 +63,7 @@ class DrawerView: UIView {
         super.init(frame: .zero)
         
         setView()
+        setDelegate()
     }
     
     @available(*, unavailable)
@@ -119,6 +120,10 @@ class DrawerView: UIView {
         addGestureRecognizer(panGestureRecognizer)
     }
     
+    func setDelegate() {
+        HabitManager.shared.drawerHabitManagerDelegate = self
+    }
+    
     func setConstraints() {
         addSubviews([handleView, guideLabel, plusButton, habitTableView])
 
@@ -160,5 +165,25 @@ class DrawerView: UIView {
 
     func springAnimation() {
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: { self.layoutIfNeeded() }, completion: nil)
+    }
+}
+
+extension DrawerView: DrawerHabitManagerDelegate {
+    func addHabits(_ habits: [Habit]) {
+        habitTableView.reloadData()
+        
+        snp.updateConstraints { make in
+            make.height.equalTo(tableViewContentHeight)
+        }
+        
+        guideLabel.text = "습관이 \(HabitManager.shared.delayDaysCount)일 쌓였어요"
+    }
+    
+    func completedHabit(habit: Habit) {
+        print("\(habit.name) 습관 완료 😀")
+    }
+
+    func incompleteHabit(habit: Habit) {
+        print("\(habit.name) 습관 미완료 🤬")
     }
 }

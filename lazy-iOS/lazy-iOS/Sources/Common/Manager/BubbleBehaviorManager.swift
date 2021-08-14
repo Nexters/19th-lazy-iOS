@@ -26,7 +26,7 @@ class BubbleBehaviorManager: UIDynamicBehavior {
         $0.allowsRotation = true
         $0.elasticity = 0.8 /// 탄성
         $0.friction = 0.5 /// 마찰
-        $0.resistance = 0.0 /// 저항
+        $0.resistance = 1.0 /// 저항
     }
 
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)

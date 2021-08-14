@@ -7,7 +7,13 @@
 
 import UIKit
 
-protocol HabitManagerDelegate: AnyObject {
+protocol HomeHabitManagerDelegate: AnyObject {
+    func addHabits(_ habits: [Habit])
+    func completedHabit(habit: Habit)
+    func incompleteHabit(habit: Habit)
+}
+
+protocol DrawerHabitManagerDelegate: AnyObject {
     func addHabits(_ habits: [Habit])
     func completedHabit(habit: Habit)
     func incompleteHabit(habit: Habit)
@@ -19,21 +25,13 @@ class HabitManager {
     // MARK: - Properties
 
     private(set) var habits: [Habit] = [] {
-        willSet {
-            if newValue.count == limit {
-                // TODO: - 습관 추가 불가 ..
-            }
-
-            print(newValue)
+        didSet {
+            drawerHabitManagerDelegate?.addHabits(habits)
         }
     }
 
     var delayDaysCount: Int {
-        let count = habits.reduce(0) { (result: Int, habit: Habit) in
-            result + habit.delayDay
-        }
-
-        return count
+        habits.reduce(0) { $0 + $1.delayDay }
     }
 
     private var limit: Int = 3
@@ -42,7 +40,8 @@ class HabitManager {
         habits.count
     }
 
-    weak var habitManagerDelegate: HabitManagerDelegate?
+    weak var homeHabitManagerDelegate: HomeHabitManagerDelegate?
+    weak var drawerHabitManagerDelegate: DrawerHabitManagerDelegate?
 
     // MARK: - Initializer
 
@@ -52,9 +51,9 @@ class HabitManager {
 
     func appendHabits(_ habits: [Habit]) {
         let newHabits = habits.filter { !self.habits.contains($0) }
+
+        homeHabitManagerDelegate?.addHabits(newHabits)
         self.habits.append(contentsOf: newHabits)
-        
-        habitManagerDelegate?.addHabits(newHabits)
     }
 }
 
