@@ -89,7 +89,7 @@ class HomeViewController: UIViewController {
 
         bubbleAreaView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(drawerView.snp.top).offset(3)
+            make.bottom.equalTo(drawerView.snp.top).offset(-2)
             make.height.equalTo(view.snp.height).offset(500)
         }
 
