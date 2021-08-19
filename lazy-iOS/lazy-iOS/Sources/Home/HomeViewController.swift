@@ -123,8 +123,8 @@ extension HomeViewController: HomeHabitManagerDelegate {
         let size = 110.0 * DeviceConstants.widthRatio
 
         for (idx, habit) in habits.enumerated() {
-            for _ in 0 ..< habit.delayDay {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(idx * 400)) {
+            for habitIdx in 0 ..< habit.delayDay {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds((idx + habitIdx) * 300)) {
                     let randomX = CGFloat.random(in: x - 70 ..< x + 70)
                     let bubbleView = BubbleView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
                     bubbleView.gestureDelegate = self
@@ -135,7 +135,7 @@ extension HomeViewController: HomeHabitManagerDelegate {
                 }
             }
         }
-        
+
 //        drawerView.snp.updateConstraints { make in
 //            make.height.equalTo(CGFloat((59 * HabitManager.shared.habitCount)) + UIComponentsConstants.homeDrawerCloseHeight + 12.0)
 //        }

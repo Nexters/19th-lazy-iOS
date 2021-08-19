@@ -13,7 +13,7 @@ protocol BubbleGestureDelegate {
     func updateAnimator(velocity: CGPoint, item: UIView)
 }
 
-class BubbleView: UIView {
+class BubbleView: UIControl {
     // MARK: - UIComponenets
     
     var iconImageView = UIImageView()
@@ -29,12 +29,15 @@ class BubbleView: UIView {
         }
     }
     
+    override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
+        .ellipse
+    }
+    
     // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        clipsToBounds = false
         setView()
         setConstraints()
     }
@@ -66,6 +69,7 @@ class BubbleView: UIView {
     
     private func setView() {
         cornerRounds()
+        iconImageView.cornerRounds()
         
         gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(handleBubbleView(_:)))]
     }
