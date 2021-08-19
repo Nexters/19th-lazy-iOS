@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension AddHabitViewController {
+extension EditHabitViewController {
     func setConstraints() {
         view.addSubviews([navigationBar, habitSettingView, dayOfWeekSettingView, iconSettingView, alarmSettingView, alarmTimeSettingView])
         navigationBar.addSubview(saveButton)

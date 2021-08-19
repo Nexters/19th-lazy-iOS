@@ -38,7 +38,7 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: DrawerViewDelegate {
     func presentAddHabitView() {
-        let addHabitViewController = AddHabitViewController(mode: .add)
+        let addHabitViewController = EditHabitViewController(mode: .add)
 
         self.present(addHabitViewController, animated: true, completion: nil)
     }

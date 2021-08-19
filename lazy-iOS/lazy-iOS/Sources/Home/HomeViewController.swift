@@ -135,16 +135,6 @@ extension HomeViewController: HomeHabitManagerDelegate {
                 }
             }
         }
-
-//        drawerView.snp.updateConstraints { make in
-//            make.height.equalTo(CGFloat((59 * HabitManager.shared.habitCount)) + UIComponentsConstants.homeDrawerCloseHeight + 12.0)
-//        }
-
-//        drawerView.snp.updateConstraints { make in
-//            make.height.equalTo(drawerView.tableViewContentHeight)
-//        }
-//
-//        drawerView.habitTableView.reloadData()
     }
 
     func completedHabit(habit: Habit) {
