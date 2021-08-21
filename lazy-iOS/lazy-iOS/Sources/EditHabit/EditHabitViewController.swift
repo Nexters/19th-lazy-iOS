@@ -12,15 +12,18 @@ enum habitMode: String {
     case edit = "습관 편집"
 }
 
-class AddHabitViewController: UIViewController {
+class EditHabitViewController: UIViewController {
     // MARK: - UIComponenets
     
     let navigationBar = CustomNavigationBar("", state: .modal)
     
     lazy var habitSettingView = LabeledRoundedView(state: .setHabit, habitNameTextField)
     lazy var habitNameTextField = UITextField().then {
-        $0.placeholder = "습관을 써주세요"
+        let placeholder = "습관을 써주세요"
+        $0.placeholder = placeholder
+        $0.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray6])
         $0.font = .pretendard(type: .medium, size: 18)
+        $0.textColor = .gray8
     }
     
     lazy var dayOfWeekSettingView = LabeledRoundedView(state: .dayOfTheWeek, dayOfWeekCollectionView)
@@ -58,6 +61,7 @@ class AddHabitViewController: UIViewController {
     lazy var alarmSettingView = RoundedView().then {
         let label = UILabel()
         label.text = "알림"
+        label.textColor = UIColor.gray8
         label.font = UIFont.pretendard(type: .medium, size: 18)
         
         $0.addSubviews([label, alarmSwitch])
@@ -80,6 +84,7 @@ class AddHabitViewController: UIViewController {
     lazy var alarmTimeSettingView = RoundedView()
     let alarmTimeLabel = UILabel().then {
         $0.text = "알림시간"
+        $0.textColor = .gray6
         $0.font = UIFont.pretendard(type: .medium, size: 18)
     }
 
@@ -120,7 +125,7 @@ class AddHabitViewController: UIViewController {
                 alarmTimeLabel.textColor = .gray8
             } else {
                 alarmTimeButton.isUserInteractionEnabled = false
-                alarmTimeButton.setTitleColor(.gray6, for: .normal)
+                alarmTimeButton.setTitleColor(.gray5, for: .normal)
                 alarmTimeLabel.textColor = .gray6
             }
         }
@@ -215,15 +220,22 @@ class AddHabitViewController: UIViewController {
     @objc
     func didTapSaveButton(_ sender: UIButton) {
         if let title = habitNameTextField.text,
-           let icon = iconCollectionView.indexPathsForSelectedItems,
+           let icon = iconCollectionView.indexPathsForSelectedItems?.first?.row,
            let dayOfWeeks = dayOfWeekCollectionView.indexPathsForSelectedItems,
            let alarmTime = alarmTimeButton.titleLabel?.text
         {
-            print("title: ", title)
-            print("icon: ", icon)
-            print("dayOfWeeks: ", dayOfWeeks)
-            print("isAlarm: ", isOnAlarmSwitch)
-            print("alarmTime: ", alarmTimePicker.date, "\(alarmTime)")
+            print("title:", title)
+            print("icon:", icon + 1)
+            print("dayOfWeeks:", dayOfWeeks)
+            print("isAlarm:", isOnAlarmSwitch)
+            print("alarmTime:", alarmTimePicker.date, "\(alarmTime)")
+            
+            let idx = HabitManager.shared.habitCount
+            let days = dayOfWeeks.map { $0.row + 1 }
+            let habit = Habit(idx: idx, iconIdx: icon + 1, name: title, frequency: 1, delayDay: 1, registrationDate: Date(), isAlarm: false, repeatDays: days, completion: false)
+
+            HabitManager.shared.appendHabits([habit])
+            dismiss(animated: true, completion: nil)
         }
     }
     
@@ -257,7 +269,7 @@ class AddHabitViewController: UIViewController {
 
 // MARK: - ModalDelegate
 
-extension AddHabitViewController: ModalDelegate {
+extension EditHabitViewController: ModalDelegate {
     func dismiss() {
         if hasChanges {
             confirmCancel()
@@ -269,7 +281,7 @@ extension AddHabitViewController: ModalDelegate {
 
 // MARK: - UIAdaptivePresentationControllerDelegate
 
-extension AddHabitViewController: UIAdaptivePresentationControllerDelegate {
+extension EditHabitViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
         confirmCancel()
     }

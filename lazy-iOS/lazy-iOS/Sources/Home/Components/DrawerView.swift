@@ -11,6 +11,7 @@ import UIKit
 
 protocol DrawerViewDelegate {
     func presentAddHabitView()
+    func presentPreventAlert()
 }
 
 class DrawerView: UIView {
@@ -44,13 +45,18 @@ class DrawerView: UIView {
         $0.backgroundColor = .white
         $0.alwaysBounceVertical = false
         $0.separatorStyle = .none
+        $0.estimatedRowHeight = 0
     }
     
     // MARK: - Properties
     
     var totalDelayedDate: Int = 0
     var drawerViewDelegate: DrawerViewDelegate?
-    var isOpen: Bool = false
+
+    var tableViewContentHeight: CGFloat {
+        habitTableView.layoutIfNeeded()
+        return habitTableView.contentSize.height + UIComponentsConstants.homeDrawerCloseHeight + 12.0
+    }
     
     // MARK: - Initializer
     
@@ -58,6 +64,7 @@ class DrawerView: UIView {
         super.init(frame: .zero)
         
         setView()
+        setDelegate()
     }
     
     @available(*, unavailable)
@@ -78,7 +85,6 @@ class DrawerView: UIView {
         let translationY = gestrue.translation(in: self).y
         let height = bounds.height
         let velocity = gestrue.velocity(in: self)
-        let tableViewHeight = habitTableView.contentSize.height + UIComponentsConstants.homeDrawerCloseHeight + 12.0
         
         switch gestrue.state {
         case .ended:
@@ -92,7 +98,7 @@ class DrawerView: UIView {
             
             springAnimation()
         case .changed:
-            if height - translationY > UIComponentsConstants.homeDrawerCloseHeight, height - translationY <= tableViewHeight {
+            if height - translationY > UIComponentsConstants.homeDrawerCloseHeight, height - translationY <= tableViewContentHeight {
                 snp.updateConstraints { make in
                     make.height.equalTo(height - translationY)
                 }
@@ -105,7 +111,11 @@ class DrawerView: UIView {
     
     @objc
     func didTapPlusButton(_ sender: UIButton) {
-        drawerViewDelegate?.presentAddHabitView()
+        if HabitManager.shared.habitCount >= 3 {
+            drawerViewDelegate?.presentPreventAlert()
+        } else {
+            drawerViewDelegate?.presentAddHabitView()
+        }
     }
     
     // MARK: - Methods
@@ -113,6 +123,10 @@ class DrawerView: UIView {
     func setView() {
         backgroundColor = .white
         addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    func setDelegate() {
+        HabitManager.shared.drawerHabitManagerDelegate = self
     }
     
     func setConstraints() {
@@ -142,13 +156,13 @@ class DrawerView: UIView {
         }
     }
     
-    func openDrawer() {
+    private func openDrawer() {
         snp.updateConstraints { make in
-            make.height.equalTo(self.habitTableView.contentSize.height + UIComponentsConstants.homeDrawerCloseHeight + 12.0)
+            make.height.equalTo(tableViewContentHeight)
         }
     }
     
-    func closeDrawer() {
+    private func closeDrawer() {
         snp.updateConstraints { make in
             make.height.equalTo(UIComponentsConstants.homeDrawerCloseHeight)
         }
@@ -156,5 +170,25 @@ class DrawerView: UIView {
 
     func springAnimation() {
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: { self.layoutIfNeeded() }, completion: nil)
+    }
+}
+
+extension DrawerView: DrawerHabitManagerDelegate {
+    func addHabits(_ habits: [Habit]) {
+        habitTableView.reloadData()
+        
+        snp.updateConstraints { make in
+            make.height.equalTo(tableViewContentHeight)
+        }
+        
+        guideLabel.text = "습관이 \(HabitManager.shared.delayDaysCount)일 쌓였어요"
+    }
+    
+    func completedHabit(habit: Habit) {
+        print("\(habit.name) 습관 완료 😀")
+    }
+
+    func incompleteHabit(habit: Habit) {
+        print("\(habit.name) 습관 미완료 🤬")
     }
 }

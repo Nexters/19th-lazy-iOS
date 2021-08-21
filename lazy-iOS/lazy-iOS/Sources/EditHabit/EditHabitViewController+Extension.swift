@@ -9,12 +9,12 @@ import UIKit
 
 // MARK: - UICollectionViewDataSource
 
-extension AddHabitViewController: UICollectionViewDataSource {
+extension EditHabitViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == dayOfWeekCollectionView {
             return weeks.count
         }
-        return colors.count
+        return BubbleIcon.iconCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -26,7 +26,7 @@ extension AddHabitViewController: UICollectionViewDataSource {
             return cell
         case iconCollectionView:
             let cell: IconCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.contentView.backgroundColor = colors[indexPath.row]
+            cell.setIconImage(idx: indexPath.row + 1)
 
             return cell
         default:
@@ -37,7 +37,7 @@ extension AddHabitViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension AddHabitViewController: UICollectionViewDelegateFlowLayout {
+extension EditHabitViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == dayOfWeekCollectionView {
             let width = Int(dayOfWeekCollectionView.frame.width) - (11 * (weeks.count - 1))
@@ -60,7 +60,7 @@ extension AddHabitViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension AddHabitViewController: UICollectionViewDelegate {
+extension EditHabitViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isFirst {
             let range = collectionView.numberOfItems(inSection: 0)
@@ -76,7 +76,7 @@ extension AddHabitViewController: UICollectionViewDelegate {
 
 // MARK: - UITextFieldDelegate
 
-extension AddHabitViewController: UITextFieldDelegate {
+extension EditHabitViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
 

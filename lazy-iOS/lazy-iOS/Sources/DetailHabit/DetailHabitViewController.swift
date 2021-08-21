@@ -156,7 +156,7 @@ class DetailHabitViewController: UIViewController {
     
     @objc
     func didTapEditButton(_ sender: UIButton) {
-        let editHabitVC = AddHabitViewController(mode: .edit)
+        let editHabitVC = EditHabitViewController(mode: .edit)
         
         present(editHabitVC, animated: true, completion: nil)
     }

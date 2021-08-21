@@ -10,7 +10,9 @@ import UIKit
 class DayOfWeekCollectionViewCell: UICollectionViewCell {
     // MARK: - UIComponents
     
-    var dayLabel = UILabel()
+    var dayLabel = UILabel().then {
+        $0.font = .pretendard(type: .medium, size: 16)
+    }
     
     // MARK: - Initializer
     
@@ -31,11 +33,11 @@ class DayOfWeekCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                contentView.backgroundColor = UIColor(red: 80.0 / 255.0, green: 68.0 / 255.0, blue: 255.0 / 255.0, alpha: 1)
+                contentView.backgroundColor = .mainPurple
                 dayLabel.textColor = .white
             } else {
-                contentView.backgroundColor = UIColor(red: 231.0 / 255.0, green: 231.0 / 255.0, blue: 231.0 / 255.0, alpha: 1)
-                dayLabel.textColor = .black
+                contentView.backgroundColor = .gray3
+                dayLabel.textColor = .gray8
             }
         }
     }

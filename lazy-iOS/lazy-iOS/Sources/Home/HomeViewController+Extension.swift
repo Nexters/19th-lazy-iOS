@@ -21,17 +21,14 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        HabitManager.shared.habitCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeHabitTableViewCell.identifier, for: indexPath) as? HomeHabitTableViewCell else { return UITableViewCell() }
         cell.checkButtonDelegate = self
         cell.selectionStyle = .none
-
-        if indexPath.row == 1 {
-            cell.changeInActive()
-        }
+        cell.setHabitData(habit: HabitManager.shared.habits[indexPath.row])
 
         return cell
     }
@@ -40,8 +37,17 @@ extension HomeViewController: UITableViewDataSource {
 // MARK: - DrawerViewDelegate
 
 extension HomeViewController: DrawerViewDelegate {
+    func presentPreventAlert() {
+        let alert = UIAlertController(title: "습관은 최대 3개까지\n관리할 수 있어요", message: "슴관을 1개 이상 지워주세요", preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "좋아요", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+
+        self.present(alert, animated: true, completion: nil)
+    }
+
     func presentAddHabitView() {
-        let addHabitViewController = AddHabitViewController(mode: .add)
+        let addHabitViewController = EditHabitViewController(mode: .add)
 
         self.present(addHabitViewController, animated: true, completion: nil)
     }
@@ -52,5 +58,17 @@ extension HomeViewController: DrawerViewDelegate {
 extension HomeViewController: HabitCheckButtonDelegate {
     func didTapHabitCheckButton(_ sender: UIButton) {
         sender.isSelected.toggle()
+    }
+}
+
+// MARK: - BubbleGestureDelegate
+
+extension HomeViewController: BubbleGestureDelegate {
+    func updateAnimator(velocity: CGPoint, item: UIView) {
+        let itemBehavior = UIDynamicItemBehavior(items: [item])
+        itemBehavior.addLinearVelocity(velocity, for: item)
+
+        animator.addBehavior(itemBehavior)
+        animator.updateItem(usingCurrentState: item)
     }
 }

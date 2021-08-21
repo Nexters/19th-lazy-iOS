@@ -12,14 +12,14 @@ class HomeHabitTableViewCell: UITableViewCell {
 
     // MARK: - UIComponents
 
-    let iconView = UIView().then {
-        $0.backgroundColor = .systemOrange
-    }
+    let iconView = UIImageView()
     
     let titleLabel = UILabel().then {
         $0.text = "습관 A"
         $0.font = .pretendard(type: .bold, size: 16)
         $0.textColor = .black
+        $0.numberOfLines = 1
+        $0.lineBreakMode = .byTruncatingTail
     }
     
     let commentLabel = UILabel().then {
@@ -68,6 +68,10 @@ class HomeHabitTableViewCell: UITableViewCell {
         iconView.cornerRound(radius: 18)
     }
     
+    override func prepareForReuse() {
+        changeActive()
+    }
+    
     // MARK: - Actions
     
     @objc
@@ -94,7 +98,8 @@ class HomeHabitTableViewCell: UITableViewCell {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.equalTo(iconView.snp.trailing).offset(12)
+            make.leading.equalTo(iconView.snp.trailing).offset(12.0 * DeviceConstants.widthRatio)
+            make.trailing.equalTo(checkButton.snp.leading).offset(-86.0 * DeviceConstants.widthRatio)
         }
         
         commentLabel.snp.makeConstraints { make in
@@ -104,9 +109,31 @@ class HomeHabitTableViewCell: UITableViewCell {
         
         checkButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20)
-            make.width.equalToSuperview().multipliedBy(54.0 / 375.0)
+            make.width.equalTo(54.0 * DeviceConstants.widthRatio)
             make.height.equalTo(checkButton.snp.width).multipliedBy(34.0 / 54.0)
             make.centerY.equalToSuperview()
+        }
+    }
+    
+    // FIXME: - 예쁘게 고쳐야겠죠..
+    func setHabitData(habit: Habit) {
+        iconView.image = UIImage(named: "habbit\(habit.iconIdx)")
+        titleLabel.text = habit.name
+        
+        let todayWeekDay = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
+        
+        if habit.completion {
+            commentLabel.text = "와우! 대단해요"
+            checkButton.isSelected = true
+        } else {
+            commentLabel.text = "얼마 남았어요"
+            checkButton.isSelected = false
+        }
+        
+        checkButton.setTitle("\(habit.delayDay)일 차", for: .normal)
+        
+        if !habit.repeatDays.contains(todayWeekDay) {
+            changeInActive()
         }
     }
     
@@ -116,5 +143,13 @@ class HomeHabitTableViewCell: UITableViewCell {
         commentLabel.alpha = 0.5
         
         checkButton.isEnabled = false
+    }
+    
+    func changeActive() {
+        iconView.alpha = 1.0
+        titleLabel.alpha = 1.0
+        commentLabel.alpha = 1.0
+        
+        checkButton.isEnabled = true
     }
 }

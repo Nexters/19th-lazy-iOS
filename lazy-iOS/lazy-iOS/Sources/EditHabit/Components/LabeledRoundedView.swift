@@ -17,6 +17,7 @@ class LabeledRoundedView: RoundedView {
 
     private let titleLabel = UILabel().then {
         $0.font = .pretendard(type: .medium, size: 12)
+        $0.textColor = .gray7
     }
 
     // MARK: - Properties
