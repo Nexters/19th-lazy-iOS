@@ -41,6 +41,17 @@ class HabitManager {
         habits.count
     }
 
+    var bubbleSize: CGFloat {
+        switch delayDaysCount {
+        case 0...7:
+            return 150.0
+        case 8...18:
+            return 110.0
+        default:
+            return 70.0
+        }
+    }
+
     weak var homeHabitManagerDelegate: HomeHabitManagerDelegate?
     weak var drawerHabitManagerDelegate: DrawerHabitManagerDelegate?
 
