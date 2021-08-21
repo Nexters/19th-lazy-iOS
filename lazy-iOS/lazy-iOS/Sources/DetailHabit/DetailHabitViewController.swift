@@ -16,38 +16,27 @@ class DetailHabitViewController: UIViewController {
     lazy var editButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
         $0.setTitleColor(.mainPurple, for: .normal)
+        $0.titleLabel?.font = .pretendard(type: .medium, size: 18)
         $0.addTarget(self, action: #selector(didTapEditButton(_:)), for: .touchUpInside)
     }
     
     let scrollView = UIScrollView()
     let contentView = UIView()
     
-    lazy var habitsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        $0.showsHorizontalScrollIndicator = false
-        $0.backgroundColor = .clear
-        $0.collectionViewLayout = layout
-        $0.register(cell: HabitButtonCollectionViewCell.self)
-        $0.delegate = self
-        $0.dataSource = self
+    lazy var habitLabel = UILabel().then {
+        $0.text = "런데이하기런데이하기런데이하기런데이하기"
+        $0.font = .pretendard(type: .bold, size: 20)
+        $0.textColor = .gray8
+        $0.lineSpacing(spacing: 8)
+        $0.numberOfLines = 1
+        $0.lineBreakMode = .byTruncatingTail
     }
-    
+
     let displayView = UIView().then {
         $0.backgroundColor = .gray1
         $0.cornerRound(radius: 12)
     }
     
-    lazy var habitLabel = UILabel().then {
-        $0.text = "런데이하기"
-        $0.font = .pretendard(type: .medium, size: 18)
-        $0.textColor = .gray8
-        $0.lineBreakMode = .byTruncatingTail
-        $0.lineSpacing(spacing: 8)
-    }
-
     lazy var habitDayLabel = UILabel().then {
         $0.font = .pretendard(type: .bold, size: 52)
         $0.numberOfLines = 0

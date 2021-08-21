@@ -10,8 +10,8 @@ import Foundation
 extension DetailHabitViewController {
     func setConstraints() {
         navigationBar.addSubview(editButton)
-        displayView.addSubviews([habitLabel, habitDayLabel, messageLabel])
-        contentView.addSubviews([habitsCollectionView, displayView, prevButton, calendarHeaderLabel, nextButton, calendar, giveUpButton])
+        displayView.addSubviews([habitDayLabel, messageLabel])
+        contentView.addSubviews([habitLabel, displayView, prevButton, calendarHeaderLabel, nextButton, calendar, giveUpButton])
         scrollView.addSubview(contentView)
         view.addSubviews([navigationBar, scrollView])
         
@@ -30,30 +30,26 @@ extension DetailHabitViewController {
         }
         
         navigationBar.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalToSuperview().offset(18)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
         
-        habitsCollectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(38)
-            make.leading.trailing.equalToSuperview().inset(20 * DeviceConstants.widthRatio)
+        habitLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(39)
+            make.leading.trailing.equalToSuperview().inset(23 * DeviceConstants.widthRatio)
             make.height.equalTo(32 * DeviceConstants.heightRatio)
         }
         
         displayView.snp.makeConstraints { make in
-            make.top.equalTo(habitsCollectionView.snp.bottom).offset(16)
+            make.top.equalTo(habitLabel.snp.bottom).offset(11)
             make.width.equalToSuperview().multipliedBy(335.0 / 375.0)
-            make.height.equalTo(displayView.snp.width).multipliedBy(203.0 / 335.0)
+            make.height.equalTo(displayView.snp.width).multipliedBy(161.0 / 335.0)
             make.centerX.equalToSuperview()
         }
         
-        habitLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(28 * DeviceConstants.heightRatio)
-            make.leading.trailing.equalToSuperview().inset(20)
-        }
-        
         habitDayLabel.snp.makeConstraints { make in
-            make.top.equalTo(habitLabel.snp.bottom)
-            make.leading.equalTo(habitLabel.snp.leading)
+            make.top.equalToSuperview().offset(16 * DeviceConstants.heightRatio)
+            make.leading.equalToSuperview().offset(20 * DeviceConstants.widthRatio)
         }
         
         messageLabel.snp.makeConstraints { make in
