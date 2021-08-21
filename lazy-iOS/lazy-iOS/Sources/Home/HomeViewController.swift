@@ -22,6 +22,24 @@ class HomeViewController: UIViewController {
         $0.text = Date().dateToString(format: "yy.M.d EEEE", date: Date())
     }
 
+    let emptyLabel = UILabel().then {
+        $0.font = .pretendard(type: .semiBold, size: 18)
+        $0.text = "아직 등록된 습관이 없어요"
+        $0.textColor = .white
+    }
+
+    let emptySubLabel = UILabel().then {
+        $0.font = .pretendard(type: .regular, size: 14)
+        $0.text = "새로운 습관을 추가해보세요!"
+        $0.textColor = .gray4
+        $0.lineSpacing(spacing: 8)
+    }
+
+    let addHabitButton = RoundedButton(style: .purple).then {
+        $0.setTitle("추가하기", for: .normal)
+        $0.addTarget(self, action: #selector(didTapAddHabitButton(_:)), for: .touchUpInside)
+    }
+
     // MARK: - Properties
 
     lazy var animator = UIDynamicAnimator(referenceView: self.bubbleAreaView)
@@ -30,6 +48,30 @@ class HomeViewController: UIViewController {
     }
 
     let drawerView = DrawerView()
+
+    var isHabitEmpty: Bool = false {
+        didSet {
+            if isHabitEmpty {
+                backgroundImageView.isHidden = true
+                backgroundShadowView.isHidden = true
+                bubbleAreaView.isHidden = true
+                drawerView.isHidden = true
+
+                emptyLabel.isHidden = false
+                emptySubLabel.isHidden = false
+                addHabitButton.isHidden = false
+            } else {
+                backgroundImageView.isHidden = false
+                backgroundShadowView.isHidden = false
+                bubbleAreaView.isHidden = false
+                drawerView.isHidden = false
+
+                emptyLabel.isHidden = true
+                emptySubLabel.isHidden = true
+                addHabitButton.isHidden = true
+            }
+        }
+    }
 
     // MARK: - Initializer
 
@@ -41,6 +83,7 @@ class HomeViewController: UIViewController {
         setView()
         setDelegate()
         setConstraints()
+
         fetchHabitsData()
     }
 
@@ -62,9 +105,15 @@ class HomeViewController: UIViewController {
 
     // MARK: - Actions
 
+    @objc
+    func didTapAddHabitButton(_ sender: UIButton) {
+        present(EditHabitViewController(mode: .add), animated: true, completion: nil)
+    }
+
     // MARK: - Methods
 
     func setView() {
+        view.backgroundColor = .mainDark
         overrideUserInterfaceStyle = .dark
 
         animator.addBehavior(BubbleBehaviorManager.shared)
@@ -98,6 +147,26 @@ class HomeViewController: UIViewController {
             make.bottom.equalToSuperview().offset(50)
             make.height.equalTo(UIComponentsConstants.homeDrawerOpenHeight)
         }
+
+        /// empty
+        view.addSubviews([emptyLabel, emptySubLabel, addHabitButton])
+
+        emptyLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(295 * DeviceConstants.heightRatio)
+            make.centerX.equalToSuperview()
+        }
+
+        emptySubLabel.snp.makeConstraints { make in
+            make.top.equalTo(emptyLabel.snp.bottom).offset(8)
+            make.centerX.equalToSuperview()
+        }
+
+        addHabitButton.snp.makeConstraints { make in
+            make.top.equalTo(emptySubLabel.snp.bottom).offset(25)
+            make.width.equalTo(80 * DeviceConstants.widthRatio)
+            make.height.equalTo(42 * DeviceConstants.heightRatio)
+            make.centerX.equalToSuperview()
+        }
     }
 
     func setDelegate() {
@@ -112,13 +181,25 @@ class HomeViewController: UIViewController {
         /// 서버 통신
         let habits = [Habit(idx: 3, iconIdx: 2, name: "런데이! 🏃🏼‍♀️", frequency: 5, delayDay: 6, registrationDate: Date(), isAlarm: true, repeatDays: [1, 3, 5, 7], completion: false), Habit(idx: 4, iconIdx: 1, name: "1일 1알고리즘", frequency: 5, delayDay: 2, registrationDate: Date(), isAlarm: true, repeatDays: [1, 2, 3, 4, 5, 6, 7], completion: false)]
 
-        HabitManager.shared.appendHabits(habits)
+//        HabitManager.shared.appendHabits(habits)
+        HabitManager.shared.refreshHabits(habits)
     }
 }
 
 // TODO: - 버블 사이즈 enum
 extension HomeViewController: HomeHabitManagerDelegate {
+    func emptyHabit() {
+        isHabitEmpty = true
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
+            print(self.bubbleAreaView.subviews)
+            self.bubbleAreaView.subviews.forEach { $0.removeFromSuperview() }
+        }
+    }
+
     func addHabits(_ habits: [Habit]) {
+        isHabitEmpty = false
+
         let x = view.bounds.width / 4.0
         let size = 110.0 * DeviceConstants.widthRatio
 

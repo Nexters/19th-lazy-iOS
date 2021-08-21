@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeHabitManagerDelegate: AnyObject {
     func addHabits(_ habits: [Habit])
+    func emptyHabit()
     func completedHabit(habit: Habit)
     func incompleteHabit(habit: Habit)
 }
@@ -48,6 +49,17 @@ class HabitManager {
     init() {}
 
     // MARK: - Methods
+
+    func refreshHabits(_ habits: [Habit]) {
+        self.habits = habits
+
+        if habits.isEmpty {
+            homeHabitManagerDelegate?.emptyHabit()
+        } else {
+            homeHabitManagerDelegate?.addHabits(habits)
+            drawerHabitManagerDelegate?.addHabits(habits)
+        }
+    }
 
     func appendHabits(_ habits: [Habit]) {
         let newHabits = habits.filter { !self.habits.contains($0) }
