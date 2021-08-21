@@ -11,6 +11,7 @@ import UIKit
 
 protocol DrawerViewDelegate {
     func presentAddHabitView()
+    func presentPreventAlert()
 }
 
 class DrawerView: UIView {
@@ -110,7 +111,11 @@ class DrawerView: UIView {
     
     @objc
     func didTapPlusButton(_ sender: UIButton) {
-        drawerViewDelegate?.presentAddHabitView()
+        if HabitManager.shared.habitCount >= 3 {
+            drawerViewDelegate?.presentPreventAlert()
+        } else {
+            drawerViewDelegate?.presentAddHabitView()
+        }
     }
     
     // MARK: - Methods

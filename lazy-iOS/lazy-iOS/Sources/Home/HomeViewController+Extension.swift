@@ -37,6 +37,15 @@ extension HomeViewController: UITableViewDataSource {
 // MARK: - DrawerViewDelegate
 
 extension HomeViewController: DrawerViewDelegate {
+    func presentPreventAlert() {
+        let alert = UIAlertController(title: "습관은 최대 3개까지\n관리할 수 있어요", message: "슴관을 1개 이상 지워주세요", preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "좋아요", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+
+        self.present(alert, animated: true, completion: nil)
+    }
+
     func presentAddHabitView() {
         let addHabitViewController = EditHabitViewController(mode: .add)
 
