@@ -220,15 +220,22 @@ class EditHabitViewController: UIViewController {
     @objc
     func didTapSaveButton(_ sender: UIButton) {
         if let title = habitNameTextField.text,
-           let icon = iconCollectionView.indexPathsForSelectedItems,
+           let icon = iconCollectionView.indexPathsForSelectedItems?.first?.row,
            let dayOfWeeks = dayOfWeekCollectionView.indexPathsForSelectedItems,
            let alarmTime = alarmTimeButton.titleLabel?.text
         {
-            print("title: ", title)
-            print("icon: ", icon)
-            print("dayOfWeeks: ", dayOfWeeks)
-            print("isAlarm: ", isOnAlarmSwitch)
-            print("alarmTime: ", alarmTimePicker.date, "\(alarmTime)")
+            print("title:", title)
+            print("icon:", icon + 1)
+            print("dayOfWeeks:", dayOfWeeks)
+            print("isAlarm:", isOnAlarmSwitch)
+            print("alarmTime:", alarmTimePicker.date, "\(alarmTime)")
+            
+            let idx = HabitManager.shared.habitCount
+            let days = dayOfWeeks.map { $0.row + 1 }
+            let habit = Habit(idx: idx, iconIdx: icon + 1, name: title, frequency: 1, delayDay: 1, registrationDate: Date(), isAlarm: false, repeatDays: days, completion: false)
+
+            HabitManager.shared.appendHabits([habit])
+            dismiss(animated: true, completion: nil)
         }
     }
     
