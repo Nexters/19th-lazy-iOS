@@ -15,7 +15,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailHabitViewController = DetailHabitViewController()
 
-        navigationController?.pushViewController(detailHabitViewController, animated: true)
+        present(detailHabitViewController, animated: true, completion: nil)
     }
 }
 
