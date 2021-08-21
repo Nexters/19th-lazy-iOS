@@ -265,7 +265,7 @@
 			path = PopUp;
 			sourceTree = "<group>";
 		};
-		AB42C18226A9B37900EB1B92 /* AddHabit */ = {
+		AB42C18226A9B37900EB1B92 /* EditHabit */ = {
 			isa = PBXGroup;
 			children = (
 				AB42C18A26AA765900EB1B92 /* Cell */,
@@ -274,7 +274,7 @@
 				AB42C18D26AA7D0A00EB1B92 /* EditHabitViewController+Extension.swift */,
 				AB86052D26B12F4C0029E67E /* EditHabitViewController+Layout.swift */,
 			);
-			path = AddHabit;
+			path = EditHabit;
 			sourceTree = "<group>";
 		};
 		AB42C18526A9B72E00EB1B92 /* Components */ = {
@@ -330,7 +330,7 @@
 				ABFA4C7C26BBF1FB004731F6 /* DetailHabit */,
 				AB00BE8C26B59F8400A37235 /* Onboarding */,
 				AB00BE8226B4731000A37235 /* Nickname */,
-				AB42C18226A9B37900EB1B92 /* AddHabit */,
+				AB42C18226A9B37900EB1B92 /* EditHabit */,
 				AB42C17B26A8394E00EB1B92 /* PopUp */,
 				AB42C15F26A568BB00EB1B92 /* Analysis */,
 				AB42C15C26A5688E00EB1B92 /* MyPage */,
