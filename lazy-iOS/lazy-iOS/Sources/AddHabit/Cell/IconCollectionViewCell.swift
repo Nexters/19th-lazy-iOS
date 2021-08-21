@@ -10,12 +10,16 @@ import UIKit
 class IconCollectionViewCell: UICollectionViewCell {
     // MARK: - UIComponents
 
+    let iconImageView = UIImageView()
+
     // MARK: - Properties
 
     // MARK: - Initializer
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        setConstraints()
     }
 
     @available(*, unavailable)
@@ -32,14 +36,24 @@ class IconCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                contentView.backgroundColor = contentView.backgroundColor?.withAlphaComponent(1)
+                iconImageView.alpha = 1
             } else {
-                contentView.backgroundColor = contentView.backgroundColor?.withAlphaComponent(0.4)
+                iconImageView.alpha = 0.4
             }
         }
     }
 
     // MARK: - Methods
 
-    func setConstraints() {}
+    func setConstraints() {
+        contentView.addSubview(iconImageView)
+
+        iconImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+
+    func setIconImage(idx: Int) {
+        iconImageView.image = BubbleIcon(rawValue: idx)?.iconImage
+    }
 }

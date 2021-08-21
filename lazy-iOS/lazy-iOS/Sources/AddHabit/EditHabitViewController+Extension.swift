@@ -14,7 +14,7 @@ extension EditHabitViewController: UICollectionViewDataSource {
         if collectionView == dayOfWeekCollectionView {
             return weeks.count
         }
-        return colors.count
+        return BubbleIcon.iconCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -26,7 +26,7 @@ extension EditHabitViewController: UICollectionViewDataSource {
             return cell
         case iconCollectionView:
             let cell: IconCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.contentView.backgroundColor = colors[indexPath.row]
+            cell.setIconImage(idx: indexPath.row + 1)
 
             return cell
         default:

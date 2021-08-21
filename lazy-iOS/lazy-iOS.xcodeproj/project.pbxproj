@@ -14,6 +14,7 @@
 		AB00BE8626B57C5600A37235 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8526B57C5600A37235 /* RoundedButton.swift */; };
 		AB00BE8E26B59F9E00A37235 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8D26B59F9E00A37235 /* OnboardingViewController.swift */; };
 		AB00BE9026B5A17C00A37235 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00BE8F26B5A17C00A37235 /* ConfirmViewController.swift */; };
+		AB01DA0F26D0E0BF0042C96F /* BubbleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB01DA0E26D0E0BF0042C96F /* BubbleIcon.swift */; };
 		AB0E165226C56E97005133C7 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E165126C56E97005133C7 /* BubbleView.swift */; };
 		AB42C15526A458D800EB1B92 /* BubbleBehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */; };
 		AB42C15826A46B9F00EB1B92 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C15726A46B9F00EB1B92 /* DrawerView.swift */; };
@@ -77,6 +78,7 @@
 		AB00BE8526B57C5600A37235 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		AB00BE8D26B59F9E00A37235 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		AB00BE8F26B5A17C00A37235 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		AB01DA0E26D0E0BF0042C96F /* BubbleIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleIcon.swift; sourceTree = "<group>"; };
 		AB0E165126C56E97005133C7 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		AB42C15426A458D800EB1B92 /* BubbleBehaviorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBehaviorManager.swift; sourceTree = "<group>"; };
 		AB42C15726A46B9F00EB1B92 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
@@ -183,6 +185,14 @@
 				ABFA4C3C26B93089004731F6 /* HabitTypeResultViewController.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		AB01DA0D26D0E0AA0042C96F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB01DA0E26D0E0BF0042C96F /* BubbleIcon.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AB42C15626A46B8500EB1B92 /* Components */ = {
@@ -358,6 +368,7 @@
 		AB7F6E452699FD5300EF9C6E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AB01DA0D26D0E0AA0042C96F /* Model */,
 				AB7F6E55269A2C9300EF9C6E /* Manager */,
 				AB7F6E52269A02C600EF9C6E /* Key */,
 				AB86052626B120890029E67E /* Protocols */,
@@ -592,6 +603,7 @@
 				AB00BE8126B46FCD00A37235 /* UILabel+Extension.swift in Sources */,
 				AB5516FC26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift in Sources */,
 				AB42C18726A9BFA500EB1B92 /* LabeledRoundedView.swift in Sources */,
+				AB01DA0F26D0E0BF0042C96F /* BubbleIcon.swift in Sources */,
 				AB42C17826A5E7C500EB1B92 /* HomeViewController+Extension.swift in Sources */,
 				AB86052A26B120B90029E67E /* NavigationDelegate.swift in Sources */,
 				AB7F6E492699FD8900EF9C6E /* UIView+Extension.swift in Sources */,
