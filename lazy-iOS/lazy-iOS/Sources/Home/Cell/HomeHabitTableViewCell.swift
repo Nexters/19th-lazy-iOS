@@ -18,6 +18,8 @@ class HomeHabitTableViewCell: UITableViewCell {
         $0.text = "습관 A"
         $0.font = .pretendard(type: .bold, size: 16)
         $0.textColor = .black
+        $0.numberOfLines = 1
+        $0.lineBreakMode = .byTruncatingTail
     }
     
     let commentLabel = UILabel().then {
@@ -96,7 +98,8 @@ class HomeHabitTableViewCell: UITableViewCell {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.equalTo(iconView.snp.trailing).offset(12)
+            make.leading.equalTo(iconView.snp.trailing).offset(12.0 * DeviceConstants.widthRatio)
+            make.trailing.equalTo(checkButton.snp.leading).offset(-86.0 * DeviceConstants.widthRatio)
         }
         
         commentLabel.snp.makeConstraints { make in
@@ -106,7 +109,7 @@ class HomeHabitTableViewCell: UITableViewCell {
         
         checkButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20)
-            make.width.equalToSuperview().multipliedBy(54.0 / 375.0)
+            make.width.equalTo(54.0 * DeviceConstants.widthRatio)
             make.height.equalTo(checkButton.snp.width).multipliedBy(34.0 / 54.0)
             make.centerY.equalToSuperview()
         }

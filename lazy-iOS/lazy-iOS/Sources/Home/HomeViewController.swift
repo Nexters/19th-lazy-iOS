@@ -202,7 +202,6 @@ extension HomeViewController: HomeHabitManagerDelegate {
 
         let x = view.bounds.width / 4.0
         let size = HabitManager.shared.bubbleSize * DeviceConstants.widthRatio
-        print(size)
 
         for (idx, habit) in habits.enumerated() {
             for habitIdx in 0 ..< habit.delayDay {
