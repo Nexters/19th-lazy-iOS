@@ -68,9 +68,6 @@ class BubbleView: UIControl {
     // MARK: - Methods
     
     private func setView() {
-        cornerRounds()
-        iconImageView.cornerRounds()
-        
         gestureRecognizers = [UIPanGestureRecognizer(target: self, action: #selector(handleBubbleView(_:)))]
     }
     

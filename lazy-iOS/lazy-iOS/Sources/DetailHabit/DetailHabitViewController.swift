@@ -11,7 +11,7 @@ import UIKit
 class DetailHabitViewController: UIViewController {
     // MARK: - UIComponenets
 
-    let navigationBar = CustomNavigationBar("습관 상세", state: .navigation)
+    let navigationBar = CustomNavigationBar("습관 상세", state: .none)
     
     lazy var editButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
