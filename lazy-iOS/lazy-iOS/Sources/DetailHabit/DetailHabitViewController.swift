@@ -185,6 +185,7 @@ class DetailHabitViewController: UIViewController {
         /// 날짜 선택
         calendar.allowsMultipleSelection = false
         calendar.allowsSelection = false
+        calendar.swipeToChooseGesture.isEnabled = true
 
         /// textColor
         calendar.appearance.weekdayTextColor = .gray8
@@ -230,5 +231,19 @@ class DetailHabitViewController: UIViewController {
         
         iconCell.iconImage.isHidden = isHidden
         iconCell.titleLabel.isHidden = !isHidden
+        
+        // FIXME: - 파워 임시.. 서버 들어오면 다시........
+        let delaydates = [["2021-08-23", "2021-08-25", "2021-08-27"], [], ["2021-08-28"]]
+        
+        let key = Date().dateToString(format: "yyyy-MM-dd", date: date)
+        if delaydates[habit.idx].contains(key) {
+            print(key)
+            iconCell.iconImage.isHidden = false
+            iconCell.titleLabel.isHidden = false
+            
+            iconCell.iconImage.image = .init(color: .mainPurple)
+            iconCell.titleLabel.font = .pretendard(type: .semiBold, size: 14)
+            iconCell.titleLabel.textColor = .white
+        }
     }
 }

@@ -9,11 +9,7 @@ import FSCalendar
 import UIKit
 
 class IconCalendarCell: FSCalendarCell {
-    let iconImage: UIImageView = {
-        let iconImage = UIImageView()
-
-        return iconImage
-    }()
+    let iconImage = UIImageView()
 
     override init!(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +26,7 @@ class IconCalendarCell: FSCalendarCell {
 
         iconImage.frame = CGRect(origin: .zero, size: CGSize(width: titleLabel.frame.height, height: titleLabel.frame.height))
         iconImage.center.x = contentView.center.x
+        iconImage.cornerRounds()
     }
 
     func setIconImage(idx: Int) {

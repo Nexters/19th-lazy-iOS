@@ -40,6 +40,7 @@
 		AB42C19426AB079D00EB1B92 /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C19326AB079D00EB1B92 /* IconCollectionViewCell.swift */; };
 		AB42C19626AB167000EB1B92 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */; };
 		AB4A7DDF26D909D000798FC1 /* IconCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A7DDE26D909D000798FC1 /* IconCalendarCell.swift */; };
+		AB4A7DE126D939D100798FC1 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A7DE026D939D100798FC1 /* UIImage+Extension.swift */; };
 		AB5516FA26C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5516F926C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift */; };
 		AB5516FC26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5516FB26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift */; };
 		AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */; };
@@ -105,6 +106,7 @@
 		AB42C19326AB079D00EB1B92 /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		AB4A7DDE26D909D000798FC1 /* IconCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCalendarCell.swift; sourceTree = "<group>"; };
+		AB4A7DE026D939D100798FC1 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		AB5516F926C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailHabitViewController+Layout.swift"; sourceTree = "<group>"; };
 		AB5516FB26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailHabitViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB7F6E2826997ABD00EF9C6E /* lazy-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lazy-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -392,6 +394,7 @@
 				AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */,
 				AB00BE8026B46FCD00A37235 /* UILabel+Extension.swift */,
 				ABE9555B26C2BAE4001E51F5 /* NSMutableAttributedString+Extension.swift */,
+				AB4A7DE026D939D100798FC1 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				AB7F6E54269A02E100EF9C6E /* KeyConstants.swift in Sources */,
 				AB86052C26B122330029E67E /* ModalDelegate.swift in Sources */,
 				AB42C18E26AA7D0A00EB1B92 /* EditHabitViewController+Extension.swift in Sources */,
+				AB4A7DE126D939D100798FC1 /* UIImage+Extension.swift in Sources */,
 				AB42C19026AA7DD700EB1B92 /* UICollectionView+Extension.swift in Sources */,
 				AB42C19626AB167000EB1B92 /* UIColor+Extension.swift in Sources */,
 				AB7F6E57269A2CAB00EF9C6E /* SignManager.swift in Sources */,

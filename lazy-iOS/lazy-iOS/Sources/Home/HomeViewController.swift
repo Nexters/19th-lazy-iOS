@@ -193,7 +193,7 @@ class HomeViewController: UIViewController {
 
     func fetchHabitsData() {
         /// 서버 통신
-        let habits = [Habit(idx: 3, iconIdx: 2, name: "런데이! 🏃🏼‍♀️", frequency: 5, delayDay: 6, registrationDate: Date(), isAlarm: true, repeatDays: [1, 3, 5, 6, 7], completion: false), Habit(idx: 4, iconIdx: 1, name: "1일 1알고리즘", frequency: 5, delayDay: 2, registrationDate: Date(), isAlarm: true, repeatDays: [1, 2, 3, 4, 5, 6, 7], completion: false)]
+        let habits = [Habit(idx: 0, iconIdx: 2, name: "런데이! 🏃🏼‍♀️", frequency: 5, delayDay: 3, registrationDate: Date(), isAlarm: true, repeatDays: [2, 4, 6], completion: false), Habit(idx: 1, iconIdx: 1, name: "1일 1알고리즘", frequency: 5, delayDay: 6, registrationDate: Date(), isAlarm: true, repeatDays: [1, 2, 3, 4, 5, 6, 7], completion: false)]
 
 //        HabitManager.shared.appendHabits(habits)
         HabitManager.shared.refreshHabits(habits)
