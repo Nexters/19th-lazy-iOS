@@ -179,7 +179,7 @@ class HomeViewController: UIViewController {
 
     func fetchHabitsData() {
         /// 서버 통신
-        let habits = [Habit(idx: 3, iconIdx: 2, name: "런데이! 🏃🏼‍♀️", frequency: 5, delayDay: 6, registrationDate: Date(), isAlarm: true, repeatDays: [1, 3, 5, 7], completion: false), Habit(idx: 4, iconIdx: 1, name: "1일 1알고리즘", frequency: 5, delayDay: 2, registrationDate: Date(), isAlarm: true, repeatDays: [1, 2, 3, 4, 5, 6, 7], completion: false)]
+        let habits = [Habit(idx: 3, iconIdx: 2, name: "런데이! 🏃🏼‍♀️", frequency: 5, delayDay: 6, registrationDate: Date(), isAlarm: true, repeatDays: [1, 3, 5, 6, 7], completion: false), Habit(idx: 4, iconIdx: 1, name: "1일 1알고리즘", frequency: 5, delayDay: 2, registrationDate: Date(), isAlarm: true, repeatDays: [1, 2, 3, 4, 5, 6, 7], completion: false)]
 
 //        HabitManager.shared.appendHabits(habits)
         HabitManager.shared.refreshHabits(habits)
@@ -188,6 +188,10 @@ class HomeViewController: UIViewController {
 
 // TODO: - 버블 사이즈 enum
 extension HomeViewController: HomeHabitManagerDelegate {
+    func isHiddenCompletedLabel(isHidden: Bool) {
+        <#code#>
+    }
+    
     func emptyHabit() {
         isHabitEmpty = true
 
@@ -220,9 +224,32 @@ extension HomeViewController: HomeHabitManagerDelegate {
 
     func completedHabit(habit: Habit) {
         print("\(habit.name) 습관 완료 😀")
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            self.bubbleAreaView.subviews.forEach { view in
+                guard let bubble = view as? BubbleView else { return }
+                if bubble.habit == habit {
+                    bubble.removeFromSuperview()
+                    BubbleBehaviorManager.shared.removeBubble(bubble)
+                }
+            }
+        }
     }
 
+    // FIXME: - 버블 추가를 분리하자 ...
     func incompleteHabit(habit: Habit) {
         print("\(habit.name) 습관 미완료 🤬")
+
+        isHabitEmpty = false
+        let x = view.bounds.width / 4.0
+        let size = HabitManager.shared.bubbleSize * DeviceConstants.widthRatio
+
+        let randomX = CGFloat.random(in: x - 70 ..< x + 70)
+        let bubbleView = BubbleView(frame: CGRect(x: randomX, y: 100, width: size, height: size))
+        bubbleView.gestureDelegate = self
+        bubbleView.habit = habit
+
+        bubbleAreaView.addSubview(bubbleView)
+        BubbleBehaviorManager.shared.addBubble(bubbleView)
     }
 }

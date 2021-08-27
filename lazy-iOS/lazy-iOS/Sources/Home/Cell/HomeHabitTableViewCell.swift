@@ -34,7 +34,9 @@ class HomeHabitTableViewCell: UITableViewCell {
     
     // MARK: - Properties
 
+    // FIXME: - 안 쓰는 것 같은데요...
     var checkButtonDelegate: HabitCheckButtonDelegate?
+    var habit: Habit?
 
     // MARK: - Initializer
     
@@ -70,13 +72,17 @@ class HomeHabitTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         changeActive()
+        habit = nil
     }
     
     // MARK: - Actions
     
     @objc
     func didTapCheckButton(_ sender: UIButton) {
-        checkButtonDelegate?.didTapHabitCheckButton(sender)
+        sender.isSelected.toggle()
+        
+        guard let habit = self.habit else { return }
+        HabitManager.shared.completionHabit(target: habit, isCompletion: sender.isSelected)
     }
     
     // MARK: - Methods
@@ -117,6 +123,8 @@ class HomeHabitTableViewCell: UITableViewCell {
     
     // FIXME: - 예쁘게 고쳐야겠죠..
     func setHabitData(habit: Habit) {
+        self.habit = habit
+        
         iconView.image = UIImage(named: "habbit\(habit.iconIdx)")
         titleLabel.text = habit.name
         

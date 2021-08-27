@@ -12,12 +12,11 @@ protocol HomeHabitManagerDelegate: AnyObject {
     func emptyHabit()
     func completedHabit(habit: Habit)
     func incompleteHabit(habit: Habit)
+    func isHiddenCompletedLabel(isHidden: Bool)
 }
 
 protocol DrawerHabitManagerDelegate: AnyObject {
     func addHabits(_ habits: [Habit])
-    func completedHabit(habit: Habit)
-    func incompleteHabit(habit: Habit)
 }
 
 class HabitManager {
@@ -32,7 +31,10 @@ class HabitManager {
     }
 
     var delayDaysCount: Int {
-        habits.reduce(0) { $0 + $1.delayDay }
+        let count = habits.reduce(0) { $0 + $1.delayDay }
+
+        homeHabitManagerDelegate?.isHiddenCompletedLabel(isHidden: count != 0)
+        return count
     }
 
     private var limit: Int = 3
@@ -68,7 +70,6 @@ class HabitManager {
             homeHabitManagerDelegate?.emptyHabit()
         } else {
             homeHabitManagerDelegate?.addHabits(habits)
-            drawerHabitManagerDelegate?.addHabits(habits)
         }
     }
 
@@ -77,6 +78,16 @@ class HabitManager {
 
         homeHabitManagerDelegate?.addHabits(newHabits)
         self.habits.append(contentsOf: newHabits)
+    }
+
+    func completionHabit(target: Habit, isCompletion: Bool) {
+        guard var target = habits.filter({ $0.idx == target.idx }).first,
+              let arrIdx = habits.firstIndex(of: target) else { return }
+        target.delayDay = isCompletion ? 0 : 1
+        target.completion = isCompletion
+        habits[arrIdx] = target
+
+        isCompletion ? homeHabitManagerDelegate?.completedHabit(habit: target) : homeHabitManagerDelegate?.incompleteHabit(habit: target)
     }
 }
 

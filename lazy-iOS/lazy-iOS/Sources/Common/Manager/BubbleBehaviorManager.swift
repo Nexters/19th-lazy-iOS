@@ -51,6 +51,12 @@ class BubbleBehaviorManager: UIDynamicBehavior {
         dynamicItemBehavior.addItem(bubble)
     }
 
+    func removeBubble(_ bubble: UIView) {
+        gravityBehavior.removeItem(bubble)
+        collisionBehavior.removeItem(bubble)
+        dynamicItemBehavior.removeItem(bubble)
+    }
+
     func updateBubblePosition() {
         if AppDelegate.motionManager.isAccelerometerAvailable {
             AppDelegate.motionManager.startAccelerometerUpdates(to: OperationQueue.main) { data, _ in

@@ -42,6 +42,10 @@ class BubbleView: UIControl {
         setConstraints()
     }
     
+    deinit {
+        print("Bubble \(habit?.name) 완료!")
+    }
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
