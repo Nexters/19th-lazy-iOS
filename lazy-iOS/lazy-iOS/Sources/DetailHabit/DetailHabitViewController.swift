@@ -85,7 +85,7 @@ class DetailHabitViewController: UIViewController {
     
     let buttonWidth = 103 * DeviceConstants.widthRatio
     let habitAnnouncementText = " 일차\n쌓이고 있어요"
-    private var currPage = Date() {
+    var currPage = Date() {
         didSet {
             changeCalendarHeaderLabel(to: currPage)
         }
@@ -177,6 +177,7 @@ class DetailHabitViewController: UIViewController {
     
     func setCalendar() {
         calendar.scope = .month
+        calendar.placeholderType = .none
 
         /// 요일 한글 변환
         calendar.locale = Locale(identifier: "ko_KR")
@@ -192,6 +193,8 @@ class DetailHabitViewController: UIViewController {
         calendar.appearance.titleFont = .pretendard(type: .regular, size: 14)
 
         calendar.today = nil /// 오늘 표시 숨기기
+        
+        calendar.register(IconCalendarCell.self, forCellReuseIdentifier: String(describing: IconCalendarCell.self))
 
         /// Header
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
@@ -217,10 +220,15 @@ class DetailHabitViewController: UIViewController {
             .addAttributeString(str: month, size: 20, color: .gray8)
             .addAttributeString(str: year, size: 14, type: .semiBold, color: .gray6)
     }
-}
-
-extension DetailHabitViewController: FSCalendarDelegate {
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        currPage = calendar.currentPage
+    
+    func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
+        guard let iconCell = cell as? IconCalendarCell,
+              let habit = self.habit else { return }
+        iconCell.setIconImage(idx: habit.iconIdx)
+        
+        let isHidden = !(date.timeIntervalSinceNow < 0 && habit.repeatDays.contains(Calendar.current.component(.weekday, from: date)))
+        
+        iconCell.iconImage.isHidden = isHidden
+        iconCell.titleLabel.isHidden = !isHidden
     }
 }
