@@ -40,6 +40,15 @@ class HomeViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapAddHabitButton(_:)), for: .touchUpInside)
     }
 
+    lazy var completedLabel = UILabel().then {
+        $0.font = .pretendard(type: .semiBold, size: 14)
+        $0.numberOfLines = 0
+        $0.text = "대단해요!\n정말 꾸준히 하고 계시네요 :)"
+        $0.textColor = .gray2
+        $0.lineSpacing(spacing: 8)
+        $0.textAlignment = .center
+    }
+
     // MARK: - Properties
 
     lazy var animator = UIDynamicAnimator(referenceView: self.bubbleAreaView)
@@ -148,8 +157,8 @@ class HomeViewController: UIViewController {
             make.height.equalTo(UIComponentsConstants.homeDrawerOpenHeight)
         }
 
-        /// empty
-        view.addSubviews([emptyLabel, emptySubLabel, addHabitButton])
+        /// empty +.completed
+        view.addSubviews([emptyLabel, emptySubLabel, addHabitButton, completedLabel])
 
         emptyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(295 * DeviceConstants.heightRatio)
@@ -166,6 +175,11 @@ class HomeViewController: UIViewController {
             make.width.equalTo(80 * DeviceConstants.widthRatio)
             make.height.equalTo(42 * DeviceConstants.heightRatio)
             make.centerX.equalToSuperview()
+        }
+
+        completedLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(220 * DeviceConstants.heightRatio)
         }
     }
 
@@ -186,12 +200,13 @@ class HomeViewController: UIViewController {
     }
 }
 
-// TODO: - 버블 사이즈 enum
 extension HomeViewController: HomeHabitManagerDelegate {
     func isHiddenCompletedLabel(isHidden: Bool) {
-        <#code#>
+        UIView.animate(withDuration: 0.8) {
+            self.completedLabel.alpha = isHidden ? 0 : 1
+        }
     }
-    
+
     func emptyHabit() {
         isHabitEmpty = true
 
@@ -223,8 +238,6 @@ extension HomeViewController: HomeHabitManagerDelegate {
     }
 
     func completedHabit(habit: Habit) {
-        print("\(habit.name) 습관 완료 😀")
-
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
             self.bubbleAreaView.subviews.forEach { view in
                 guard let bubble = view as? BubbleView else { return }
@@ -238,8 +251,6 @@ extension HomeViewController: HomeHabitManagerDelegate {
 
     // FIXME: - 버블 추가를 분리하자 ...
     func incompleteHabit(habit: Habit) {
-        print("\(habit.name) 습관 미완료 🤬")
-
         isHabitEmpty = false
         let x = view.bounds.width / 4.0
         let size = HabitManager.shared.bubbleSize * DeviceConstants.widthRatio
