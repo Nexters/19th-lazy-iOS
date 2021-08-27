@@ -17,7 +17,7 @@ class HomeHabitTableViewCell: UITableViewCell {
     let titleLabel = UILabel().then {
         $0.text = "습관 A"
         $0.font = .pretendard(type: .bold, size: 16)
-        $0.textColor = .black
+        $0.textColor = .gray8
         $0.numberOfLines = 1
         $0.lineBreakMode = .byTruncatingTail
     }
@@ -25,7 +25,7 @@ class HomeHabitTableViewCell: UITableViewCell {
     let commentLabel = UILabel().then {
         $0.text = "와우, 대단해요!"
         $0.font = .pretendard(type: .medium, size: 12)
-        $0.textColor = .darkGray
+        $0.textColor = .gray6
     }
     
     lazy var checkButton = HabitCheckButton().then {
@@ -131,10 +131,10 @@ class HomeHabitTableViewCell: UITableViewCell {
         let todayWeekDay = Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? 0
         
         if habit.completion {
-            commentLabel.text = "와우! 대단해요"
+            commentLabel.text = "와우, 대단해요!"
             checkButton.isSelected = true
         } else {
-            commentLabel.text = "얼마 남았어요"
+            commentLabel.text = "3시간 남았어요"
             checkButton.isSelected = false
         }
         

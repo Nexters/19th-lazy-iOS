@@ -13,7 +13,7 @@ extension HomeViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailHabitViewController = DetailHabitViewController()
+        let detailHabitViewController = DetailHabitViewController(habit: HabitManager.shared.habits[indexPath.row])
 
         present(detailHabitViewController, animated: true, completion: nil)
     }

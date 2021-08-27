@@ -24,7 +24,6 @@ class DetailHabitViewController: UIViewController {
     let contentView = UIView()
     
     lazy var habitLabel = UILabel().then {
-        $0.text = "런데이하기런데이하기런데이하기런데이하기"
         $0.font = .pretendard(type: .bold, size: 20)
         $0.textColor = .gray8
         $0.lineSpacing(spacing: 8)
@@ -40,9 +39,12 @@ class DetailHabitViewController: UIViewController {
     lazy var habitDayLabel = UILabel().then {
         $0.font = .pretendard(type: .bold, size: 52)
         $0.numberOfLines = 0
-        $0.attributedText = NSMutableAttributedString()
-            .addAttributeString(str: "5", size: 52, type: .bold, color: .mainPurple)
-            .addAttributeString(str: self.habitAnnouncementText, size: 20, type: .bold, color: .gray8)
+        
+        if let delayDay = self.habit?.delayDay {
+            $0.attributedText = NSMutableAttributedString()
+                .addAttributeString(str: "\(String(describing: delayDay))", size: 52, type: .bold, color: .mainPurple)
+                .addAttributeString(str: self.habitAnnouncementText, size: 20, type: .bold, color: .gray8)
+        }
     }
     
     let messageLabel = UILabel().then {
@@ -89,10 +91,15 @@ class DetailHabitViewController: UIViewController {
         }
     }
     
+    var habit: Habit?
+
     // MARK: - Initializer
     
-    init() {
+    init(habit: Habit) {
+        self.habit = habit
         super.init(nibName: nil, bundle: nil)
+        
+        setHabitData()
     }
     
     @available(*, unavailable)
@@ -151,6 +158,12 @@ class DetailHabitViewController: UIViewController {
     }
 
     // MARK: - Methods
+    
+    func setHabitData() {
+        guard let habit = self.habit else { return }
+        
+        habitLabel.text = habit.name
+    }
     
     func setView() {
         view.backgroundColor = .white

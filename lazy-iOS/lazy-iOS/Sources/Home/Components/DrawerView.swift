@@ -29,14 +29,12 @@ class DrawerView: UIView {
     }
     
     lazy var guideLabel = UILabel().then {
-        $0.text = "총 \(self.totalDelayedDate)일 밀렸어요~!"
         $0.font = .pretendard(type: .bold, size: 20)
-        $0.textColor = .black
+        $0.textColor = .gray8
     }
     
     lazy var plusButton = UIButton().then {
         $0.setImage(UIImage(named: "iconAdd"), for: .normal)
-        $0.tintColor = .black
         $0.addTarget(self, action: #selector(didTapPlusButton(_:)), for: .touchUpInside)
     }
     
@@ -181,14 +179,6 @@ extension DrawerView: DrawerHabitManagerDelegate {
             make.height.equalTo(tableViewContentHeight)
         }
         
-        guideLabel.text = "습관이 \(HabitManager.shared.delayDaysCount)일 쌓였어요"
-    }
-    
-    func completedHabit(habit: Habit) {
-        print("\(habit.name) 습관 완료 😀")
-    }
-
-    func incompleteHabit(habit: Habit) {
-        print("\(habit.name) 습관 미완료 🤬")
+        guideLabel.text = HabitManager.shared.delayDaysCount == 0 ? "모두 완료했어요" : "습관이 \(HabitManager.shared.delayDaysCount)일 쌓였어요"
     }
 }
