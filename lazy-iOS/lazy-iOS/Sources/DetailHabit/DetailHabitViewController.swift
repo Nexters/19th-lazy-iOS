@@ -233,7 +233,7 @@ class DetailHabitViewController: UIViewController {
         iconCell.titleLabel.isHidden = !isHidden
         
         // FIXME: - 파워 임시.. 서버 들어오면 다시........
-        let delaydates = [["2021-08-23", "2021-08-25", "2021-08-27"], [], ["2021-08-28"]]
+        let delaydates = [["2021-08-25", "2021-08-27", "2021-08-28"], [], ["2021-08-28"]]
         
         let key = Date().dateToString(format: "yyyy-MM-dd", date: date)
         if delaydates[habit.idx].contains(key) {

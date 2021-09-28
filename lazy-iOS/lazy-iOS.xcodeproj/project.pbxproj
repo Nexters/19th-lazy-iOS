@@ -41,6 +41,7 @@
 		AB42C19626AB167000EB1B92 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */; };
 		AB4A7DDF26D909D000798FC1 /* IconCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A7DDE26D909D000798FC1 /* IconCalendarCell.swift */; };
 		AB4A7DE126D939D100798FC1 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A7DE026D939D100798FC1 /* UIImage+Extension.swift */; };
+		AB4A7DE526D9458800798FC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB4A7DE726D9458800798FC1 /* InfoPlist.strings */; };
 		AB5516FA26C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5516F926C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift */; };
 		AB5516FC26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5516FB26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift */; };
 		AB7F6E2C26997ABD00EF9C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E2B26997ABD00EF9C6E /* AppDelegate.swift */; };
@@ -107,6 +108,8 @@
 		AB42C19526AB166F00EB1B92 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		AB4A7DDE26D909D000798FC1 /* IconCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCalendarCell.swift; sourceTree = "<group>"; };
 		AB4A7DE026D939D100798FC1 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		AB4A7DE226D9453700798FC1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		AB4A7DE626D9458800798FC1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB5516F926C2DB7000BCEAE4 /* DetailHabitViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailHabitViewController+Layout.swift"; sourceTree = "<group>"; };
 		AB5516FB26C2DBB100BCEAE4 /* DetailHabitViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailHabitViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB7F6E2826997ABD00EF9C6E /* lazy-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lazy-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +327,7 @@
 				AB7F6E3F2699F6A500EF9C6E /* Sources */,
 				AB7F6E3626997AC100EF9C6E /* LaunchScreen.storyboard */,
 				AB7F6E3926997AC100EF9C6E /* Info.plist */,
+				AB4A7DE726D9458800798FC1 /* InfoPlist.strings */,
 			);
 			path = "lazy-iOS";
 			sourceTree = "<group>";
@@ -508,6 +512,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = AB7F6E1F26997ABD00EF9C6E;
 			productRefGroup = AB7F6E2926997ABD00EF9C6E /* Products */;
@@ -525,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB7F6E3826997AC100EF9C6E /* LaunchScreen.storyboard in Resources */,
+				AB4A7DE526D9458800798FC1 /* InfoPlist.strings in Resources */,
 				AB42C16F26A5D20600EB1B92 /* Pretendard-Regular.otf in Resources */,
 				AB86052526B07A2E0029E67E /* Pretendard-SemiBold.otf in Resources */,
 				AB42C16D26A5D1FD00EB1B92 /* Pretendard-Bold.otf in Resources */,
@@ -640,10 +646,19 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		AB4A7DE726D9458800798FC1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB4A7DE626D9458800798FC1 /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		AB7F6E3626997AC100EF9C6E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				AB7F6E3726997AC100EF9C6E /* Base */,
+				AB4A7DE226D9453700798FC1 /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -655,6 +670,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -716,6 +732,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -775,13 +792,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "lazy-iOS/lazy-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = "lazy-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "inaelee.lazy-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inaelee.lazy-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -796,13 +813,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "lazy-iOS/lazy-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = "lazy-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "inaelee.lazy-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inaelee.lazy-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
